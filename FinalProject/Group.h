@@ -2,8 +2,8 @@
 // Created by Charles Wszalek on 10/15/24.
 //
 
-#ifndef GROUP_H
-#define GROUP_H
+#ifndef Group_h
+#define Group_h
 
 #include <stdio.h>
 #include <string>
@@ -17,5 +17,7 @@ private:
     string name3;
 public:
     Group(string, string, string);
+    void Display();
+};
 
-#endif
+#endif /* GroupProject_hpp */

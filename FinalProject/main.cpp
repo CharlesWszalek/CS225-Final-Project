@@ -6,13 +6,17 @@
 //
 
 #include <iostream>
-#include <cstdio>
-#include "Person.h"
-#include <string>
+#include "Group.h"
 using namespace std;
 
-int main() {  // "  int argc, const char * argv[]  "
-    cout << "Hello, World!\n";
-    Group group("Charles", "Thomas", "Brandon");
-    return 0;
+void greeting(string name) {
+    for (int i = 0; i < 5; i++) {
+        cout <<"Hello "<<name <<endl;
+    }
+}
+
+int main() {
+    Group group("Charles Wszalek", "Brandon Pillon", "Thomas Zanin");
+    group.Display();
+
 }
