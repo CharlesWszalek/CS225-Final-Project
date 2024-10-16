@@ -5,4 +5,6 @@
 #ifndef SCRATCH1_H
 #define SCRATCH1_H
 
+class Person;
+
 #endif //SCRATCH1_H
