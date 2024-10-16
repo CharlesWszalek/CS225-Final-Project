@@ -1,0 +1,18 @@
+Hey, we need to put seomthign here ...
+
+HEADER:
+
+//
+// Name: filename.filetype
+// Version 1.0 editor name: Changes
+//         2.0 editor name: Changes
+// Reference: urls for websites we used. 
+//
+
+CLASS:
+
+class NAME_IN_CAPS_WITH_UNDERSCORES(){
+
+}
+
+
