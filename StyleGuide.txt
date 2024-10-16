@@ -1,5 +1,6 @@
 Hey, we need to put seomthign here ...
 
+------------------------------------------------------
 HEADER:
 
 //
@@ -9,10 +10,21 @@ HEADER:
 // Reference: urls for websites we used. 
 //
 
+------------------------------------------------------
 CLASS:
 
 class NAME_IN_CAPS_WITH_UNDERSCORES(){
+private:
+protected:
+public:
+}
+
+------------------------------------------------------
+STRUCT:
+
+struct NAME_IN_CAPS_WITH_UNDERSCORES(){
 
 }
 
+------------------------------------------------------
 
