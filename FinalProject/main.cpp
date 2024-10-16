@@ -6,11 +6,13 @@
 //
 
 #include <iostream>
-#include "scratch1.h"
+#include <cstdio>
+#include "Person.h"
+#include <string>
+using namespace std;
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    Person me(Charles);
+int main() {  // "  int argc, const char * argv[]  "
+    cout << "Hello, World!\n";
+    Group group("Charles", "Thomas", "Brandon");
     return 0;
 }
