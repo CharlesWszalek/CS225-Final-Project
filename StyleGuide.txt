@@ -10,14 +10,21 @@ HEADER:
 // Reference: urls for websites we used. 
 //
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 ------------------------------------------------------
 CLASS:
 
 class NAME_IN_CAPS_WITH_UNDERSCORES(){
 private:
+  CODE
 protected:
+  CODE
 public:
-}
+  CODE
+};
 
 ------------------------------------------------------
 STRUCT:
