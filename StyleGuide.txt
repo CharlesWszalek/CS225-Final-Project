@@ -20,6 +20,7 @@ using namespace std;
 ------------------------------------------------------
 CLASS:
 
+
 class NAME_IN_CAPS_WITH_UNDERSCORES(){
 private:
   CODE
@@ -28,6 +29,7 @@ protected:
 public:
   CODE
 };
+
 
 ------------------------------------------------------
 STRUCT:
