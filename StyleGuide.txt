@@ -34,9 +34,11 @@ public:
 ------------------------------------------------------
 STRUCT:
 
-struct NAME_IN_CAPS_WITH_UNDERSCORES(){
 
-}
+typedef struct{
+
+} NAME_IN_CAPS_WITH_UNDERSCORES;
+
 
 ------------------------------------------------------
 
