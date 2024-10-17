@@ -42,9 +42,15 @@ typedef struct{
 Functions:
 
 
-<output_type> funcName{
+<output_type> func_name{
   CODE;
 }
 
+
+------------------------------------------------------
+Variables:
+
+<type> variableName = VAL
+<type> variableName[] = {VAL, VAL, ...}
 
 ------------------------------------------------------
