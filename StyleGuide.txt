@@ -23,11 +23,11 @@ CLASS:
 
 class NAME_IN_CAPS_WITH_UNDERSCORES(){
 private:
-  CODE
+  CODE;
 protected:
-  CODE
+  CODE;
 public:
-  CODE
+  CODE;
 };
 
 
@@ -36,9 +36,17 @@ STRUCT:
 
 
 typedef struct{
-
+  CODE;
 } NAME_IN_CAPS_WITH_UNDERSCORES;
 
 
 ------------------------------------------------------
+Functions:
 
+
+<output_type> funcName{
+  CODE;
+}
+
+
+------------------------------------------------------
