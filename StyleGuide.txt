@@ -55,18 +55,36 @@ FUNCTIONS:
 ------------------------------------------------------
 VARIABLES:
 
-<type> variableName = VAL
-<type> variableName[] = {VAL, VAL, ...}
+<type> variableName = VAL;
+<type> variableName[] = {VAL, VAL, ...};
 
 ------------------------------------------------------
 IF:
 
 if (conditional){
-  CODE
+  CODE;
 } else if (conditional) {
-  CODE
+  CODE;
 } else {
-  CODE
+  CODE;
+}
+
+------------------------------------------------------
+WHILE and DO WHILE:
+
+while (conditional){
+  CODE;
+}
+
+do {
+  CODE;
+} while (conditional);
+
+------------------------------------------------------
+FOR:
+
+for (int interable = value; conditional; step){
+  CODE;
 }
 
 ------------------------------------------------------
