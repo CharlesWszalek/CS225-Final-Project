@@ -1,3 +1,8 @@
+STYLE GUIDE:
+Distinct groups of Classes, Structures, and Fucntions will have their own file and header file. 
+
+
+
 ------------------------------------------------------
 HEADER:
 
@@ -39,18 +44,34 @@ typedef struct{
 
 
 ------------------------------------------------------
-Functions:
+FUNCTIONS:
 
 
-<output_type> func_name{
+<output_type> func_name(value, value, ...){
   CODE;
 }
 
 
 ------------------------------------------------------
-Variables:
+VARIABLES:
 
 <type> variableName = VAL
 <type> variableName[] = {VAL, VAL, ...}
 
 ------------------------------------------------------
+IF:
+
+if (conditional){
+  CODE
+} else if (conditional) {
+  CODE
+} else {
+  CODE
+}
+
+------------------------------------------------------
+
+
+
+
+
