@@ -1,14 +1,15 @@
 STYLE GUIDE:
-Distinct groups of Classes, Structures, and Fucntions will have their own file and header file. 
+Distinct groups of Classes, Structures, and Fucntions will have their own file and header file of the same name. 
+FIle names will be camelCase. 
 
-
+See below for several specific examples...
 
 ------------------------------------------------------
 HEADER:
 
 //
 // CSS 225 FINAL PROJECT 
-// Name: filename.filetype
+// Name: fileName.filetype
 // Version 1.0 editor1 name: MM/DD/YY Changes
 //         1.1 editor1 name: MM/DD/YY Changes
 //         2.0 editor2 name: MM/DD/YY Changes
@@ -30,8 +31,19 @@ private:
 protected:
   CODE;
 public:
+  NAME_IN_CAPS_WITH_UNDERSCORES(){
+    5 OR FEWER LINES;
+  }
+  NAME_IN_CAPS_WITH_UNDERSCORES(){}
+  <type> fucntion_name(){
+    CODE;
+  }
   CODE;
 };
+
+NAME_IN_CAPS_WITH_UNDERSCORES::NAME_IN_CAPS_WITH_UNDERSCORES(){
+  MORE THAN 5 LINES;
+}
 
 
 ------------------------------------------------------
@@ -63,7 +75,7 @@ IF:
 
 if (conditional){
   CODE;
-} else if (conditional) {
+} else if (conditional){
   CODE;
 } else {
   CODE;
@@ -88,8 +100,3 @@ for (int interable = value; conditional; step){
 }
 
 ------------------------------------------------------
-
-
-
-
-
