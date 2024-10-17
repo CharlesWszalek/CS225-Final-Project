@@ -6,8 +6,10 @@ HEADER:
 //
 // CSS 225 FINAL PROJECT 
 // Name: filename.filetype
-// Version 1.0 editor name: Changes
-//         2.0 editor name: Changes
+// Version 1.0 editor1 name: Changes
+//         1.1 editor1 name: Changes
+//         2.0 editor2 name: Changes
+//         2.1 editor2 name: Changes
 // Reference: urls for websites we used. 
 //
 
