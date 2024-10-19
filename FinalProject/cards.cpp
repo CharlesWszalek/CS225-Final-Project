@@ -99,11 +99,11 @@ CARDS DECK::draw(){
 
 }
 
-/*
+
 void DECK::shuffle(){
 
 }
-*/
+
 
 std::ostream& operator<< (std::ostream& c, DECK d){
 	for (auto i = d.cards.begin(); i != d.cards.end(); ++i){
