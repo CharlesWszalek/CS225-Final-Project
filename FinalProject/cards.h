@@ -20,8 +20,8 @@ typedef struct {
 
 class DECK{
 private:
-	std::vector<CARDS> cards;
 protected:
+	std::vector<CARDS> cards;
 public:
 	DECK();
 	CARDS draw();
