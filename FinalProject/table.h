@@ -16,6 +16,7 @@ private:
 	CARDS cards[5];
 	DECK deck;
 	PLAYER* player[4];
+	int pot;
 protected:
 public:
 	TABLE();

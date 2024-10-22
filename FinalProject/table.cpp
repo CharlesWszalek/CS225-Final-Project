@@ -8,7 +8,7 @@
 #include "table.h"
 
 
-TABLE::TABLE(){
+TABLE::TABLE():pot(0){
 	for (int i = 0; i < 4; i++){
 		player[i] = new PLAYER(i+1);
 	}
@@ -16,11 +16,12 @@ TABLE::TABLE(){
 
 
 void TABLE::buyIn(){
-
+	std::cout << "buy in" << std::endl;
 }
 
 
 void TABLE::flop(){
+	std::cout << "flop" << std::endl;
 	deck.discard(); // try using the d-- operator overload
 	deck.discard();
 	for (int i = 0; i < 3; i++){
@@ -32,25 +33,27 @@ void TABLE::flop(){
 
 void TABLE::betting(){
 	for (int i = 0; i < 4; i++){
-		player[i]->bets();
+		pot += player[i]->bets();
 	}
 }
 
 
 void TABLE::turn(){
+	std::cout << "turn" << std::endl;
 	deck.discard();
 	cards[3] = deck.draw();
 }
 
 
 void TABLE::river(){
+	std::cout << "river" << std::endl;
 	deck.discard();
 	cards[4] = deck.draw();
 }
 
 
 void TABLE::showdown(){
-
+	std::cout << "Showdown" << std::endl;
 }
 
 
