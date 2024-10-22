@@ -15,6 +15,29 @@ PLAYER::PLAYER(int num): bet(0), playerNum(num), money(1500){}
 
 
 int PLAYER::bets(){
+	std::string temp;
+	std::cout << "Would you like to raise, check, or fold: ";
+	std::cin >> temp;
+	int change;
+	if (temp == "raise"){
+		change = raise();
+	} else if (temp == "check"){
+		change = check();
+	} else if (temp == "fold"){
+		change = fold();
+	}
+	return change;
+}
+
+
+void PLAYER::setmin(){
+	if (bet > minBet){
+		minBet = bet;
+	}
+}
+
+
+int PLAYER::raise(){
 	int temp = 0;
 	do {
 		std::cout << "player " << playerNum << ", What would you like to bet: ";
@@ -29,23 +52,11 @@ int PLAYER::bets(){
 }
 
 
-void PLAYER::setmin(){
-	if (bet > minBet){
-		minBet = bet;
-	}
+int PLAYER::check(){
+	return 0;
 }
 
 
-void PLAYER::raise(){
-
-}
-
-
-void PLAYER::check(){
-
-}
-
-
-void PLAYER::fold(){
-
+int PLAYER::fold(){
+	return 0;
 }

@@ -22,9 +22,9 @@ protected:
 public:
 	PLAYER(int);
 	int bets();
-	void raise();
-	void check();
-	void fold();
+	int raise();
+	int check();
+	int fold();
 	void setmin();
 };
 #endif
