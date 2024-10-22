@@ -1,8 +1,9 @@
 //
 // CSS 225 FINAL PROJECT 
 // Name: cards.cpp
-// Version 1.0 name: Bradon P 10/18/24 defined functions for the DECK and TABLE classes
-// 	   1.1 name: Bradon P 10/21/24 moved shuffle into shuffle function, added drawing cards
+// Version 1.0 name: Brandon P 10/18/24 defined functions for the DECK and TABLE classes
+// 	   1.1 name: Brandon P 10/21/24 moved shuffle into shuffle function, added drawing cards
+// 	   1.2 name: Brandon P 10/21/24 moved table to seperate file
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 // 	      https://en.cppreference.com/w/cpp/algorithm/random_shuffle
 // 	      https://www.geeksforgeeks.org/cpp-vector-of-structs/
@@ -108,46 +109,14 @@ void DECK::shuffle(){
 }
 
 
+void DECK::discard() {
+	cards.pop_back();
+}
+
+
 std::ostream& operator<< (std::ostream& c, DECK d){
 	for (auto i = d.cards.begin(); i != d.cards.end(); ++i){
 		c << i->suit << " " << i->name << " " << i->value << std::endl;
 	}
 	return c;
-}
-void TABLE::flop(){
-/*	DECK::cards.pop_back();
-	DECK::cards.pop_back();
-	for (int i = 0; i < 3; i++){
-		TABLE::cards[i] = draw();
-		std::cout << TABLE::cards[i].suit << " " << TABLE::cards[i].name << " " << TABLE::cards[i].value << std::endl;
-	}*/
-}
-
-
-void TABLE::turnRiver(){
-
-}
-
-
-void TABLE::showdown(){
-
-}
-
-
-int main() {
-	DECK here;
-	std::cout << here;
-	std::cout << "your card is: ";
-	CARDS c = here.draw();
-	std::cout << c.suit << " " << c.name << " " << c.value << std::endl;
-	std::cout<< std::endl;
-	std::cout << here;
-	std::cout<< std::endl;
-
-/*	TABLE t;
-	t.flop();
-	std::cout<< std::endl;
-	std::cout << here;
-*/
-	return 0;
 }
