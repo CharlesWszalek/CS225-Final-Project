@@ -1,15 +1,23 @@
 //
-//  main.cpp
-//  FinalProject
-//
-//  Created by Charles Wszalek on 10/14/24.
+// CSS 225 FINAL PROJECT 
+// Name: table.h
+// Version 1.0 name: Bradon P 10/21/24 created
+// Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
-#include <iostream>
-#include "Group.h"
+//#include <iostream>
+#include "table.h"
 using namespace std;
 
+
+void texas_hold_em() {
+	TABLE t;
+	t.betting();
+	t.flop();
+}
+
+
 int main() {
-    Group group("Charles Wszalek", "Brandon Pillon", "Thomas Zanin");
-    group.Display();
+	texas_hold_em();
+	return 0;
 }
