@@ -16,7 +16,7 @@ PLAYER::PLAYER(int num): bet(0), playerNum(num){}
 
 void PLAYER::bets(){
 	int temp;
-std::cout << "player " << playerNum << ", What would you like to bet: ";
+	std::cout << "player " << playerNum << ", What would you like to bet: ";
 	std::cin >> temp;
 	bet += temp;
 	setmin();

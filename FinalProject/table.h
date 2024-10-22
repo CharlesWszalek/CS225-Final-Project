@@ -8,6 +8,8 @@
 #include "cards.h"
 #include "player.h"
 
+#ifndef TABLE_CLASS
+#define TABLE_CLASS
 
 class TABLE{
 private:
@@ -26,3 +28,4 @@ public:
 	friend std::ostream& operator<< (std::ostream&, DECK);
 	void display();
 };
+#endif
