@@ -1,7 +1,7 @@
 //
 // CSS 225 FINAL PROJECT 
 // Name: player.cpp
-// Version 1.0 editor1 name: 10/21/24 created
+// Version 1.0 name: Brandon P 10/21/24 created
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand 
 //
 
