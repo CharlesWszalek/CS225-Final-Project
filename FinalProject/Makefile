@@ -3,7 +3,7 @@
 # Compiler
 CXX := g++
 # Compiler flags
-CXXFLAGS := -std=c++11 -Wall
+CXXFLAGS := -std=c++11 -Wall -lGL -lGLU -lglfw
 
 # Source files
 SRCS := main.cpp Group.cpp
