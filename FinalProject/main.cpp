@@ -12,8 +12,15 @@ using namespace std;
 
 void texas_hold_em() {
 	TABLE t;
+	t.buyIn();
 	t.betting();
 	t.flop();
+	t.betting();
+	t.turn();
+	t.betting();
+	t.river();
+	t.betting();
+	t.showdown();
 }
 
 

@@ -11,15 +11,21 @@
 int PLAYER::minBet = 0;
 
 
-PLAYER::PLAYER(int num): bet(0), playerNum(num){}
+PLAYER::PLAYER(int num): bet(0), playerNum(num), money(1500){}
 
 
-void PLAYER::bets(){
-	int temp;
-	std::cout << "player " << playerNum << ", What would you like to bet: ";
-	std::cin >> temp;
+int PLAYER::bets(){
+	int temp = 0;
+	do {
+		std::cout << "player " << playerNum << ", What would you like to bet: ";
+		std::cin >> temp;
+		
+		std::cout << bet+temp << " " << minBet << std::endl;
+	}while (bet + temp < minBet);
 	bet += temp;
+	money -= temp;
 	setmin();
+	return temp;
 }
 
 

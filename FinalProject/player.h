@@ -17,10 +17,11 @@ private:
 	int bet;
 	static int minBet;
 	int playerNum;
+	int money;
 protected:
 public:
 	PLAYER(int);
-	void bets();
+	int bets();
 	void raise();
 	void check();
 	void fold();
