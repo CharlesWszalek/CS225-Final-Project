@@ -2,23 +2,33 @@
 // CSS 225 FINAL PROJECT 
 // Name: deck.h
 // Version 1.0 name: Bradon P 10/22/24 created
-// Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
+// Version 1.1 name: Thomas Z 10/22/24 Creating Deck class, function prototypes
 //
 
 #include <iostream>
 #include <vector>
+#include "cards.hpp"
+using namespace std;
+
 
 #ifndef DECK_CLASS
 #define DECK_CLASS
 
-typedef struct {
-	std::string suit;
-	std::string name;
-	int value;
-} CARDS;
+class DECK {
+	private:
+          CARDS deck[52];
+    public:
+          DECK();
+          CARDS draw();
+          DECK shuffle();
+          void burn();
+};
 
 
-class DECK{
+
+
+#endif
+/*class DECK{
 private:
 protected:
 	std::vector<CARDS> cards;
@@ -28,5 +38,4 @@ public:
 	void shuffle();
 	void discard();
 	friend std::ostream& operator<< (std::ostream&, DECK);
-};
-#endif
+};*/
