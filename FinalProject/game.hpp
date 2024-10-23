@@ -5,15 +5,21 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
-#include "cards.h"
-#include "player.h"
+#include "cards.hpp"
+#include "player.hpp"
+#include "table.hpp"
 
 #ifndef GAME_CLASS
 #define GAME_CLASS
 
 class GAME{
 private:
+    TABLE table;
 protected:
 public:
+    GAME(TABLE table) {
+        this->table = table;
+    };
 };
+
 #endif
