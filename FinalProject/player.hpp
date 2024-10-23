@@ -7,59 +7,76 @@
 
 #include "cards.hpp"
 
-
 #ifndef PLAYER_CLASS
 #define PLAYER_CLASS
+using namespace std;
+
 
 class PLAYER{
 private:
+	int playerId;
 	string name;
-	CARDS cards[2];
-	int bet;
-	static int minBet;
-	int playerNum;
+	CARDS cards[2];//change to hand when we have one
 	int money;
+	int betMoney;
+	int hasRaised;
+	static int minBet;
 protected:
 public:
 	PLAYER(int);
+	void display();
+	CARDS* get_hand(){return cards;};
+	string get_name(){return name;};
+	int get_money(){return money;};
+	int get_playerId(){return playerId;};
+	void set_playerId();
+	void set_min();
+	void reset_raised(){hasRaised = 0;};
 	int bets();
 	int raise();
 	int check();
 	int fold();
-	void setmin();
 };
 
-
+/*
 class HUMAN{
 private:
-	CARDS cards[2];
-	int bet;
-	int playerNum;
+	int playerId;
+	string name;
+	CARDS cards[2];//change to hand when we have one
 	int money;
+	static int minBet;
 protected:
 public:
 	PLAYER(int);
+	void display();
+	int get_hand();
+	string get_name();
+	int get_money();
+	int get_playerId();
+	void set_playerId();
+	void set_min();
 	int bets();
-	int raise();
-	int check();
-	int fold();
-	void setmin();
 };
 
 
 class AI{
 private:
-	CARDS cards[2];
-	int bet;
-	int playerNum;
+	int playerId;
+	string name;
+	CARDS cards[2];//change to hand when we have one
 	int money;
+	static int minBet;
 protected:
 public:
 	PLAYER(int);
+	void display();
+	int get_hand();
+	string get_name();
+	int get_money();
+	int get_playerId();
+	void set_playerId();
+	void set_min();
 	int bets();
-	int raise();
-	int check();
-	int fold();
-	void setmin();
-};
+};*/
 #endif
