@@ -5,34 +5,36 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand 
 //
 
-#include "player.h"
-
+#include "player.hpp"
+using namespace std;
 
 int PLAYER::minBet = 0;
 
 
-PLAYER::PLAYER(int num): bet(0), playerNum(num), money(1500){}
+PLAYER::PLAYER(int num):playerId(num), money(1500){}
 
 
 int PLAYER::bets(){
-	std::string temp;
-	std::cout << "Would you like to raise, check, or fold: ";
-	std::cin >> temp;
-	int change;
+	string temp;
+	cout << "Would you like to raise, check, or fold: "; //cannot raise if raised already
+	cin >> temp;
+	int change = 0;
 	if (temp == "raise"){
 		change = raise();
 	} else if (temp == "check"){
 		change = check();
 	} else if (temp == "fold"){
 		change = fold();
+	} else {
+		cout << "something wend wrong" << endl;
 	}
 	return change;
 }
 
 
-void PLAYER::setmin(){
-	if (bet > minBet){
-		minBet = bet;
+void PLAYER::set_min(){
+	if (betMoney > minBet){
+		minBet = betMoney;
 	}
 }
 
@@ -40,23 +42,23 @@ void PLAYER::setmin(){
 int PLAYER::raise(){
 	int temp = 0;
 	do {
-		std::cout << "player " << playerNum << ", What would you like to bet: ";
-		std::cin >> temp;
+		cout << name << " : ";
+		cin >> temp;
 		
-		std::cout << bet+temp << " " << minBet << std::endl;
-	}while (bet + temp < minBet);
-	bet += temp;
+		cout << betMoney+temp << " " << minBet << endl;
+	}while (betMoney + temp < minBet);
+	betMoney += temp;
 	money -= temp;
-	setmin();
+	set_min();
 	return temp;
 }
 
 
 int PLAYER::check(){
-	return 0;
+	return minBet;
 }
 
 
 int PLAYER::fold(){
-	return 0;
+	return -1;
 }
