@@ -6,7 +6,6 @@
 //
 
 #include <iostream>
-#include <vector>
 #include "cards.hpp"
 using namespace std;
 
@@ -16,11 +15,10 @@ using namespace std;
 
 class DECK {
 	private:
-          CARDS deck[52];
+          int deck[52];
     public:
           DECK();
-          CARDS draw();
-          DECK shuffle();
+          CARD draw();
           void burn();
 };
 

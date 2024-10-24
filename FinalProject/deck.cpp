@@ -11,18 +11,61 @@
 // 	      https://www.geeksforgeeks.org/vector-in-cpp-stl/
 //
 
-#include "cards.h"
-#include <algorithm>
-#include <random>
-#include <time.h>
+#include "cards.hpp"
+#include "deck.hpp"
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm> // for std::swap
+#include <random>    // for std::mt19937 and std::random_device
 using namespace std;
 
-srand(time(NULL));
-DECK();
-CARDS draw();
-DECK shuffle();
-void burn();
+DECK::DECK() {
 
+
+
+
+		// Initialize deck with 52 integers
+		std::vector<int> deck(52);
+		for (int i = 0; i < 52; ++i) {
+			deck[i] = i + 1;
+		}
+
+		// Shuffle the deck
+		shuffleDeck(deck);
+
+		// Output the shuffled deck
+		for (int card : deck) {
+			std::cout << card << " ";
+		}
+		std::cout << std::endl;
+
+
+for (int i = 0; i < 52; ++i)
+{
+	std::cout << deck[i] << endl;
+}
+
+}
+DECK:shuffleDeck(std::vector<int>& deck) {
+	std::random_device rd;  // Seed for random number generator
+	std::mt19937 rng(rd()); // Mersenne Twister random number generator
+
+	// Fisher-Yates shuffle algorithm
+	for (int i = deck.size() - 1; i > 0; --i) {
+		std::uniform_int_distribution<int> dist(0, i); // Generate a random index
+		int j = dist(rng);                             // Get the random index
+		std::swap(deck[i], deck[j]);                   // Swap the elements
+	}
+}
+//DECK::CARD draw();
+//void DECK::burn();
+
+int main() {
+  DECK deck;
+  return 0;
+  }
 
 
 
