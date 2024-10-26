@@ -18,6 +18,7 @@ class DECK {
           int deck[52];
     public:
           DECK();
+		  DECK shuffle();
           CARD draw();
           void burn();
 };
