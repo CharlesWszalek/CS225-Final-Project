@@ -18,16 +18,16 @@ using namespace std;
 #define CARD_CLASS
 
 class CARD {
-  private:
-	string suit;
-	string name;
-	int value;
-  public:
-    CARD();
-    void display();
-    void set_suit(string);
-    void set_rank(string);
-    string get_suit();
-    string get_name();
+	private:
+		string suit;
+		string name;
+		int value;
+	public:
+		CARD();
+		void display();
+		void set_suit(string);
+		void set_rank(string);
+		string get_suit();
+		string get_name();
 };
 #endif
