@@ -8,19 +8,19 @@
 #include <iostream>
 
 #include "table.hpp"
-#include "game.hpp"
+
 using namespace std;
 
 
-void texas() {
-	TABLE t();
+void game() {
+	TABLE table;
 	int numPlayers;
 	int buyIn;
 	cout << "How many players?: " << endl;
 	cin >> numPlayers;
 	cout << "What is the buy in?; " << endl;
 	cin >> buyIn;
-	GAME g(t);
+	table.buy_in(buyIn);
 	//assign players to table
 	// t.players[0].playerId = 1 // dealer
 	// t.players[1].playerId = 2 // small
@@ -33,17 +33,17 @@ void texas() {
 					// leave the loop
 				// else
 			// playerIndex ++
-	t.flop();
+	table.flop();
 	//betting
-	t.turn();
+	table.turn();
 	//betting
-	t.river();
+	table.river();
 	//betting
-	t.showdown();
+	table.showdown();
 }
 
 
 int main() {
-	texas();
+	game();
 	return 0;
 }

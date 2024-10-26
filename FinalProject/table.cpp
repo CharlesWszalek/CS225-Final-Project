@@ -5,18 +5,22 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
-#include "table.h"
+#include "table.hpp"
+#include "cards.hpp"
+
+using namespace std;
 
 
 TABLE::TABLE():pot(0){
 	for (int i = 0; i < 4; i++){
-		player[i] = new PLAYER(i+1);
+		players[i] = new PLAYER(i+1);
 	}
 }
 
 
-void TABLE::buyIn(){
+void TABLE::buy_in(int buyIn = 0){
 	std::cout << "buy in" << std::endl;
+        this -> buyIn = buyIn;
 }
 
 
@@ -33,7 +37,7 @@ void TABLE::flop(){
 
 void TABLE::betting(){
 	for (int i = 0; i < 4; i++){
-		pot += player[i]->bets();
+		pot += players[i]->bets();
 	}
 }
 
@@ -54,9 +58,17 @@ void TABLE::river(){
 
 void TABLE::showdown(){
 	std::cout << "Showdown" << std::endl;
+        CARD hands[5][7];
+        for (int i = 0; i < sizeof(players); i++){
+        	hand0;
+        }
 }
 
 
 void TABLE::display(){
 	
+}
+
+int TABLE::get_big_blind(){
+	return bigBlind;
 }
