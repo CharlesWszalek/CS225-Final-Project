@@ -5,22 +5,26 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
-#include "cards.h"
-#include "player.h"
+#include "cards.hpp"
+#include "player.hpp"
+#include "deck.hpp"
+#include "cards.hpp"
 
 #ifndef TABLE_CLASS
 #define TABLE_CLASS
 
 class TABLE{
 private:
-	CARDS cards[5];
+	CARD cards[5];
 	DECK deck;
-	PLAYER* player[4];
+	PLAYER* players[4];
 	int pot;
+	int buyIn;
+	int bigBlind = buyIn*.1;
 protected:
 public:
 	TABLE();
-	void buyIn();
+	void buy_in(int buyIn);
 	void flop();
 	void betting();
 	void turn();
@@ -28,5 +32,6 @@ public:
 	void showdown();
 	friend std::ostream& operator<< (std::ostream&, DECK);
 	void display();
+	int get_big_blind();
 };
 #endif
