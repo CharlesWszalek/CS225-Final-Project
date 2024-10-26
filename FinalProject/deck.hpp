@@ -5,36 +5,27 @@
 // Version 1.1 name: Thomas Z 10/22/24 Creating Deck class, function prototypes
 //
 
-#include <iostream>
 #include "cards.hpp"
+#include <vector>
 using namespace std;
 
 
 #ifndef DECK_CLASS
 #define DECK_CLASS
 
-class DECK {
-	private:
-          int deck[52];
-    public:
-          DECK();
-		  DECK shuffle();
-          CARD draw();
-          void burn();
+class DECK{
+protected:
+	vector<CARD> cards;
+public:
+	DECK();
+	CARD draw();
+	void shuffle();
+	void discard();
+	void display() const;
 };
 
 
 
 
 #endif
-/*class DECK{
-private:
-protected:
-	std::vector<CARDS> cards;
-public:
-	DECK();
-	CARDS draw();
-	void shuffle();
-	void discard();
-	friend std::ostream& operator<< (std::ostream&, DECK);
-};*/
+/**/

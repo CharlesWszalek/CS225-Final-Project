@@ -11,172 +11,60 @@
 // 	      https://www.geeksforgeeks.org/vector-in-cpp-stl/
 //
 
-#include "cards.hpp"
 #include "deck.hpp"
-
-
-#include <iostream>
-#include <vector>
-#include <algorithm> // for std::swap
-#include <random>    // for std::mt19937 and std::random_device
+#include "cards.hpp"
+#include <algorithm>    // For std::shuffle
+#include <random>       // For random number generation
+#include <ctime>        // For seeding the random generator
 using namespace std;
 
-DECK::shuffle(vector<int>& deck) {
-	random_device rd;  // Seed for random number generator
-	mt19937 rng(rd()); // Mersenne Twister random number generator
-
-	// Fisher-Yates shuffle algorithm
-	for (int i = deck.size() - 1; i > 0; --i) {
-		uniform_int_distribution<int> dist(0, i); // Generate a random index
-		int j = dist(rng);                             // Get the random index
-		swap(deck[i], deck[j]);                   // Swap the elements
-	}
-}
-
+// Constructor to initialize the deck with 52 cards
 DECK::DECK() {
-		// Initialize deck with 52 integers
-		vector<int> deck(52);
-		for (int i = 0; i < 52; ++i) {
-			deck[i] = i + 1;
-		}
+	const vector<string> suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+	const vector<string> names = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 
-		// Shuffle the deck
-		shuffle(deck);
-
-		// Output the shuffled deck
-		for (int card : deck) {
-			cout << card << " ";
-		}
-		cout << endl;
-
-
-for (int i = 0; i < 52; ++i)
-{
-	cout << deck[i] << endl;
-}
-
-}
-
-//DECK::CARD draw();
-//void DECK::burn();
-
-int main() {
-  DECK deck;
-  return 0;
-  }
-
-
-
-
-
-
-
-
-
-
-/*DECK::DECK(){
-	for (int i = 0; i < 13; ++i){
-		for (int j = 0; j < 4; ++j){
-			CARDS temp;
-			switch (j % 4){
-				case 0:
-					temp.suit = "Clubs";
-					break;
-				case 1:
-					temp.suit = "Spades";
-					break;
-				case 2:
-					temp.suit = "Hearts";
-					break;
-				case 3:
-					temp.suit = "Diamonds";
-					break;
-			}
-			switch (i % 13){
-				case 0:
-					temp.name = "Ace";
-					temp.value = 14;
-					break;
-				case 1:
-					temp.name = "Two";
-					temp.value = i+1;
-					break;
-				case 2:
-					temp.name = "Three";
-					temp.value = i+1;
-					break;
-				case 3:
-					temp.name = "Four";
-					temp.value = i+1;
-					break;
-				case 4:
-					temp.name = "Five";
-					temp.value = i+1;
-					break;
-				case 5:
-					temp.name = "Six";
-					temp.value = i+1;
-					break;
-				case 6:
-					temp.name = "Seven";
-					temp.value = i+1;
-					break;
-				case 7:
-					temp.name = "Eight";
-					temp.value = i+1;
-					break;
-				case 8:
-					temp.name = "Nine";
-					temp.value = i+1;
-					break;
-				case 9:
-					temp.name = "Ten";
-					temp.value = i+1;
-					break;
-				case 10:
-					temp.name = "Jack";
-					temp.value = i+1;
-					break;
-				case 11:
-					temp.name = "Queen";
-					temp.value = i+1;
-					break;
-				case 12:
-					temp.name = "King";
-					temp.value = i+1;
-					break;
-			}
-			cards.push_back(temp);
+	// Populate the deck with all 52 cards
+	for (const auto& suit : suits) {
+		for (const auto& name : names) {
+			cards.emplace_back(suit, name);
 		}
 	}
-	shuffle();
 }
 
-
-CARDS DECK::draw(){
-	CARDS temp = cards.back();
+// Draw a card from the top of the deck
+CARD DECK::draw() {
+	if (cards.empty()) {
+		throw out_of_range("No cards left in the deck!");
+	}
+	CARD drawn_card = cards.back();
 	cards.pop_back();
-	return temp;
+	return drawn_card;
 }
 
-
-void DECK::shuffle(){
-	std::random_device rd;
-	std::mt19937 g(rd());
-
+// Shuffle the deck
+void DECK::shuffle() {
+	random_device rd;
+	mt19937 g(rd());
 	std::shuffle(cards.begin(), cards.end(), g);
 }
 
-
-void DECK::discard() {
-	cards.pop_back();
-}
-
-
-std::ostream& operator<< (std::ostream& c, DECK d){
-	for (auto i = d.cards.begin(); i != d.cards.end(); ++i){
-		c << i->suit << " " << i->name << " " << i->value << std::endl;
+// Discard the top card from the deck
+void DECK::discard()
+{
+	if (!cards.empty()) {
+		cards.pop_back();
 	}
-	return c;
 }
-*/
+
+// Display all cards in the deck
+void DECK::display() const {
+	for (const auto& card : cards) {
+		card.display();
+	}
+}
+
+int main()
+{
+	const DECK deck;
+	deck.display();
+}

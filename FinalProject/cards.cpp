@@ -8,14 +8,18 @@
 #include "cards.hpp"
 using namespace std;
 
+// Default constructor
+
+// Constructor with parameters
+CARD::CARD(string Suit, string Name) : suit(Suit), name(Name) {}
+
+string CARD::get_suit() { return suit; }
+
+string CARD::get_name() { return name; }
+
+// Display method
+void CARD::display() const {
+    cout << name << " of " << suit << endl;
+}
 
 
-string CARD::get_suit() {return suit;}
-
-string CARD::get_name() {return name;}
-
-void CARD::set_suit(string Suit):suit(Suit) {}
-
-void CARD::set_name(string Name):name(Name) {}
-
-void CARD::display() {cout << name << " of " << suit << endl;}
