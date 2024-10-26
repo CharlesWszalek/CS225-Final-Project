@@ -47,7 +47,7 @@ DECK::DECK() {
 		for (int card : deck) {
 			cout << card << " ";
 		}
-		std::cout << std::endl;
+		cout << endl;
 
 
 for (int i = 0; i < 52; ++i)
