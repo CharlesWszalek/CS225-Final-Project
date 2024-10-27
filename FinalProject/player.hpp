@@ -2,6 +2,7 @@
 // CSS 225 FINAL PROJECT 
 // Name: player.h
 // Version 1.0 name: Brandon P 10/21/24 created
+// 	   1.1 name: Brandon P 10/26/24 added parent class HUMAN
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand 
 //
 
@@ -14,69 +15,58 @@ using namespace std;
 
 class PLAYER{
 private:
+	virtual void raise() = 0;
+	virtual void check() = 0;
+	virtual void fold() = 0;
+protected:
 	int playerId;
-	string name;
 	CARDS cards[2];//change to hand when we have one
 	int money;
 	int betMoney;
 	int hasRaised;
 	static int minBet;
-protected:
 public:
-	PLAYER(int);
+	PLAYER(int, int);
 	void display();
 	CARDS* get_hand(){return cards;};
-	string get_name(){return name;};
 	int get_money(){return money;};
 	int get_playerId(){return playerId;};
 	void set_playerId();
 	void set_min();
-	void reset_raised(){hasRaised = 0;};
-	int bets();
-	int raise();
-	int check();
-	int fold();
-};
-
-/*
-class HUMAN{
-private:
-	int playerId;
-	string name;
-	CARDS cards[2];//change to hand when we have one
-	int money;
-	static int minBet;
-protected:
-public:
-	PLAYER(int);
-	void display();
-	int get_hand();
-	string get_name();
-	int get_money();
-	int get_playerId();
-	void set_playerId();
-	void set_min();
-	int bets();
+	virtual void reset_raised(){hasRaised = 0;};
+	virtual int bets() = 0;
 };
 
 
-class AI{
+class HUMAN: public PLAYER{
 private:
-	int playerId;
+	//int playerId;
 	string name;
-	CARDS cards[2];//change to hand when we have one
+	/*CARDS cards[2];//change to hand when we have one
 	int money;
-	static int minBet;
+	int betMoney;
+	int hasRaised;
+	static int minBet;*/
+	void raise();
+	void check();
+	void fold();
 protected:
 public:
-	PLAYER(int);
-	void display();
-	int get_hand();
-	string get_name();
-	int get_money();
-	int get_playerId();
+	HUMAN(int, int=100);
+	//void display();
+	string check_or_call();
+/*	CARDS* get_hand(){return cards;};
+	string get_name(){return name;};
+	int get_money(){return money;};
+	//int get_playerId(){return playerId;};
 	void set_playerId();
 	void set_min();
+	void reset_raised(){hasRaised = 0;};*/
 	int bets();
-};*/
+	int conv_string_int(string);
+};
+
+
+class AI: public HUMAN{
+};
 #endif
