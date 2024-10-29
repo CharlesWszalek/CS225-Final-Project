@@ -19,15 +19,12 @@ class CARD {
 private:
 	string suit;
 	string name;
-
 public:
 	CARD(string Suit, string Name);  // Constructor with parameters
-
 	void display() const;  // Marked const
 	string get_suit();
 	string get_name();
 };
-
 #endif
 
 
