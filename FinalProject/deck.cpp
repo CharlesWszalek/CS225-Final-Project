@@ -1,4 +1,3 @@
-//
 // CSS 225 FINAL PROJECT
 // Name: cards.cpp
 // Version 1.0 name: Brandon P 10/18/24 defined functions for the DECK and TABLE classes
@@ -7,7 +6,9 @@
 //	   1.3 name: Thomas Z 10/22/24 writing function body for Cards Class
 //
 
-#include "deck.hpp"
+#include"cards.hpp"   //Need the header file for this one as well
+#include"cards.cpp"   //For some reason this is needed
+#include "deck.hpp"	  //To include the header file
 #include <algorithm>  // For shuffle
 #include <random>     // For random_device, std::mt19937
 #include <iostream>   // For cout
@@ -40,7 +41,7 @@ CARD DECK::draw() {
 }
 
 // Shuffles the deck of cards
-void DECK::shuffle() {
+void DECK::shuffle(){
 	random_device rd;
 	mt19937 g(rd());
 	std::shuffle(cards.begin(), cards.end(), g);
@@ -63,8 +64,11 @@ void DECK::display() const {
 
 
 
-int main()
+/*int main()
 {
-	DECK const deck;
+	DECK deck;
 	deck.display();
-}
+	cout << endl << "******************************" << endl;
+	deck.shuffle();
+	deck.display();
+}*/
