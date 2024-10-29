@@ -1,141 +1,74 @@
-//
 // CSS 225 FINAL PROJECT
 // Name: cards.cpp
 // Version 1.0 name: Brandon P 10/18/24 defined functions for the DECK and TABLE classes
 // 	   1.1 name: Brandon P 10/21/24 moved shuffle into shuffle function, added drawing cards
 // 	   1.2 name: Brandon P 10/21/24 moved table to seperate file
 //	   1.3 name: Thomas Z 10/22/24 writing function body for Cards Class
-// Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
-// 	      https://en.cppreference.com/w/cpp/algorithm/random_shuffle
-// 	      https://www.geeksforgeeks.org/cpp-vector-of-structs/
-// 	      https://www.geeksforgeeks.org/vector-in-cpp-stl/
 //
 
-#include "cards.h"
-#include <algorithm>
-#include <random>
-#include <time.h>
+#include"cards.hpp"   //Need the header file for this one as well
+#include"cards.cpp"   //For some reason this is needed
+#include "deck.hpp"	  //To include the header file
+#include <algorithm>  // For shuffle
+#include <random>     // For random_device, std::mt19937
+#include <iostream>   // For cout
+
 using namespace std;
 
-srand(time(NULL));
-DECK();
-CARDS draw();
-DECK shuffle();
-void burn();
+// Constructor: Initializes a standard deck of 52 cards
+DECK::DECK() {
+	// Define suits and names
+	const vector<string> suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+	const vector<string> names = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
-
-
-
-
-
-
-
-
-
-
-/*DECK::DECK(){
-	for (int i = 0; i < 13; ++i){
-		for (int j = 0; j < 4; ++j){
-			CARDS temp;
-			switch (j % 4){
-				case 0:
-					temp.suit = "Clubs";
-					break;
-				case 1:
-					temp.suit = "Spades";
-					break;
-				case 2:
-					temp.suit = "Hearts";
-					break;
-				case 3:
-					temp.suit = "Diamonds";
-					break;
-			}
-			switch (i % 13){
-				case 0:
-					temp.name = "Ace";
-					temp.value = 14;
-					break;
-				case 1:
-					temp.name = "Two";
-					temp.value = i+1;
-					break;
-				case 2:
-					temp.name = "Three";
-					temp.value = i+1;
-					break;
-				case 3:
-					temp.name = "Four";
-					temp.value = i+1;
-					break;
-				case 4:
-					temp.name = "Five";
-					temp.value = i+1;
-					break;
-				case 5:
-					temp.name = "Six";
-					temp.value = i+1;
-					break;
-				case 6:
-					temp.name = "Seven";
-					temp.value = i+1;
-					break;
-				case 7:
-					temp.name = "Eight";
-					temp.value = i+1;
-					break;
-				case 8:
-					temp.name = "Nine";
-					temp.value = i+1;
-					break;
-				case 9:
-					temp.name = "Ten";
-					temp.value = i+1;
-					break;
-				case 10:
-					temp.name = "Jack";
-					temp.value = i+1;
-					break;
-				case 11:
-					temp.name = "Queen";
-					temp.value = i+1;
-					break;
-				case 12:
-					temp.name = "King";
-					temp.value = i+1;
-					break;
-			}
-			cards.push_back(temp);
+	// Create a card for each combination of suit and name
+	for (size_t i = 0; i < suits.size(); ++i) {
+		for (size_t j = 0; j < names.size(); ++j) {
+			cards.emplace_back(suits[i], names[j]);  // Using CARD's parameterized constructor
 		}
 	}
-	shuffle();
 }
 
+// Draws a card from the top of the deck and removes it
+CARD DECK::draw() {
+	if (cards.empty()) {
+		throw runtime_error("No more cards in the deck to draw.");
+	}
 
-CARDS DECK::draw(){
-	CARDS temp = cards.back();
-	cards.pop_back();
-	return temp;
+	CARD topCard = cards.back();
+	cards.pop_back();  // Remove the last card
+	return topCard;
 }
 
-
+// Shuffles the deck of cards
 void DECK::shuffle(){
-	std::random_device rd;
-	std::mt19937 g(rd());
-
+	random_device rd;
+	mt19937 g(rd());
 	std::shuffle(cards.begin(), cards.end(), g);
 }
 
-
+// Discards the top card (removes it without returning it)
 void DECK::discard() {
+	if (cards.empty()) {
+		throw runtime_error("No more cards in the deck to discard.");
+	}
 	cards.pop_back();
 }
 
-
-std::ostream& operator<< (std::ostream& c, DECK d){
-	for (auto i = d.cards.begin(); i != d.cards.end(); ++i){
-		c << i->suit << " " << i->name << " " << i->value << std::endl;
+// Displays all cards currently in the deck
+void DECK::display() const {
+	for (size_t i = 0; i < cards.size(); ++i) {
+		cards[i].display();  // Calls CARD's display method
 	}
-	return c;
 }
-*/
+
+
+
+/*int main()
+{
+	DECK deck;
+	deck.display();
+	cout << endl << "******************************" << endl;
+	deck.shuffle();
+	deck.display();
+}*/
