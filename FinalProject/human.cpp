@@ -39,20 +39,21 @@ int HUMAN::bets(){
 				cout << "Cannot raise again after raising" << endl;
 			}
 		}
+
+		int forPot;
 		if (temp == "raise" && hasRaised == 0 && minBet - betMoney + 5/*get_big_blind*/ < money){
-			raise();
+			forPot = raise();
 		} else if (temp == check_or_call()){
-			check();
+			forPot = check();
 		} else if (temp == "fold"){
 			fold();
-		} /*else {
-			cout << "something went wrong" << endl;
-		}*/
+			return -1;
+		}
 		set_min();
-		return 1;
+		return forPot;
 	} else {
 		cout << "player has previously folded" << endl;
-		return 0; //comunicate player has folded
+		return -1; //comunicate player has folded
 	}
 }
 
@@ -80,7 +81,7 @@ int HUMAN::conv_string_int(string input){
 }
 
 
-void HUMAN::raise(){
+int HUMAN::raise(){
 	int betChange = 0;
 	do {
 		cout << name << ", how much would you like to bet over the current bet of $" << minBet << ": ";
@@ -99,6 +100,8 @@ void HUMAN::raise(){
 		}
 	} while (betChange < 5 /*get_big_blind()*/);
 	hasRaised = 1;
-	money -= betChange + minBet - betMoney;
+	int moneyForPot = betChange + minBet - betMoney;
+	money -= moneyForPot;
 	betMoney = minBet + betChange;
+	return moneyForPot;
 }

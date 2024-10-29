@@ -15,7 +15,7 @@ using namespace std;
 
 class PLAYER{
 private:
-	virtual void raise() = 0;
+	virtual int raise() = 0;
 protected:
 	int playerId;
 	HAND hand;//change to hand when we have one
@@ -23,7 +23,7 @@ protected:
 	int betMoney;
 	int hasRaised;
 	static int minBet;
-	virtual void check();
+	virtual int check();
 	virtual void fold();
 public:
 	PLAYER(int, int);
@@ -41,7 +41,7 @@ public:
 class HUMAN: public PLAYER{
 private:
 	string name;
-	void raise();
+	int raise();
 protected:
 public:
 	HUMAN(int, int=100);
@@ -53,7 +53,7 @@ public:
 
 class AI: public PLAYER{
 private:
-	void raise();
+	int raise();
 protected:
 public:
 	AI(int, int=100);

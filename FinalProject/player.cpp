@@ -28,10 +28,12 @@ void PLAYER::display(){
 }
 
 
-void PLAYER::check(){
-	money -= minBet - betMoney;
+int PLAYER::check(){
+	int moneyForPot = + minBet - betMoney;
+	money -= moneyForPot;
 	betMoney = minBet;
 	cout << "you have checked at " << betMoney << endl;
+	return moneyForPot;
 }
 
 

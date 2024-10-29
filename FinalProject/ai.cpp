@@ -13,27 +13,31 @@ AI::AI(int num, int buyIn): PLAYER(num, buyIn){srand(time(NULL));}
 
 int AI::bets(){
 	if(hasRaised != -1){
+		int forPot;
 		int chance = rand() % 10;
 		if (chance < 4){
-			raise();
+			forPot = raise();
 		} else if (chance < 8){
-			check();
+			forPot = check();
 		} else {
 			fold();
+			return -1;
 		}
 		set_min();
-		return 1;
+		return forPot;
 	} else {
 		cout << "player has previously folded" << endl;
-		return 0; //comunicate player has folded
+		return -1; //comunicate player has folded
 	}
 }
 
 
-void AI::raise(){
+int AI::raise(){
 	int betChange = rand() % (money - 5) + 5;/*(money - get_big_blind()) + get_big_blind()*/
 	hasRaised = 1;
-	money -= betChange + minBet - betMoney;
+	int moneyForPot = betChange + minBet - betMoney;
+	money -= moneyForPot;
 	betMoney = minBet + betChange;
 	cout << "raised by " << betChange << " to " << betMoney << endl;
+	return moneyForPot;
 }
