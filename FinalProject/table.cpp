@@ -19,18 +19,17 @@ TABLE::TABLE():pot(0){
 
 
 void TABLE::buy_in(int buyIn = 0){
-	std::cout << "buy in" << std::endl;
+	cout << "buy in" << endl;
         this -> buyIn = buyIn;
 }
 
 
 void TABLE::flop(){
-	std::cout << "flop" << std::endl;
+	cout << "flop" << endl;
 	deck.discard(); // try using the d-- operator overload
-	deck.discard();
 	for (int i = 0; i < 3; i++){
 		cards[i] = deck.draw();
-//		std::cout << cards[i].suit << " " << cards[i].name << " " << cards[i].value << std::endl;
+//		std::cout << cards[i].suit << " " << cards[i].name << " " << std::endl;
 	}
 }
 
