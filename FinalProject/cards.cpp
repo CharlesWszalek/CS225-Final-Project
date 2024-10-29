@@ -22,4 +22,9 @@ void CARD::display() const {
     cout << name << " of " << suit << endl;
 }
 
+/*int main(){
+  CARD card("Hearts", "Ace");
+  card.display();
+  return 0;
+}*/
 

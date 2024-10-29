@@ -5,66 +5,66 @@
 // 	   1.1 name: Brandon P 10/21/24 moved shuffle into shuffle function, added drawing cards
 // 	   1.2 name: Brandon P 10/21/24 moved table to seperate file
 //	   1.3 name: Thomas Z 10/22/24 writing function body for Cards Class
-// Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
-// 	      https://en.cppreference.com/w/cpp/algorithm/random_shuffle
-// 	      https://www.geeksforgeeks.org/cpp-vector-of-structs/
-// 	      https://www.geeksforgeeks.org/vector-in-cpp-stl/
 //
 
 #include "deck.hpp"
-#include "cards.hpp"
-#include <algorithm>    // For std::shuffle
-#include <random>       // For random number generation
-#include <ctime>        // For seeding the random generator
+#include <algorithm>  // For shuffle
+#include <random>     // For random_device, std::mt19937
+#include <iostream>   // For cout
+
 using namespace std;
 
-// Constructor to initialize the deck with 52 cards
+// Constructor: Initializes a standard deck of 52 cards
 DECK::DECK() {
+	// Define suits and names
 	const vector<string> suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
-	const vector<string> names = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+	const vector<string> names = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
-	// Populate the deck with all 52 cards
-	for (const auto& suit : suits) {
-		for (const auto& name : names) {
-			cards.emplace_back(suit, name);
+	// Create a card for each combination of suit and name
+	for (size_t i = 0; i < suits.size(); ++i) {
+		for (size_t j = 0; j < names.size(); ++j) {
+			cards.emplace_back(suits[i], names[j]);  // Using CARD's parameterized constructor
 		}
 	}
 }
 
-// Draw a card from the top of the deck
+// Draws a card from the top of the deck and removes it
 CARD DECK::draw() {
 	if (cards.empty()) {
-		throw out_of_range("No cards left in the deck!");
+		throw runtime_error("No more cards in the deck to draw.");
 	}
-	CARD drawn_card = cards.back();
-	cards.pop_back();
-	return drawn_card;
+
+	CARD topCard = cards.back();
+	cards.pop_back();  // Remove the last card
+	return topCard;
 }
 
-// Shuffle the deck
+// Shuffles the deck of cards
 void DECK::shuffle() {
 	random_device rd;
 	mt19937 g(rd());
 	std::shuffle(cards.begin(), cards.end(), g);
 }
 
-// Discard the top card from the deck
-void DECK::discard()
-{
-	if (!cards.empty()) {
-		cards.pop_back();
+// Discards the top card (removes it without returning it)
+void DECK::discard() {
+	if (cards.empty()) {
+		throw runtime_error("No more cards in the deck to discard.");
+	}
+	cards.pop_back();
+}
+
+// Displays all cards currently in the deck
+void DECK::display() const {
+	for (size_t i = 0; i < cards.size(); ++i) {
+		cards[i].display();  // Calls CARD's display method
 	}
 }
 
-// Display all cards in the deck
-void DECK::display() const {
-	for (const auto& card : cards) {
-		card.display();
-	}
-}
+
 
 int main()
 {
-	const DECK deck;
+	DECK const deck;
 	deck.display();
 }
