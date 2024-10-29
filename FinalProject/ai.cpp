@@ -8,52 +8,32 @@
 #include "player.hpp"
 using namespace std;
 
-AI::AI(int num): bet(0), playerNum(num), money(1500){}
+AI::AI(int num, int buyIn): PLAYER(num, buyIn){srand(time(NULL));}
 
 
 int AI::bets(){
-	string temp;
-	cout << "Would you like to raise, check, or fold: ";
-	cin >> temp;
-	int change;
-	if (temp == "raise"){
-		change = raise();
-	} else if (temp == "check"){
-		change = check();
-	} else if (temp == "fold"){
-		change = fold();
-	}
-	return change;
-}
-
-
-void AI::setmin(){
-	if (bet > minBet){
-		minBet = bet;
+	if(hasRaised != -1){
+		int chance = rand() % 10;
+		if (chance < 4){
+			raise();
+		} else if (chance < 8){
+			check();
+		} else {
+			fold();
+		}
+		set_min();
+		return 1;
+	} else {
+		cout << "player has previously folded" << endl;
+		return 0; //comunicate player has folded
 	}
 }
 
 
-int AI::raise(){
-	int temp = 0;
-	do {
-		cout << "player " << playerNum << ", What would you like to bet: ";
-		cin >> temp;
-		
-		cout << bet+temp << " " << minBet << endl;
-	}while (bet + temp < minBet);
-	bet += temp;
-	money -= temp;
-	setmin();
-	return temp;
-}
-
-
-int AI::check(){
-	return 0;
-}
-
-
-int AI::fold(){
-	return 0;
+void AI::raise(){
+	int betChange = rand() % (money - 5) + 5;/*(money - get_big_blind()) + get_big_blind()*/
+	hasRaised = 1;
+	money -= betChange + minBet - betMoney;
+	betMoney = minBet + betChange;
+	cout << "raised by " << betChange << " to " << betMoney << endl;
 }

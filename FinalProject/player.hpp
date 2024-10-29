@@ -16,8 +16,6 @@ using namespace std;
 class PLAYER{
 private:
 	virtual void raise() = 0;
-	virtual void check() = 0;
-	virtual void fold() = 0;
 protected:
 	int playerId;
 	CARDS cards[2];//change to hand when we have one
@@ -25,6 +23,8 @@ protected:
 	int betMoney;
 	int hasRaised;
 	static int minBet;
+	virtual void check();
+	virtual void fold();
 public:
 	PLAYER(int, int);
 	void display();
@@ -40,33 +40,23 @@ public:
 
 class HUMAN: public PLAYER{
 private:
-	//int playerId;
 	string name;
-	/*CARDS cards[2];//change to hand when we have one
-	int money;
-	int betMoney;
-	int hasRaised;
-	static int minBet;*/
 	void raise();
-	void check();
-	void fold();
 protected:
 public:
 	HUMAN(int, int=100);
-	//void display();
 	string check_or_call();
-/*	CARDS* get_hand(){return cards;};
-	string get_name(){return name;};
-	int get_money(){return money;};
-	//int get_playerId(){return playerId;};
-	void set_playerId();
-	void set_min();
-	void reset_raised(){hasRaised = 0;};*/
 	int bets();
-	int conv_string_int(string);
+	int conv_string_int(string);/*separate file*/
 };
 
 
-class AI: public HUMAN{
+class AI: public PLAYER{
+private:
+	void raise();
+protected:
+public:
+	AI(int, int=100);
+	int bets();
 };
 #endif

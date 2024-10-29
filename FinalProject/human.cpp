@@ -94,22 +94,11 @@ void HUMAN::raise(){
 			cin.clear(); //clear error flag
 			cin.ignore(INT_MAX, '\n');
 		} else if (money < betChange + minBet - betMoney){
-			cout << "total bet must be less than or equal to your total money: $" << minBet << " + $" << betChange << " > $" <<money << endl;
+			cout << "total bet must be less than or equal to your total money: $" << minBet << " + $" << betChange << " - $" << betMoney << " > $" << money << endl;
 			betChange = 0;
 		}
 	} while (betChange < 5 /*get_big_blind()*/);
 	hasRaised = 1;
 	money -= betChange + minBet - betMoney;
 	betMoney = minBet + betChange;
-}
-
-
-void HUMAN::check(){
-	money -= minBet - betMoney;
-	betMoney = minBet;
-}
-
-
-void HUMAN::fold(){
-	hasRaised = -1;
 }

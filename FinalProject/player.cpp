@@ -26,3 +26,16 @@ void PLAYER::set_min(){
 void PLAYER::display(){
 	cout << "playerId:" << playerId << " money:" << money << " hasRaised:" << hasRaised << " betMoney:" << betMoney << " minBet:" << minBet << endl;//hand
 }
+
+
+void PLAYER::check(){
+	money -= minBet - betMoney;
+	betMoney = minBet;
+	cout << "you have checked at " << betMoney << endl;
+}
+
+
+void PLAYER::fold(){
+	hasRaised = -1;
+	cout << "you have folded" << endl;
+}
