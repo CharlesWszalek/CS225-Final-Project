@@ -8,16 +8,20 @@
 #include "player.hpp"
 #include "table.hpp"
 #include "cards.hpp"
-#include "cards.cpp"
-#include "player.cpp"
+//#include "cards.cpp"
+//#include "player.cpp"
 #include "hand.hpp"
-#include "hand.cpp"
+//#include "hand.cpp"
 using namespace std;
 
 
 TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
 	for (int i = 0; i < numOfPlayers; i++){
-		players[i] = new PLAYER(i+1);
+		if (i == 0){
+			players[i] = new HUMAN(i+1);
+		} else {
+			players[i] = new HUMAN(i+1);
+		}
 	}
 }
 
@@ -59,13 +63,14 @@ void TABLE::river(){
 }
 
 
-/* void TABLE::showdown(){
-	cout << "Showdown" << endl;
+void TABLE::showdown(){
+/*	cout << "Showdown" << endl;
         CARD hands[numPlayers][7];
         for (int i = 0; i < sizeof(players); i++){
 
-        }
-} */
+        }*/
+	cout << "showdown" << endl;
+}
 
 
 void TABLE::display() const {

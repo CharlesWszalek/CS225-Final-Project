@@ -8,25 +8,26 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
+#ifndef CARD_CLASS
+#define CARD_CLASS
+
 #include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
 
 
-#ifndef CARD_CLASS
-#define CARD_CLASS
-
 class CARD {
-	private:
-		string suit;
-		string name;
+private:
+	string suit;
+	string name;
 public:
-		CARD();
-		void display() const;
-		void set_suit(string);
-		void set_rank(string);
-		string get_suit();
-		string get_name();
+	CARD();
+	CARD(string, string);
+	void display() const;
+	void set_suit(string);
+	void set_rank(string);
+	string get_suit();
+	string get_name();
 };
 #endif

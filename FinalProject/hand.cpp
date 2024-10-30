@@ -1,11 +1,12 @@
 
 #include "hand.hpp"
 #include "cards.hpp"
-#include "cards.cpp"
+//#include "cards.cpp"
 #include "player.hpp"
 using namespace std;
 
 
+HAND::HAND(){}
 
 
 void HAND::display_hand() const {

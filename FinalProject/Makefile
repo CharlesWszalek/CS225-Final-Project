@@ -1,18 +1,21 @@
 # Makefile for compiling main.cpp, Group.cpp, and Group.h
+# File: Makefile
+# Version: 1.0 name: Charles W 9/??/24 created
+# 	   1.1 name: Brandon P 10/29/2024
 
 # Compiler
 CXX := g++
 # Compiler flags
-CXXFLAGS := -std=c++11 -Wall -lGL -lGLU -lglfw
+CXXFLAGS := -std=c++11 -Wall #-lGL -lGLU -lglfw
 
 # Source files
-SRCS := main.cpp Group.cpp
+SRCS := ai.cpp cards.cpp deck.cpp hand.cpp human.cpp main.cpp player.cpp table.cpp
 # Object files
 OBJS := $(SRCS:.cpp=.o)
 # Dependency files
 DEPS := $(SRCS:.cpp=.d)
 # Executable name
-TARGET := myprogram
+TARGET := TXhold
 
 # Default target
 all: $(TARGET)

@@ -7,7 +7,7 @@
 //
 
 #include"cards.hpp"   //Need the header file for this one as well
-#include"cards.cpp"   //For some reason this is needed
+//#include"cards.cpp"   //For some reason this is needed
 #include "deck.hpp"	  //To include the header file
 #include <algorithm>  // For shuffle
 #include <random>     // For random_device, std::mt19937

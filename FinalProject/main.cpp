@@ -13,11 +13,12 @@ using namespace std;
 
 
 void game() {
-	TABLE table;
 	int numPlayers;
 	int buyIn;
 	cout << "How many players?: " << endl;
 	cin >> numPlayers;
+
+	TABLE table(numPlayers);
 	cout << "What is the buy in?; " << endl;
 	cin >> buyIn;
 	table.buy_in(buyIn);

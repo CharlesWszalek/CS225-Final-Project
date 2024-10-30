@@ -43,13 +43,13 @@ void PLAYER::fold(){
 }
 
 
-HAND get_hand() const {return hand;}
+HAND PLAYER::get_hand() const {return hand;}
 
 
-int get_money() const {return money;};
+int PLAYER::get_money() const {return money;};
 
 
-int get_playerId() const {return playerId;};
+int PLAYER::get_playerId() const {return playerId;};
 
 
-virtual void reset_raised(){hasRaised = 0;}
+void PLAYER::reset_raised(){hasRaised = 0;}

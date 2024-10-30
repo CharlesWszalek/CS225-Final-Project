@@ -9,6 +9,7 @@
 #include "player.hpp"
 using namespace std;
 
+
 AI::AI(int num, int buyIn): PLAYER(num, buyIn){srand(time(NULL));}
 
 

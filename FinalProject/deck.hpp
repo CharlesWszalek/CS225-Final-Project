@@ -5,13 +5,13 @@
 // Version 1.1 name: Thomas Z 10/22/24 Creating Deck class, function prototypes
 //
 
+#ifndef DECK_CLASS
+#define DECK_CLASS
+
 #include "cards.hpp"
 #include <vector>
 using namespace std;
 
-
-#ifndef DECK_CLASS
-#define DECK_CLASS
 
 class DECK{
 protected:

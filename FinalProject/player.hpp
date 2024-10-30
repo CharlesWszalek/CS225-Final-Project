@@ -6,10 +6,10 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand 
 //
 
-#include "cards.hpp"
-
 #ifndef PLAYER_CLASS
 #define PLAYER_CLASS
+
+#include "hand.hpp"
 using namespace std;
 
 

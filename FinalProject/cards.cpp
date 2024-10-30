@@ -11,11 +11,17 @@ using namespace std;
 // Default constructor
 
 // Constructor with parameters
-CARD::CARD(string Suit, string Name) : suit(Suit), name(Name) {}
+CARD::CARD(){}
 
-string CARD::get_suit() { return suit; }
 
-string CARD::get_name() { return name; }
+CARD::CARD(string Suit, string Name) : suit(Suit), name(Name){}
+
+
+string CARD::get_suit(){return suit;}
+
+
+string CARD::get_name(){return name;}
+
 
 // Display method
 void CARD::display() const {
