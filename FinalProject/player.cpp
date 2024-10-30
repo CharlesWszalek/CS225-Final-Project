@@ -41,3 +41,15 @@ void PLAYER::fold(){
 	hasRaised = -1;
 	cout << "you have folded" << endl;
 }
+
+
+HAND get_hand() const {return hand;}
+
+
+int get_money() const {return money;};
+
+
+int get_playerId() const {return playerId;};
+
+
+virtual void reset_raised(){hasRaised = 0;}

@@ -28,12 +28,12 @@ protected:
 public:
 	PLAYER(int, int);
 	void display();
-	HAND get_hand() const {return hand;}
-	int get_money(){return money;};
-	int get_playerId(){return playerId;};
+	HAND get_hand() const;
+	int get_money() const;
+	int get_playerId() const;
 	void set_playerId();
 	void set_min();
-	virtual void reset_raised(){hasRaised = 0;};
+	virtual void reset_raised();
 	virtual int bets() = 0;
 };
 
