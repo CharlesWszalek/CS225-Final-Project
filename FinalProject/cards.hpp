@@ -23,7 +23,7 @@ class CARD {
 		string name;
 public:
 		CARD();
-		void display();
+		void display() const;
 		void set_suit(string);
 		void set_rank(string);
 		string get_suit();

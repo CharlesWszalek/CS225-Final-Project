@@ -5,14 +5,18 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
+#include "player.hpp"
 #include "table.hpp"
 #include "cards.hpp"
-
+#include "cards.cpp"
+#include "player.cpp"
+#include "hand.hpp"
+#include "hand.cpp"
 using namespace std;
 
 
-TABLE::TABLE():pot(0){
-	for (int i = 0; i < 4; i++){
+TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
+	for (int i = 0; i < numOfPlayers; i++){
 		players[i] = new PLAYER(i+1);
 	}
 }
@@ -29,43 +33,52 @@ void TABLE::flop(){
 	deck.discard(); // try using the d-- operator overload
 	for (int i = 0; i < 3; i++){
 		cards[i] = deck.draw();
-//		std::cout << cards[i].suit << " " << cards[i].name << " " << std::endl;
+		cout << cards[i].get_name() << " of " << cards[i].get_suit() << endl;
 	}
 }
 
 
 void TABLE::betting(){
-	for (int i = 0; i < 4; i++){
+	for (int i = 0; i < numPlayers; i++){
 		pot += players[i]->bets();
 	}
 }
 
 
 void TABLE::turn(){
-	std::cout << "turn" << std::endl;
+	cout << "turn" << endl;
 	deck.discard();
 	cards[3] = deck.draw();
 }
 
 
 void TABLE::river(){
-	std::cout << "river" << std::endl;
+	cout << "river" << endl;
 	deck.discard();
 	cards[4] = deck.draw();
 }
 
 
-void TABLE::showdown(){
-	std::cout << "Showdown" << std::endl;
-        CARD hands[5][7];
+/* void TABLE::showdown(){
+	cout << "Showdown" << endl;
+        CARD hands[numPlayers][7];
         for (int i = 0; i < sizeof(players); i++){
-        	hand0;
+
         }
-}
+} */
 
 
-void TABLE::display(){
-	
+void TABLE::display() const {
+	for (int i = 0; i < numPlayers; i++)
+	{
+		cout << "Player " << i << "'s " << "hand is: ";
+		players[i]->get_hand().display_hand();
+	}
+	cout << "The table cards are: " << endl;
+	for (int i = 0; i < 5; i++)
+	{
+		cards[i].display();
+	}
 }
 
 int TABLE::get_big_blind(){

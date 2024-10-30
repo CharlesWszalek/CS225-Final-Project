@@ -19,7 +19,7 @@ string CARD::get_name() { return name; }
 
 // Display method
 void CARD::display() const {
-    cout << name << " of " << suit << endl;
+    cout << name << " of " << suit;
 }
 
 /*int main(){

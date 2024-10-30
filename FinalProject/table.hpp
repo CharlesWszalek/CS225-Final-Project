@@ -9,12 +9,14 @@
 #include "player.hpp"
 #include "deck.hpp"
 #include "cards.hpp"
+using namespace std;
 
 #ifndef TABLE_CLASS
 #define TABLE_CLASS
 
 class TABLE{
 private:
+	int numPlayers;
 	CARD cards[5];
 	DECK deck;
 	PLAYER* players[5];
@@ -22,15 +24,14 @@ private:
 	int buyIn;
 	int bigBlind = buyIn * .1;
 public:
-	TABLE();
+	TABLE(int Input);
 	void buy_in(int buyIn);
 	void flop();
 	void betting();
 	void turn();
 	void river();
 	void showdown();
-	friend std::ostream& operator<< (std::ostream&, DECK);
-	void display();
+	void display() const;
 	int get_big_blind();
 };
 #endif
