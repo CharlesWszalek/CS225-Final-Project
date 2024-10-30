@@ -2,6 +2,7 @@
 // CSS 225 FINAL PROJECT 
 // Name: ai.cpp
 // Version 1.0 name: Brandon P 10/22/24 created
+// 	   1.2 name: Brandon P 10/29/24 transfered the code from human to ai for bets and raise 
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand 
 //
 
@@ -15,7 +16,7 @@ int AI::bets(){
 	if(hasRaised != -1){
 		int forPot;
 		int chance = rand() % 10;
-		if (chance < 4){
+		if (chance < 4 && hasRaised == 0 && minBet - betMoney + 5/*get_big_blind*/ <= money){
 			forPot = raise();
 		} else if (chance < 8){
 			forPot = check();
@@ -33,7 +34,12 @@ int AI::bets(){
 
 
 int AI::raise(){
-	int betChange = rand() % (money - 5) + 5;/*(money - get_big_blind()) + get_big_blind()*/
+	int betChange;
+	if (money - minBet + betMoney - 5 == 0){/*get_big_blind()*/
+		betChange = 5;
+	} else {
+		betChange = rand() % (money - minBet + betMoney - 5) + 5 + 1;/*(money - get_big_blind()) + get_big_blind()*/
+	}
 	hasRaised = 1;
 	int moneyForPot = betChange + minBet - betMoney;
 	money -= moneyForPot;

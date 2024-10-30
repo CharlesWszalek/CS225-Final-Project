@@ -3,6 +3,7 @@
 // Name: human.cpp
 // Version 1.0 name: Brandon P 10/21/24 created
 // 	   1.1 name: Brandon P 10/26/24 added error checking
+// 	   1.2 name: Brandon P 10/29/24 fixed error where last 5 dollars couldn't be bet
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 // 	      https://www.geeksforgeeks.org/convert-string-to-int-in-cpp/ 
 //
@@ -12,8 +13,6 @@
 #include <climits>
 using namespace std;
 
-//int HUMAN::minBet = 0;
-
 
 HUMAN::HUMAN(int num, int buyIn):PLAYER(num, buyIn){name = "tempname";}
 
@@ -22,9 +21,9 @@ int HUMAN::bets(){
 	if(hasRaised != -1){
 		string temp = "0";
 		while (!((hasRaised == 0 && temp == "raise") || temp == check_or_call() || temp == "fold")) {
-			if (hasRaised == 0 && minBet - betMoney + 5/*get_big_blind*/ < money) {
+			if (hasRaised == 0 && minBet - betMoney + 5/*get_big_blind*/ <= money) {
 				cout << "Would you like to raise, " << check_or_call() << ", or fold: "; //cannot raise if raised already
-			} else if (hasRaised == 1 || minBet - betMoney + 5/*get_big_blind*/ < money) {
+			} else {
 				cout << "Would you like to call or fold: "; //cannot raise if raised already
 			}
 			getline(cin, temp);//cin >> temp;
@@ -94,7 +93,7 @@ int HUMAN::raise(){
 			cout << "Invalid input" << endl;;
 			cin.clear(); //clear error flag
 			cin.ignore(INT_MAX, '\n');
-		} else if (money < betChange + minBet - betMoney){
+		} else if (money <= betChange + minBet - betMoney){
 			cout << "total bet must be less than or equal to your total money: $" << minBet << " + $" << betChange << " - $" << betMoney << " > $" << money << endl;
 			betChange = 0;
 		}
