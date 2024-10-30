@@ -17,11 +17,10 @@ class TABLE{
 private:
 	CARD cards[5];
 	DECK deck;
-	PLAYER* players[4];
+	PLAYER* players[5];
 	int pot;
 	int buyIn;
-	int bigBlind = buyIn*.1;
-protected:
+	int bigBlind = buyIn * .1;
 public:
 	TABLE();
 	void buy_in(int buyIn);

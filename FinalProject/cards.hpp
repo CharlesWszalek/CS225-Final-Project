@@ -21,8 +21,7 @@ class CARD {
 	private:
 		string suit;
 		string name;
-		int value;
-	public:
+public:
 		CARD();
 		void display();
 		void set_suit(string);
