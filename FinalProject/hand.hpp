@@ -5,15 +5,17 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
-#include "cards.h"
-#include "player.h"
+#include "cards.hpp"
+#include "player.hpp"
+using namespace std;
 
 #ifndef HAND_CLASS
 #define HAND_CLASS
 
-class HAND{
-private:
-protected:
-public:
+class HAND {
+    protected:
+        CARD cards[7];
+    public:
+        void display_hand() const;
 };
 #endif

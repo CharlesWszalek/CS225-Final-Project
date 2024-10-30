@@ -18,7 +18,7 @@ private:
 	virtual void raise() = 0;
 protected:
 	int playerId;
-	CARDS cards[2];//change to hand when we have one
+	HAND hand;//change to hand when we have one
 	int money;
 	int betMoney;
 	int hasRaised;
@@ -28,7 +28,7 @@ protected:
 public:
 	PLAYER(int, int);
 	void display();
-	CARDS* get_hand(){return cards;};
+	HAND get_hand() const {return hand;}
 	int get_money(){return money;};
 	int get_playerId(){return playerId;};
 	void set_playerId();
