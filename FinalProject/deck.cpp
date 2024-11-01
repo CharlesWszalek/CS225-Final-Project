@@ -6,9 +6,9 @@
 //	   1.3 name: Thomas Z 10/22/24 writing function body for Cards Class
 //
 
-#include"cards.hpp"   //Need the header file for this one as well
-//#include"cards.cpp"   //For some reason this is needed
-#include "deck.hpp"	  //To include the header file
+#include"cards.hpp"   // Need the header file for this one as well
+//#include"cards.cpp" // For some reason this is needed
+#include "deck.hpp"   // To include the header file
 #include <algorithm>  // For shuffle
 #include <random>     // For random_device, std::mt19937
 #include <iostream>   // For cout
@@ -61,14 +61,3 @@ void DECK::display() const {
 		cards[i].display();  // Calls CARD's display method
 	}
 }
-
-
-
-/*int main()
-{
-	DECK deck;
-	deck.display();
-	cout << endl << "******************************" << endl;
-	deck.shuffle();
-	deck.display();
-}*/

@@ -22,7 +22,7 @@ private:
 	PLAYER* players[5];
 	int pot;
 	int buyIn;
-	int bigBlind = buyIn * .1;
+	int bigBlind;
 public:
 	TABLE(int Input);
 	void buy_in(int buyIn);

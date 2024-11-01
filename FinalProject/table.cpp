@@ -20,7 +20,7 @@ TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
 		if (i == 0){
 			players[i] = new HUMAN(i+1);
 		} else {
-			players[i] = new HUMAN(i+1);
+			players[i] = new AI(i+1);
 		}
 	}
 }
@@ -29,6 +29,7 @@ TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
 void TABLE::buy_in(int buyIn = 0){
 	cout << "buy in" << endl;
         this -> buyIn = buyIn;
+	bigBlind = buyIn * .1;
 }
 
 
@@ -64,11 +65,30 @@ void TABLE::river(){
 
 
 void TABLE::showdown(){
-/*	cout << "Showdown" << endl;
-        CARD hands[numPlayers][7];
-        for (int i = 0; i < sizeof(players); i++){
-
-        }*/
+	int mhands[numPlayers][5][14];
+		for (int i = 0; i < numPlayers; i++){
+    			for (int j = 0; j < 5; j++){
+          			for (int k = 0; k < 14; k++){
+					mhands[i][j][k] = 0;
+				}
+    			}
+		}
+	mhands[0][0][0] = 1;
+	for (int i = 0; i < numPlayers; i++){
+		for (int j = 0; j < 4; j++){
+		        for (int k = 0; k < 13; k++){
+        			mhands[i][j][13] += mhands[i][j][k];
+			}
+		}
+	}
+	for (int i = 0; i < numPlayers; i++){
+		for (int j = 0; j < 13; j++){
+			for (int k = 0; k < 4; k++){
+        			mhands[i][4][j] += mhands[i][j][k];
+			}
+		}
+	}
+	//cout << mhands[0][0][13] << endl;
 	cout << "showdown" << endl;
 }
 
@@ -86,6 +106,14 @@ void TABLE::display() const {
 	}
 }
 
+
 int TABLE::get_big_blind(){
 	return bigBlind;
+}
+
+int main(){
+	TABLE table(3);
+	table.buy_in(100);
+	table.showdown();
+	return 0;
 }
