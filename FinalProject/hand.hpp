@@ -7,16 +7,19 @@
 
 #ifndef HAND_CLASS
 #define HAND_CLASS
-
+#include "deck.hpp"
 #include "cards.hpp"
+#include "global.hpp"
 using namespace std;
 
 
 class HAND {
-    protected:
-        CARD cards[7];
+    //protected:
+    //    CARD cards[7];
     public:
-	HAND();
+        CARD cards[7];
+        HAND operator + (CARD card[5]);
+        HAND();
         void display_hand() const;
 };
 #endif

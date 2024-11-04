@@ -43,8 +43,9 @@ void game() {
 	table.showdown();
 }
 
-
+/*
 int main() {
 	game();
 	return 0;
 }
+*/

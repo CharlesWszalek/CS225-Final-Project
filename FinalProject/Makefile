@@ -9,7 +9,7 @@ CXX := g++
 CXXFLAGS := -std=c++11 -Wall #-lGL -lGLU -lglfw
 
 # Source files
-SRCS := ai.cpp cards.cpp deck.cpp hand.cpp human.cpp main.cpp player.cpp table.cpp
+SRCS := ai.cpp cards.cpp deck.cpp hand.cpp human.cpp main.cpp player.cpp table.cpp global.cpp
 # Object files
 OBJS := $(SRCS:.cpp=.o)
 # Dependency files

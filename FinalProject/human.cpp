@@ -47,7 +47,9 @@ int HUMAN::bets(){
 		} else if (temp == "fold"){
 			fold();
 			return -1;
-		}
+		} else {
+                  forPot = 0;
+                }
 		set_min();
 		return forPot;
 	} else {

@@ -43,7 +43,7 @@ void PLAYER::fold(){
 }
 
 
-HAND PLAYER::get_hand() const {return hand;}
+HAND& PLAYER::get_hand() {return hand;}
 
 
 int PLAYER::get_money() const {return money;};

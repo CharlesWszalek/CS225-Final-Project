@@ -28,7 +28,7 @@ protected:
 public:
 	PLAYER(int, int);
 	void display();
-	HAND get_hand() const;
+	HAND& get_hand();
 	int get_money() const;
 	int get_playerId() const;
 	void set_playerId();

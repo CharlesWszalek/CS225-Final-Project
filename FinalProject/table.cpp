@@ -5,6 +5,7 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
+#include "global.hpp"
 #include "player.hpp"
 #include "table.hpp"
 #include "cards.hpp"
@@ -65,31 +66,54 @@ void TABLE::river(){
 
 
 void TABLE::showdown(){
-	int mhands[numPlayers][5][14];
+	const int num_suits = 4;
+	const int num_names = 13;
+	int mhands[numPlayers][num_suits+1][num_names+1];
 		for (int i = 0; i < numPlayers; i++){
-    			for (int j = 0; j < 5; j++){
-          			for (int k = 0; k < 14; k++){
+    			for (int j = 0; j < num_suits+1; j++){
+          			for (int k = 0; k < num_names+1; k++){
 					mhands[i][j][k] = 0;
 				}
     			}
 		}
-	mhands[0][0][0] = 1;
-	for (int i = 0; i < numPlayers; i++){
-		for (int j = 0; j < 4; j++){
-		        for (int k = 0; k < 13; k++){
-        			mhands[i][j][13] += mhands[i][j][k];
+	// ASSIGNING CARDS
+	HAND hands[numPlayers];
+	for (int i = 0; i < numPlayers; i++) {
+		hands[i] = players[i]->get_hand();// + cards;
+		for (int j = 0; j < 2; j++) {
+			mhands[i][hands[i].cards[j].get_suit_2()][hands[i].cards[j].get_value()] += 1;
+		}
+	}
+	// SUMMING
+	for (int i = 0; i < numPlayers; i++) {
+		for (int j = 0; j < num_suits; j++){
+			for (int k = 0; k < num_names; k++){
+				mhands[i][j][num_names] += mhands[i][j][k];
 			}
 		}
 	}
 	for (int i = 0; i < numPlayers; i++){
-		for (int j = 0; j < 13; j++){
-			for (int k = 0; k < 4; k++){
-        			mhands[i][4][j] += mhands[i][j][k];
+		for (int j = 0; j < num_suits; j++){
+			for (int k = 0; k < num_names; k++){
+        			mhands[i][num_suits][k] += mhands[i][j][k];
 			}
 		}
 	}
-	//cout << mhands[0][0][13] << endl;
-	cout << "showdown" << endl;
+	for (int i = 0; i < numPlayers; i++) {
+		cout << endl;
+		hands[i].display_hand();
+		cout << endl;
+		for (int j = 0; j < num_suits+1; j++){
+			cout << endl;
+			for (int k = 0; k < num_names+1; k++){
+				cout << mhands[i][j][k] << " ";
+			}
+		}
+	}
+	//hands[0].display_hand();
+	//hands[1].display_hand();
+	//hands[2].display_hand();
+	//cout << "showdown" << endl;
 }
 
 
@@ -112,6 +136,7 @@ int TABLE::get_big_blind(){
 }
 
 int main(){
+	deck.shuffle();
 	TABLE table(3);
 	table.buy_in(100);
 	table.showdown();

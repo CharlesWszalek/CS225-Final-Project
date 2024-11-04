@@ -18,7 +18,6 @@ class TABLE{
 private:
 	int numPlayers;
 	CARD cards[5];
-	DECK deck;
 	PLAYER* players[5];
 	int pot;
 	int buyIn;

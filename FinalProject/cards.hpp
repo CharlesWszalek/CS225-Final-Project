@@ -21,13 +21,16 @@ class CARD {
 private:
 	string suit;
 	string name;
+	int value;
 public:
 	CARD();
 	CARD(string, string);
 	void display() const;
 	void set_suit(string);
-	void set_rank(string);
+	void set_value(int);
 	string get_suit();
+	int get_suit_2();
 	string get_name();
+	int get_value();
 };
 #endif
