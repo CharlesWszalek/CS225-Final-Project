@@ -135,6 +135,7 @@ int TABLE::get_big_blind(){
 	return bigBlind;
 }
 
+
 int main(){
 	deck.shuffle();
 	TABLE table(3);
