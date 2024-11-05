@@ -47,7 +47,6 @@ public:
 	HUMAN(int, int=100);
 	string check_or_call();
 	int bets();
-	int conv_string_int(string);/*separate file*/
 };
 
 

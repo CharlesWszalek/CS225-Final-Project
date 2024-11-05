@@ -18,8 +18,8 @@ using namespace std;
 // Constructor: Initializes a standard deck of 52 cards
 DECK::DECK() {
 	// Define suits and names
-	const vector<string> suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
-	const vector<string> names = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+	const array<string, 4> suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+	const array<string, 13> names = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
 	// Create a card for each combination of suit and name
 	for (size_t i = 0; i < suits.size(); ++i) {

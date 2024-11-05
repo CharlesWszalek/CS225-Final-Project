@@ -68,20 +68,6 @@ string HUMAN::check_or_call(){
 }
 
 
-int HUMAN::conv_string_int(string input){
-	int num = 0;
-	for (char c : input){
-		if (c >= '0' && c <= '9' && c != '\n') {
-			num = num * 10 + (c - '0');
-		} else {
-			cout << "Input must be an integer" << endl;
-			return 0;
-		}
-	}
-	return num;
-}
-
-
 int HUMAN::raise(){
 	int betChange = 0;
 	do {

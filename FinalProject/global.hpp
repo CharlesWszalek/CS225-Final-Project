@@ -1,5 +1,9 @@
 //
-// Created by Charles Wszalek on 11/3/24.
+// CSS 225 FINAL PROJECT 
+// Name: global.hpp
+// Version 1.0 name: Charles W 11/03/24 created
+// 	   1.1 name: Brandon P 11/05/24 added conv_string_int
+// Reference: 
 //
 
 #ifndef GLOBAL_HPP
@@ -8,5 +12,9 @@
 #include "deck.hpp"
 
 extern DECK deck;
+
+
+int conv_string_int(string); // converts a string to an int or returns 0
+				// could use throw to throw an error on non int
 
 #endif //GLOBAL_HPP

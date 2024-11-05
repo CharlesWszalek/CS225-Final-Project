@@ -135,11 +135,11 @@ int TABLE::get_big_blind(){
 	return bigBlind;
 }
 
-
+/*
 int main(){
 	deck.shuffle();
 	TABLE table(3);
 	table.buy_in(100);
 	table.showdown();
 	return 0;
-}
+}*/
