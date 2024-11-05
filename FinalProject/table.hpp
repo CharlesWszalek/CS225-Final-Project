@@ -17,13 +17,14 @@ using namespace std;
 class TABLE{
 private:
 	int numPlayers;
-	CARD cards[5];
+	//CARD cards[5];
 	PLAYER* players[5];
 	int pot;
 	int buyIn;
 	int bigBlind;
 public:
 	TABLE(int Input);
+	CARD cards[5];
 	void buy_in(int buyIn);
 	void flop();
 	void betting();

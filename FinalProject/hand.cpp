@@ -22,9 +22,10 @@ void HAND::display_hand() const {
 
 HAND HAND::operator + (CARD card[5]){
   HAND temp;
+  temp.cards[0] = cards[0];
+  temp.cards[1] = cards[1];
   for (int i = 0; i < 5; i++){
-    cards[i+2] = card[i];
-    temp.cards[i] = cards[i];
+    temp.cards[i+2] = card[i];
   };
   return temp;
 }

@@ -9,10 +9,7 @@
 #include "player.hpp"
 #include "table.hpp"
 #include "cards.hpp"
-//#include "cards.cpp"
-//#include "player.cpp"
 #include "hand.hpp"
-//#include "hand.cpp"
 using namespace std;
 
 
@@ -81,7 +78,8 @@ void TABLE::showdown(){
 	// ASSIGNING CARDS
 	HAND hands[numPlayers];
 	for (int i = 0; i < numPlayers; i++) {
-		hands[i] = players[i]->get_hand();// + cards;
+		hands[i] = players[i]->get_hand();
+		hands[i] = hands[i] + cards;
 		for (int j = 0; j < 2; j++) {
 			mhands[i][hands[i].cards[j].get_suit_2()][hands[i].cards[j].get_value()] += 1;
 		}
@@ -96,15 +94,15 @@ void TABLE::showdown(){
 	}
 	for (int i = 0; i < numPlayers; i++){
 		for (int j = 0; j < num_suits; j++){
-			for (int k = 0; k < num_names; k++){
+			for (int k = 0; k < num_names+1; k++){
         			mhands[i][num_suits][k] += mhands[i][j][k];
 			}
 		}
 	}
 	for (int i = 0; i < numPlayers; i++) {
 		cout << endl;
-		hands[i].display_hand();
-		cout << endl;
+		//hands[i].display_hand();
+		//cout << endl;
 		for (int j = 0; j < num_suits+1; j++){
 			cout << endl;
 			for (int k = 0; k < num_names+1; k++){
@@ -142,6 +140,13 @@ int main(){
 	deck.shuffle();
 	TABLE table(3);
 	table.buy_in(100);
-	table.showdown();
+	table.flop();
+	table.turn();
+	table.river();
+	//table.display();
+	//table.showdown();
+	HAND hand1;
+	hand1.display_hand();
+	hand1 = hand1 + table.cards;
 	return 0;
 }*/
