@@ -80,7 +80,7 @@ void TABLE::showdown(){
 	for (int i = 0; i < numPlayers; i++) {
 		hands[i] = players[i]->get_hand();
 		hands[i] = hands[i] + cards;
-		for (int j = 0; j < 2; j++) {
+		for (int j = 0; j < 7; j++) {
 			mhands[i][hands[i].cards[j].get_suit_2()][hands[i].cards[j].get_value()] += 1;
 		}
 	}
@@ -143,10 +143,12 @@ int main(){
 	table.flop();
 	table.turn();
 	table.river();
-	//table.display();
-	//table.showdown();
+	table.display();
+	table.showdown();
+	/*
 	HAND hand1;
 	hand1.display_hand();
 	hand1 = hand1 + table.cards;
+	hand1.display_hand();*/
 	return 0;
 }*/
