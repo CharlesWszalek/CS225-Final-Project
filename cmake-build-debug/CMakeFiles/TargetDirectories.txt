@@ -1,3 +1,0 @@
-/Users/charles/Documents/GitHub/CS225-Final-Project/cmake-build-debug/CMakeFiles/CS225_Final_Project.dir
-/Users/charles/Documents/GitHub/CS225-Final-Project/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/charles/Documents/GitHub/CS225-Final-Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
