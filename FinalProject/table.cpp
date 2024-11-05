@@ -145,10 +145,5 @@ int main(){
 	table.river();
 	table.display();
 	table.showdown();
-	/*
-	HAND hand1;
-	hand1.display_hand();
-	hand1 = hand1 + table.cards;
-	hand1.display_hand();*/
 	return 0;
 }*/
