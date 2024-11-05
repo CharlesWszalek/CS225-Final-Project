@@ -18,6 +18,7 @@ void game() {
 	cout << "How many players?: " << endl;
 	cin >> numPlayers;
 
+	deck.shuffle();
 	TABLE table(numPlayers);
 	cout << "What is the buy in?; " << endl;
 	cin >> buyIn;
