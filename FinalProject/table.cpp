@@ -28,7 +28,7 @@ TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
 
 
 void TABLE::buy_in(int buyIn = 0){
-	cout << "buy in" << endl;
+	cout << "buy in: " << buyIn << endl;
         this -> buyIn = buyIn;
 	bigBlind = buyIn * .1;
 }
@@ -55,6 +55,7 @@ void TABLE::turn(){
 	cout << "turn" << endl;
 	deck.discard();
 	cards[3] = deck.draw();
+	cout << cards[3].get_name() << " of " << cards[3].get_suit() << endl;
 }
 
 
@@ -62,6 +63,7 @@ void TABLE::river(){
 	cout << "river" << endl;
 	deck.discard();
 	cards[4] = deck.draw();
+	cout << cards[4].get_name() << " of " << cards[4].get_suit() << endl;
 }
 
 
