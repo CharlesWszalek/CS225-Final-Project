@@ -1,0 +1,17 @@
+# ninja log v6
+2	989	1730829887641496652	CMakeFiles/CS225_Final_Project.dir/FinalProject/global.cpp.o	7f6cfec5f35885eb
+2	999	1730829887642011960	CMakeFiles/CS225_Final_Project.dir/FinalProject/hand.cpp.o	5765bba5804c724e
+1	1009	1730829887641013343	CMakeFiles/CS225_Final_Project.dir/FinalProject/cards.cpp.o	8a0a120e4499e131
+1	1016	1730829887640605030	CMakeFiles/CS225_Final_Project.dir/FinalProject/ai.cpp.o	bf33c79813e222ba
+4	1041	1730829887643708711	CMakeFiles/CS225_Final_Project.dir/FinalProject/human.cpp.o	25e835ef35db2c59
+2	1281	1730829887641278455	CMakeFiles/CS225_Final_Project.dir/FinalProject/deck.cpp.o	f7f8e1ed555a8526
+999	1599	1730829888638441533	CMakeFiles/CS225_Final_Project.dir/FinalProject/player.cpp.o	8e545d604fadf9b4
+995	1600	1730829888634898249	CMakeFiles/CS225_Final_Project.dir/FinalProject/main.cpp.o	551a2cba71d882f1
+1009	1620	1730829888648673447	CMakeFiles/CS225_Final_Project.dir/FinalProject/table.cpp.o	4c51a5e44c9d0370
+1620	1672	1730829889259455014	CS225_Final_Project	946dce69e496d24f
+6	599	1730830617525637116	CMakeFiles/CS225_Final_Project.dir/FinalProject/table.cpp.o	4c51a5e44c9d0370
+600	730	1730830618119266192	CS225_Final_Project	946dce69e496d24f
+6	600	1730830679548204586	CMakeFiles/CS225_Final_Project.dir/FinalProject/table.cpp.o	4c51a5e44c9d0370
+600	730	1730830680142018154	CS225_Final_Project	946dce69e496d24f
+7	488	1730830695865334563	CMakeFiles/CS225_Final_Project.dir/FinalProject/table.cpp.o	4c51a5e44c9d0370
+488	536	1730830696345731121	CS225_Final_Project	946dce69e496d24f
