@@ -167,6 +167,20 @@ void TABLE::straight(int mhands[][5][14], int scoring[][10]) {
 	}
 }
 
+void TABLE::highcard(int mhands[][5][14], int scoring[][10]) {
+	int score = 0;
+	for (int i = 0; i < numPlayers; i++) {
+		score = 0;
+		for (int j = 12; j >=0; j--) {
+			for (int k = 3; k>=0; k--) {
+				if (mhands[i][j][k] == 1)
+					score = j+1;
+			}
+		}
+		scoring[i][0] = score;
+	}
+}
+
 
 void TABLE::showdown(){
 	const int num_suits = 4;
@@ -229,6 +243,7 @@ void TABLE::showdown(){
 		blankofakind(mhands, scoring, i, 3);
 		blankofakind(mhands, scoring, i, 2);
 	}
+	highcard(mhands, scoring);
 	for (int i = 0; i < numPlayers; i++) {
 		cout << endl;
 		//hands[i].display_hand();
