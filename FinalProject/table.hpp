@@ -34,6 +34,9 @@ public:
 	void display() const;
 	static int bigBlind;
 	void next_player();
-	//int get_big_blind();
+	void royal_flush(int mhands[][5][14], int scoring[][10]);
+	void flush(int mhands[][5][14], int scoring[][10]);
+	void straight(int mhands[][5][14], int scoring[][10]);
+	void blankofakind(int mhands[][5][14], int scoring[][10], int player, int num);
 };
 #endif

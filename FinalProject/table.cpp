@@ -41,7 +41,6 @@ void TABLE::flop(){
 	cout << endl;
 	for (int i = 0; i < 3; i++){
 		cards[i] = deck.draw();
-		//cout << cards[i].get_name() << " of " << cards[i].get_suit() << ", ";
 		cards[i].display();
 		cout << " ";
 	}
@@ -58,7 +57,6 @@ void TABLE::betting(){
 	int countdown = numPlayers;
 	while (countdown){
 		cout << endl << "Player " << playerTurn+1 << endl;
-		//cout << "playerTurn:" << playerTurn << " countdown:" << countdown << endl;
 		int temp = players[playerTurn]->get_hasRaised();
 		if (temp == -1){//skip if they have folded
 			cout << "Previously folded" << endl;
@@ -68,7 +66,6 @@ void TABLE::betting(){
 		}
 		pot += players[playerTurn]->bets();
 		if (temp - players[playerTurn]->get_hasRaised() == -1){//reset countdown when player has raised
-			//cout << "Player " << playerTurn+1 << " has raised" << endl;
 			countdown = numPlayers-1;
 			next_player();
 			continue;
@@ -87,7 +84,6 @@ void TABLE::next_player(){
 void TABLE::turn(){
 	deck.discard();
 	cards[3] = deck.draw();
-	//cout << cards[3].get_name() << " of " << cards[3].get_suit() << endl;
 	cout << endl;
 	cards[3].display();
 	cout << endl;
@@ -97,10 +93,78 @@ void TABLE::turn(){
 void TABLE::river(){
 	deck.discard();
 	cards[4] = deck.draw();
-	//cout << cards[4].get_name() << " of " << cards[4].get_suit() << endl;
 	cout << endl;
 	cards[4].display();
 	cout << endl;
+}
+
+
+void TABLE::blankofakind(int mhands[][5][14], int scoring[][10], int player, int num = 2){
+	int count = 0;
+	for (int j = 12; j >=0 ; j--) {
+		if (count == 0) {
+			if (mhands[player][4][j] == num) {
+				count++;
+				for (int k = 0; k < 5; k++) {
+					mhands[player][k][j] = 0;
+				}
+				switch (num) {
+					case 2: scoring[player][1] = j+1; break;
+					case 3: scoring[player][3] = j+1; break;
+					case 4: scoring[player][7] = j+1; break;
+				}
+			}
+		}
+	}
+}
+
+void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]) {
+	for (int i = 0; i < numPlayers; i++){
+		if(mhands[i][4][9]==1 && mhands[i][4][10]==1 && mhands[i][4][11]==1
+		&& mhands[i][4][12]==1 && mhands[i][4][0]==1) {
+			for(int j = 0; j < 5; j++) {
+				if(mhands[i][j][13] == 5)
+					scoring[i][9] = 1;
+			}
+		}
+
+	}
+}
+
+void TABLE::flush(int mhands[][5][14], int scoring[][10]) {
+	int sum = 0;
+	for (int i = 0; i < numPlayers; i++) {
+		sum = 0;
+		for (int j = 0; j < 5; j++) {
+			if(mhands[i][j][13] == 5) {
+				for (int k = 0; k < 13; k++) {
+					if(mhands[i][j][k] == 1)
+						sum+=(k+1);
+					}
+				scoring[i][5] = sum;
+			}
+		}
+	}
+}
+
+
+void TABLE::straight(int mhands[][5][14], int scoring[][10]) {
+	int sum = 0;
+	int check = 0;
+	for (int i = 0; i < numPlayers; i++) {
+		check = 0;
+		sum = 0;
+		for (int j = 0; j < 10; j++){
+			if (mhands[i][4][j] == 1) {
+				for (int k = j; k <= j+4; k++) {
+					check+=mhands[i][4][k];
+					sum+=k;
+				}
+			}
+			if (check == 5)
+				scoring[i][4] = sum;
+		}
+	}
 }
 
 
