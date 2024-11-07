@@ -28,6 +28,8 @@ void game() {
 	cin.ignore(INT_MAX, '\n');
 
 	table.buy_in(buyIn);
+
+	table.betting();
 	table.flop();
 	table.betting();
 	table.turn();
