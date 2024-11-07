@@ -22,9 +22,9 @@ int TABLE::playerTurn = 0;
 TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
 	for (int i = 0; i < numOfPlayers; i++){
 		if (i == 0){
-			players[i] = new HUMAN(i+1);
+			players[i] = new HUMAN(i);
 		} else {
-			players[i] = new AI(i+1);
+			players[i] = new AI(i);
 		}
 	}
 }
@@ -85,7 +85,10 @@ void TABLE::turn(){
 	deck.discard();
 	cards[3] = deck.draw();
 	cout << endl;
-	cards[3].display();
+	for (int i = 0; i < 4; i++){
+		cards[i].display();
+		cout << " ";
+	}
 	cout << endl;
 }
 
@@ -94,7 +97,10 @@ void TABLE::river(){
 	deck.discard();
 	cards[4] = deck.draw();
 	cout << endl;
-	cards[4].display();
+	for (int i = 0; i < 5; i++){
+		cards[i].display();
+		cout << " ";
+	}
 	cout << endl;
 }
 
@@ -327,7 +333,7 @@ void TABLE::showdown(){
 
 void TABLE::display() const {
 	for (int i = 0; i < numPlayers; i++){
-		cout << "Player " << i+1 << "'s " << "hand is: ";
+		cout << players[i]->get_name() << "'s " << "hand is: ";
 		players[i]->get_hand().display_hand();
 	}
 	cout << "The table cards are: " << endl;
