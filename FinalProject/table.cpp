@@ -172,13 +172,27 @@ void TABLE::showdown(){
 	const int num_suits = 4;
 	const int num_names = 13;
 	int mhands[numPlayers][num_suits+1][num_names+1];
-		for (int i = 0; i < numPlayers; i++){
-    			for (int j = 0; j < num_suits+1; j++){
-          			for (int k = 0; k < num_names+1; k++){
-					mhands[i][j][k] = 0;
-				}
-    			}
+	for (int i = 0; i < numPlayers; i++){
+    		for (int j = 0; j < num_suits+1; j++){
+        		for (int k = 0; k < num_names+1; k++){
+				mhands[i][j][k] = 0;
+			}
+    		}
+	}
+	int scoring[numPlayers][10]; // There are 10 different hands
+	for (int i = 0; i < numPlayers; i++){
+		for (int j = 0; j < 10; j++){
+			scoring[i][j] = 0;
 		}
+	}
+	int mhands[numPlayers][num_suits+1][num_names+1];
+	for (int i = 0; i < numPlayers; i++){
+    		for (int j = 0; j < num_suits+1; j++){
+          		for (int k = 0; k < num_names+1; k++){
+				mhands[i][j][k] = 0;
+			}
+    		}
+	}
 	// ASSIGNING CARDS
 	HAND hands[numPlayers];
 	for (int i = 0; i < numPlayers; i++) {
