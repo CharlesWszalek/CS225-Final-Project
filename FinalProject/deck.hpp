@@ -20,6 +20,7 @@ public:
 	DECK();
 	CARD draw();
 	void shuffle();
+	void shuffle(int seed);
 	void discard();
 	void display() const;
 };

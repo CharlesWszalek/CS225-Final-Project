@@ -220,6 +220,23 @@ void TABLE::showdown(){
 			}
 		}
 	}
+	cout << endl;
+	royal_flush(mhands, scoring);
+	straight(mhands, scoring);
+	flush(mhands, scoring);
+	for (int i = 0; i < numPlayers; i++) {
+		blankofakind(mhands, scoring, i, 4);
+		blankofakind(mhands, scoring, i, 3);
+		blankofakind(mhands, scoring, i, 2);
+	}
+	for (int i = 0; i < numPlayers; i++) {
+		cout << endl;
+		//hands[i].display_hand();
+		//cout << endl;
+		for (int j = 0; j < 10; j++){
+			cout << scoring[i][j] << " ";
+		}
+	}
 }
 
 

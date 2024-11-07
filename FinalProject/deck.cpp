@@ -46,6 +46,11 @@ void DECK::shuffle(){
 	mt19937 g(rd());
 	std::shuffle(cards.begin(), cards.end(), g);
 }
+void DECK::shuffle(int seed){
+	random_device rd;
+	mt19937 g(seed);
+	std::shuffle(cards.begin(), cards.end(), g);
+}
 
 // Discards the top card (removes it without returning it)
 void DECK::discard() {
