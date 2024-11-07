@@ -28,18 +28,6 @@ void game() {
 	cin.ignore(INT_MAX, '\n');
 
 	table.buy_in(buyIn);
-	//assign players to table
-	// t.players[0].playerId = 1 // dealer
-	// t.players[1].playerId = 2 // small
-	// t.players[2].playerId = 3 // big
-	//betting
-		// playerIndex = 0
-		// while loop (not all players have raise = 1)
-			// go through players indices
-				// if player.raise == TRUE
-					// leave the loop
-				// else
-			// playerIndex ++
 	table.flop();
 	table.betting();
 	table.turn();

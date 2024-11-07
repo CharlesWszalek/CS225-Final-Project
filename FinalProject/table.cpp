@@ -150,11 +150,6 @@ void TABLE::showdown(){
 			}
 		}
 	}
-	cout << endl;
-	//hands[0].display_hand();
-	//hands[1].display_hand();
-	//hands[2].display_hand();
-	//cout << "showdown" << endl;
 }
 
 
@@ -170,21 +165,3 @@ void TABLE::display() const {
 	}
 	cout << endl;
 }
-
-/*
-int TABLE::get_big_blind(){
-	return bigBlind;
-}*/
-
-/*
-int main(){
-	deck.shuffle();
-	TABLE table(3);
-	table.buy_in(100);
-	table.flop();
-	table.turn();
-	table.river();
-	table.display();
-	table.showdown();
-	return 0;
-}*/
