@@ -38,9 +38,12 @@ void TABLE::buy_in(int buyIn = 0){
 
 void TABLE::flop(){
 	deck.discard(); // try using the d-- operator overload
+	cout << endl;
 	for (int i = 0; i < 3; i++){
 		cards[i] = deck.draw();
-		cout << cards[i].get_name() << " of " << cards[i].get_suit() << ", ";
+		//cout << cards[i].get_name() << " of " << cards[i].get_suit() << ", ";
+		cards[i].display();
+		cout << " ";
 	}
 	cout << endl;
 }
@@ -84,14 +87,20 @@ void TABLE::next_player(){
 void TABLE::turn(){
 	deck.discard();
 	cards[3] = deck.draw();
-	cout << cards[3].get_name() << " of " << cards[3].get_suit() << endl;
+	//cout << cards[3].get_name() << " of " << cards[3].get_suit() << endl;
+	cout << endl;
+	cards[3].display();
+	cout << endl;
 }
 
 
 void TABLE::river(){
 	deck.discard();
 	cards[4] = deck.draw();
-	cout << cards[4].get_name() << " of " << cards[4].get_suit() << endl;
+	//cout << cards[4].get_name() << " of " << cards[4].get_suit() << endl;
+	cout << endl;
+	cards[4].display();
+	cout << endl;
 }
 
 
