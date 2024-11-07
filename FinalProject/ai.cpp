@@ -8,10 +8,11 @@
 
 #include "player.hpp"
 #include "table.hpp"
+#include <string>
 using namespace std;
 
 
-AI::AI(int num, int buyIn): PLAYER(num, buyIn){srand(time(NULL));name = "Ai";}
+AI::AI(int num, int buyIn): PLAYER(num, buyIn){srand(time(NULL));name = "Ai " + to_string(num);}
 
 
 int AI::bets(){

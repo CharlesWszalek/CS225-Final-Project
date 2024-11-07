@@ -56,11 +56,7 @@ void TABLE::betting(){
 	}
 	int countdown = numPlayers;
 	while (countdown){
-		if (playerTurn){
-			cout << endl << players[playerTurn]->get_name() << " " << playerTurn << endl;
-		} else {
-			cout << endl << players[playerTurn]->get_name() << endl;
-		}
+		cout << endl << players[playerTurn]->get_name() << endl;
 		int temp = players[playerTurn]->get_hasRaised();
 		if (temp == -1){//skip if they have folded
 			cout << "Previously folded" << endl;
@@ -216,11 +212,13 @@ void TABLE::showdown(){
 			mhands[i][hands[i].cards[j].get_suit_2()][hands[i].cards[j].get_value()] += 1;
 		}
 	}
+	/*
 	mhands[4][2][3] = 1;
 	mhands[4][2][4] = 1;
 	mhands[4][2][5] = 1;
 	mhands[4][2][6] = 1;
 	mhands[4][2][8] = 1;
+	*/
 	// SUMMING
 	for (int i = 0; i < numPlayers; i++) {
 		for (int j = 0; j < num_suits; j++){
@@ -265,6 +263,65 @@ void TABLE::showdown(){
 			cout << scoring[i][j] << " ";
 		}
 	}
+
+	//Doing Print statements for all of the hands:
+	for (int i = 0; i< numPlayers; i++) {
+		int scored = 0;
+		for (int j = 9; j >=0; j--) {
+			if (scoring[i][j] > 0 && scored == 0) {
+				scored = 1;
+				switch (j) {
+					case 9:
+						cout << players[i]->get_name() << "'s hand is a royal flush, they win the game!" << endl;
+						break;
+					case 8:
+						cout << players[i]->get_name() << "'s hand is a straight flush." << endl;
+						break;
+					case 7:
+						cout << players[i]->get_name() << "'s hand is a four of a kind." << endl;
+						break;
+					case 6:
+						cout << players[i]->get_name() << "'s hand is a full house." << endl;
+						break;
+					case 5:
+						cout << players[i]->get_name() << "'s hand is a flush." << endl;
+						break;
+					case 4:
+						cout << players[i]->get_name() << "'s hand is a straight." << endl;
+						break;
+					case 3:
+						cout << players[i]->get_name() << "'s hand is a three of a kind." << endl;
+						break;
+					case 2:
+						cout << players[i]->get_name() << "'s hand is a two pair." << endl;
+						break;
+					case 1:
+						cout << players[i]->get_name() << "'s hand is a pair." << endl;
+						break;
+					case 0:
+						cout << players[i]->get_name() << "'s hand is highcard." << endl;
+						break;
+				}
+			}
+		}
+	}
+	//Finding the winner:
+	int player_winner;
+	int win = 0;
+	
+	for (int j = 9; j >=0 ; j--) {
+		for (int i = 0; i < numPlayers; ++i) {
+			if (scoring[i][j] > 0) {
+				for(int k = i; k < numPlayers; k++) {
+					if (scoring[k][j] > win) {
+						win = scoring[k][j];
+						player_winner = k;
+					}
+				}
+			}
+		}
+	}
+	cout << "The winner is: " << players[player_winner]->get_name() << endl;
 }
 
 
