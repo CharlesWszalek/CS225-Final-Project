@@ -13,6 +13,9 @@
 using namespace std;
 
 
+int TABLE::bigBlind = 0;
+
+
 TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
 	for (int i = 0; i < numOfPlayers; i++){
 		if (i == 0){
@@ -25,31 +28,52 @@ TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
 
 
 void TABLE::buy_in(int buyIn = 0){
-	cout << "buy in: " << buyIn << endl;
         this -> buyIn = buyIn;
 	bigBlind = buyIn * .1;
 }
 
 
 void TABLE::flop(){
-	cout << "flop" << endl;
 	deck.discard(); // try using the d-- operator overload
 	for (int i = 0; i < 3; i++){
 		cards[i] = deck.draw();
-		cout << cards[i].get_name() << " of " << cards[i].get_suit() << endl;
+		cout << cards[i].get_name() << " of " << cards[i].get_suit() << ", ";
 	}
+	cout << endl;
 }
 
 
 void TABLE::betting(){
 	for (int i = 0; i < numPlayers; i++){
+		if (players[i]->get_hasRaised() == 1){
+			players[i]->reset_raised();
+		}
+	}
+	int countdown = numPlayers;
+	int i = 0;
+	while (countdown){
+		cout << "Player " << i+1 << endl;
+		cout << "i:" << i << " countdown:" << countdown << endl;
+		int temp = players[i]->get_hasRaised();
+		if (temp == -1){//skip if they have folded
+			countdown--;
+			i = (i + 1) % numPlayers;
+			continue;
+		}
 		pot += players[i]->bets();
+		if (temp - players[i]->get_hasRaised() == -1){//reset countdown when player has raised
+			cout << "Player " << i+1 << " has raised" << endl;
+			countdown = numPlayers-1;
+			i = (i + 1) % numPlayers;
+			continue;
+		}
+		countdown--;
+		i = (i + 1) % numPlayers;
 	}
 }
 
 
 void TABLE::turn(){
-	cout << "turn" << endl;
 	deck.discard();
 	cards[3] = deck.draw();
 	cout << cards[3].get_name() << " of " << cards[3].get_suit() << endl;
@@ -57,7 +81,6 @@ void TABLE::turn(){
 
 
 void TABLE::river(){
-	cout << "river" << endl;
 	deck.discard();
 	cards[4] = deck.draw();
 	cout << cards[4].get_name() << " of " << cards[4].get_suit() << endl;
@@ -110,6 +133,7 @@ void TABLE::showdown(){
 			}
 		}
 	}
+	cout << endl;
 	//hands[0].display_hand();
 	//hands[1].display_hand();
 	//hands[2].display_hand();
@@ -120,7 +144,7 @@ void TABLE::showdown(){
 void TABLE::display() const {
 	for (int i = 0; i < numPlayers; i++)
 	{
-		cout << "Player " << i << "'s " << "hand is: ";
+		cout << "Player " << i+1 << "'s " << "hand is: ";
 		players[i]->get_hand().display_hand();
 	}
 	cout << "The table cards are: " << endl;
@@ -130,10 +154,10 @@ void TABLE::display() const {
 	}
 }
 
-
+/*
 int TABLE::get_big_blind(){
 	return bigBlind;
-}
+}*/
 
 /*
 int main(){
@@ -147,5 +171,3 @@ int main(){
 	table.showdown();
 	return 0;
 }*/
-
-//HELLLO

@@ -6,7 +6,7 @@
 //
 
 #include <iostream>
-
+#include <climits>
 #include "table.hpp"
 
 using namespace std;
@@ -15,13 +15,18 @@ using namespace std;
 void game() {
 	int numPlayers;
 	int buyIn;
+
 	cout << "How many players?: " << endl;
 	cin >> numPlayers;
+	cin.ignore(INT_MAX, '\n');
 
 	deck.shuffle();
+
 	TABLE table(numPlayers);
 	cout << "What is the buy in?; " << endl;
 	cin >> buyIn;
+	cin.ignore(INT_MAX, '\n');
+
 	table.buy_in(buyIn);
 	//assign players to table
 	// t.players[0].playerId = 1 // dealer
@@ -36,11 +41,12 @@ void game() {
 				// else
 			// playerIndex ++
 	table.flop();
-	//betting
+	table.betting();
 	table.turn();
-	//betting
+	table.betting();
 	table.river();
-	//betting
+	table.betting();
+	table.display();
 	table.showdown();
 }
 

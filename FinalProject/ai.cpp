@@ -7,6 +7,7 @@
 //
 
 #include "player.hpp"
+#include "table.hpp"
 using namespace std;
 
 
@@ -17,7 +18,7 @@ int AI::bets(){
 	if(hasRaised != -1){
 		int forPot;
 		int chance = rand() % 10;
-		if (chance < 4 && hasRaised == 0 && minBet - betMoney + 5/*get_big_blind*/ <= money){
+		if (chance < 4 && hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money){
 			forPot = raise();
 		} else if (chance < 8){
 			forPot = check();
@@ -36,10 +37,10 @@ int AI::bets(){
 
 int AI::raise(){
 	int betChange;
-	if (money - minBet + betMoney - 5 == 0){/*get_big_blind()*/
+	if (money - minBet + betMoney - TABLE::bigBlind == 0){
 		betChange = 5;
 	} else {
-		betChange = rand() % (money - minBet + betMoney - 5) + 5 + 1;/*(money - get_big_blind()) + get_big_blind()*/
+		betChange = rand() % (money - minBet + betMoney - TABLE::bigBlind) + TABLE::bigBlind + 1;
 	}
 	hasRaised = 1;
 	int moneyForPot = betChange + minBet - betMoney;

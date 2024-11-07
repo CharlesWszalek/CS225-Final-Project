@@ -17,6 +17,7 @@ class PLAYER{
 private:
 	virtual int raise() = 0;
 protected:
+	friend class TABLE;
 	int playerId;
 	HAND hand;//change to hand when we have one
 	int money;
@@ -35,6 +36,7 @@ public:
 	void set_min();
 	virtual void reset_raised();
 	virtual int bets() = 0;
+	int get_hasRaised() const;
 };
 
 

@@ -9,6 +9,7 @@
 //
 
 #include "player.hpp"
+#include "table.hpp"
 #include <iostream>
 #include <climits>
 using namespace std;
@@ -20,8 +21,9 @@ HUMAN::HUMAN(int num, int buyIn):PLAYER(num, buyIn){name = "tempname";}
 int HUMAN::bets(){
 	if(hasRaised != -1){
 		string temp = "0";
+		hand.display_hand();
 		while (!((hasRaised == 0 && temp == "raise") || temp == check_or_call() || temp == "fold")) {
-			if (hasRaised == 0 && minBet - betMoney + 5/*get_big_blind*/ <= money) {
+			if (hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money) {
 				cout << "Would you like to raise, " << check_or_call() << ", or fold: "; //cannot raise if raised already
 			} else {
 				cout << "Would you like to call or fold: "; //cannot raise if raised already
@@ -40,7 +42,7 @@ int HUMAN::bets(){
 		}
 
 		int forPot;
-		if (temp == "raise" && hasRaised == 0 && minBet - betMoney + 5/*get_big_blind*/ < money){
+		if (temp == "raise" && hasRaised == 0 && minBet - betMoney + TABLE::bigBlind < money){
 			forPot = raise();
 		} else if (temp == check_or_call()){
 			forPot = check();
@@ -74,8 +76,8 @@ int HUMAN::raise(){
 		cout << name << ", how much would you like to bet over the current bet of $" << minBet << ": ";
 		string input;
 		getline(cin, input);//cin >> betChange;
-		if ((betChange = conv_string_int(input)) < 5/*get_big_blind()*/){
-			cout << "Bet must be larger than Big Blind: $" << 5 /*get_bit_blind()*/ << endl;
+		if ((betChange = conv_string_int(input)) < TABLE::bigBlind){
+			cout << "Bet must be larger than Big Blind: $" << TABLE::bigBlind << endl;
 			continue;
 		} else if (!cin) { //that was not an int, cin is in error
 			cout << "Invalid input" << endl;;
@@ -85,7 +87,7 @@ int HUMAN::raise(){
 			cout << "total bet must be less than or equal to your total money: $" << minBet << " + $" << betChange << " - $" << betMoney << " > $" << money << endl;
 			betChange = 0;
 		}
-	} while (betChange < 5 /*get_big_blind()*/);
+	} while (betChange < TABLE::bigBlind);
 	hasRaised = 1;
 	int moneyForPot = betChange + minBet - betMoney;
 	money -= moneyForPot;
