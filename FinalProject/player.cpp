@@ -32,14 +32,14 @@ int PLAYER::check(){
 	int moneyForPot = + minBet - betMoney;
 	money -= moneyForPot;
 	betMoney = minBet;
-	cout << "you have checked at " << betMoney << endl;
+	cout << "checked at " << betMoney << endl;
 	return moneyForPot;
 }
 
 
 void PLAYER::fold(){
 	hasRaised = -1;
-	cout << "you have folded" << endl;
+	cout << "folded" << endl;
 }
 
 

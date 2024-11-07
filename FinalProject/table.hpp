@@ -21,6 +21,7 @@ private:
 	PLAYER* players[5];
 	int pot;
 	int buyIn;
+	static int playerTurn;
 public:
 	TABLE(int Input);
 	CARD cards[5];
@@ -32,6 +33,7 @@ public:
 	void showdown();
 	void display() const;
 	static int bigBlind;
+	void next_player();
 	//int get_big_blind();
 };
 #endif

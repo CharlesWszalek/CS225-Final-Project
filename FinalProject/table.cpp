@@ -16,6 +16,9 @@ using namespace std;
 int TABLE::bigBlind = 0;
 
 
+int TABLE::playerTurn = 0;
+
+
 TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
 	for (int i = 0; i < numOfPlayers; i++){
 		if (i == 0){
@@ -50,26 +53,31 @@ void TABLE::betting(){
 		}
 	}
 	int countdown = numPlayers;
-	int i = 0;
 	while (countdown){
-		cout << "Player " << i+1 << endl;
-		cout << "i:" << i << " countdown:" << countdown << endl;
-		int temp = players[i]->get_hasRaised();
+		cout << endl << "Player " << playerTurn+1 << endl;
+		//cout << "playerTurn:" << playerTurn << " countdown:" << countdown << endl;
+		int temp = players[playerTurn]->get_hasRaised();
 		if (temp == -1){//skip if they have folded
+			cout << "Previously folded" << endl;
 			countdown--;
-			i = (i + 1) % numPlayers;
+			next_player();
 			continue;
 		}
-		pot += players[i]->bets();
-		if (temp - players[i]->get_hasRaised() == -1){//reset countdown when player has raised
-			cout << "Player " << i+1 << " has raised" << endl;
+		pot += players[playerTurn]->bets();
+		if (temp - players[playerTurn]->get_hasRaised() == -1){//reset countdown when player has raised
+			//cout << "Player " << playerTurn+1 << " has raised" << endl;
 			countdown = numPlayers-1;
-			i = (i + 1) % numPlayers;
+			next_player();
 			continue;
 		}
 		countdown--;
-		i = (i + 1) % numPlayers;
+		next_player();//playerTurn = (playerTurn + 1) % numPlayers;
 	}
+}
+
+
+void TABLE::next_player(){
+	playerTurn = (playerTurn + 1) % numPlayers;
 }
 
 
@@ -142,16 +150,16 @@ void TABLE::showdown(){
 
 
 void TABLE::display() const {
-	for (int i = 0; i < numPlayers; i++)
-	{
+	for (int i = 0; i < numPlayers; i++){
 		cout << "Player " << i+1 << "'s " << "hand is: ";
 		players[i]->get_hand().display_hand();
 	}
 	cout << "The table cards are: " << endl;
-	for (int i = 0; i < 5; i++)
-	{
+	for (int i = 0; i < 5; i++){
 		cards[i].display();
+		cout << " ";
 	}
+	cout << endl;
 }
 
 /*

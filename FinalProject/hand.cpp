@@ -15,7 +15,6 @@ HAND::HAND(){
 
 
 void HAND::display_hand() const {
-  cout << "*****Your hand*****" << endl;
   for (int i = 0; i < 2; i++) {
     cards[i].display();
     cout << " ";
