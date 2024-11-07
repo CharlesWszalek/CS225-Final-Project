@@ -3,7 +3,8 @@
 // Version 1.0 name: Brandon P 10/18/24 defined functions for the DECK and TABLE classes
 // 	   1.1 name: Brandon P 10/21/24 moved shuffle into shuffle function, added drawing cards
 // 	   1.2 name: Brandon P 10/21/24 moved table to seperate file
-//	   1.3 name: Thomas Z 10/22/24 writing function body for Cards Class
+//	   1.3 name: Thomas Z  10/22/24 writing function body for Cards Class
+//	   1.4 name: Charles W 11/06/24 added seed shuffle function
 //
 
 #include"cards.hpp"   // Need the header file for this one as well
@@ -46,6 +47,7 @@ void DECK::shuffle(){
 	mt19937 g(rd());
 	std::shuffle(cards.begin(), cards.end(), g);
 }
+// Seeded Shuffle function for debugging
 void DECK::shuffle(int seed){
 	random_device rd;
 	mt19937 g(seed);
