@@ -132,14 +132,18 @@ void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]) {
 }
 
 void TABLE::flush(int mhands[][5][14], int scoring[][10]) {
+	int check = 0;
 	int sum = 0;
 	for (int i = 0; i < numPlayers; i++) {
+		check = 0;
 		sum = 0;
-		for (int j = 0; j < 5; j++) {
-			if(mhands[i][j][13] == 5) {
-				for (int k = 0; k < 13; k++) {
-					if(mhands[i][j][k] == 1)
+		for (int j = 0; j < 4; j++) {
+			if(mhands[i][j][13] >= 5) {
+				for (int k = 12; k >=0 ; k--) {
+					if(mhands[i][j][k] == 1 && check <= 4) {
+						check++;
 						sum+=(k+1);
+					}
 					}
 				scoring[i][5] = sum;
 			}
@@ -208,6 +212,11 @@ void TABLE::showdown(){
 			mhands[i][hands[i].cards[j].get_suit_2()][hands[i].cards[j].get_value()] += 1;
 		}
 	}
+	mhands[4][2][3] = 1;
+	mhands[4][2][4] = 1;
+	mhands[4][2][5] = 1;
+	mhands[4][2][6] = 1;
+	mhands[4][2][8] = 1;
 	// SUMMING
 	for (int i = 0; i < numPlayers; i++) {
 		for (int j = 0; j < num_suits; j++){
