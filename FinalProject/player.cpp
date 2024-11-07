@@ -56,3 +56,6 @@ void PLAYER::reset_raised(){hasRaised = 0;}
 
 
 int PLAYER::get_hasRaised() const {return hasRaised;}
+
+
+string PLAYER::get_name() const {return name;}

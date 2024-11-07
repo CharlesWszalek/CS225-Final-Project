@@ -11,7 +11,7 @@
 using namespace std;
 
 
-AI::AI(int num, int buyIn): PLAYER(num, buyIn){srand(time(NULL));}
+AI::AI(int num, int buyIn): PLAYER(num, buyIn){srand(time(NULL));name = "Ai";}
 
 
 int AI::bets(){

@@ -26,6 +26,7 @@ protected:
 	static int minBet;
 	virtual int check();
 	virtual void fold();
+	string name;
 public:
 	PLAYER(int, int);
 	void display();
@@ -37,12 +38,12 @@ public:
 	virtual void reset_raised();
 	virtual int bets() = 0;
 	int get_hasRaised() const;
+	string get_name() const;
 };
 
 
 class HUMAN: public PLAYER{
 private:
-	string name;
 	int raise();
 protected:
 public:

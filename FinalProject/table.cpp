@@ -56,7 +56,11 @@ void TABLE::betting(){
 	}
 	int countdown = numPlayers;
 	while (countdown){
-		cout << endl << "Player " << playerTurn+1 << endl;
+		if (playerTurn){
+			cout << endl << players[playerTurn]->get_name() << " " << playerTurn << endl;
+		} else {
+			cout << endl << players[playerTurn]->get_name() << endl;
+		}
 		int temp = players[playerTurn]->get_hasRaised();
 		if (temp == -1){//skip if they have folded
 			cout << "Previously folded" << endl;
