@@ -45,7 +45,7 @@ void game() {
 
 int main(){
 	string input;
-	cout << "Shall we play again? " << endl;
+	cout << "Shall we play a game? " << endl;
 	cin >> input;
 	while (input == "Yes" || input == "yes")
 	{
