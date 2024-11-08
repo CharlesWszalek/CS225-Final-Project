@@ -20,14 +20,15 @@ void game() {
 	cin >> numPlayers;
 	cin.ignore(INT_MAX, '\n');
 
-	deck.shuffle();
-
-	TABLE table(numPlayers);
 	cout << "What is the buy in?; " << endl;
 	cin >> buyIn;
 	cin.ignore(INT_MAX, '\n');
 
-	table.buy_in(buyIn);
+	deck.shuffle();
+
+	TABLE table(numPlayers, buyIn);
+
+	//table.buy_in(buyIn);
 
 	table.betting();
 	table.flop();

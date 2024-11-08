@@ -19,12 +19,13 @@ int TABLE::bigBlind = 0;
 int TABLE::playerTurn = 0;
 
 
-TABLE::TABLE(int numOfPlayers):numPlayers(numOfPlayers), pot(0){
+TABLE::TABLE(int numOfPlayers, int buyIn):numPlayers(numOfPlayers), pot(0){
+	buy_in(buyIn);
 	for (int i = 0; i < numOfPlayers; i++){
 		if (i == 0){
-			players[i] = new HUMAN(i);
+			players[i] = new HUMAN(i, buyIn);
 		} else {
-			players[i] = new AI(i);
+			players[i] = new AI(i, buyIn);
 		}
 	}
 }

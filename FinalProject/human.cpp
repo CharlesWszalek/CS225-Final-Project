@@ -15,10 +15,11 @@
 using namespace std;
 
 
-HUMAN::HUMAN(int num, int buyIn):PLAYER(num, buyIn){cout << "What do you want to be called? "; getline(cin, name);}
+HUMAN::HUMAN(int num, int buyIn):PLAYER(num, buyIn){cout << "What do you want to be called? " << endl; getline(cin, name);}
 
 
 int HUMAN::bets(){
+	cout << money << endl;
 	if(hasRaised != -1){
 		string temp = "0";
 		hand.display_hand();
@@ -42,7 +43,7 @@ int HUMAN::bets(){
 		}
 
 		int forPot;
-		if (temp == "raise" && hasRaised == 0 && minBet - betMoney + TABLE::bigBlind < money){
+		if (temp == "raise" && hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money){
 			forPot = raise();
 		} else if (temp == check_or_call()){
 			forPot = check();

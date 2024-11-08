@@ -23,7 +23,7 @@ private:
 	int buyIn;
 	static int playerTurn;
 public:
-	TABLE(int Input);
+	TABLE(int Input, int buyIn);
 	CARD cards[5];
 	void buy_in(int buyIn);
 	void flop();
