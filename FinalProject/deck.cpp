@@ -13,7 +13,7 @@
 #include <algorithm>  // For shuffle
 #include <random>     // For random_device, std::mt19937
 #include <iostream>   // For cout
-
+#include <array>
 using namespace std;
 
 // Constructor: Initializes a standard deck of 52 cards
