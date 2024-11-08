@@ -18,7 +18,7 @@ class TABLE{
 private:
 	int numPlayers;
 	//CARD cards[5];
-	PLAYER* players[5];
+	PLAYER* players[22];
 	int pot;
 	int buyIn;
 	static int playerTurn;

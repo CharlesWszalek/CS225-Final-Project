@@ -125,6 +125,7 @@ void TABLE::blankofakind(int mhands[][5][14], int scoring[][10], int player, int
 	}
 }
 
+
 void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]) {
 	for (int i = 0; i < numPlayers; i++){
 		if(mhands[i][4][9]==1 && mhands[i][4][10]==1 && mhands[i][4][11]==1
@@ -137,6 +138,7 @@ void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]) {
 
 	}
 }
+
 
 void TABLE::flush(int mhands[][5][14], int scoring[][10]) {
 	int check = 0;
@@ -158,16 +160,17 @@ void TABLE::flush(int mhands[][5][14], int scoring[][10]) {
 	}
 }
 
+
 void TABLE::straight(int mhands[][5][14], int scoring[][10]) {
 	int sum = 0;
 	int check = 0;
 	for (int i = 0; i < numPlayers; i++) {
-		check = 0;
-		sum = 0;
 		for (int j = 0; j < 10; j++){
-			if (mhands[i][4][j] == 1) {
+			check = 0;
+			sum = 0;
+			if (mhands[i][4][j] >= 1) {
 				for (int k = j; k <= j+4; k++) {
-					if(mhands[i][4][k] == 1) {
+					if(mhands[i][4][k % 13] >= 1) {
 						check++;
 						sum+=k;
 					}
@@ -180,6 +183,7 @@ void TABLE::straight(int mhands[][5][14], int scoring[][10]) {
 		}
 	}
 }
+
 
 void TABLE::highcard(int mhands[][5][14], int scoring[][10]) {
 	int score = 0;

@@ -7,10 +7,20 @@
 using namespace std;
 #include "global.hpp"
 
-HAND::HAND(){
+HAND::HAND(int enpty){
   for(int i=0;i<2;i++){
     cards[i] = deck.draw();
   }
+}
+
+
+HAND::HAND(){}
+
+
+HAND::HAND(const HAND& h){
+	for (int i = 0; i < 5; i++){
+		this->cards[i] = h.cards[i];
+	}
 }
 
 
@@ -22,7 +32,7 @@ void HAND::display_hand() const {
   cout << endl;
 }
 
-HAND HAND::operator + (CARD card[5]){
+HAND HAND::operator+ (const CARD (&card)[5]){
   HAND temp;
   temp.cards[0] = cards[0];
   temp.cards[1] = cards[1];
