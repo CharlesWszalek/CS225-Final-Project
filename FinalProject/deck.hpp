@@ -9,7 +9,7 @@
 #define DECK_CLASS
 
 #include "cards.hpp"
-#include <vector>
+#include <array>
 using namespace std;
 
 
