@@ -18,8 +18,10 @@ class HAND {
     //    CARD cards[7];
     public:
         CARD cards[7];
-        HAND operator + (CARD card[5]);
+        HAND operator+ (const CARD (&)[5]);
         HAND();
+        HAND(int);
+	HAND(const HAND& h);
         void display_hand() const;
 };
 #endif
