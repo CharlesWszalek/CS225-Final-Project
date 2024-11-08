@@ -21,7 +21,7 @@ void game() {
 	cin >> numPlayers;
 	cin.ignore(INT_MAX, '\n');
 
-	cout << "What is the buy in?; " << endl;
+	cout << "What is the buy in? " << endl;
 	cin >> buyIn;
 	cin.ignore(INT_MAX, '\n');
 
