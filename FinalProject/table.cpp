@@ -186,8 +186,9 @@ void TABLE::highcard(int mhands[][5][14], int scoring[][10]) {
 		score = 0;
 		for (int j = 12; j >=0; j--) {
 			for (int k = 3; k>=0; k--) {
-				if (mhands[i][j][k] == 1)
+				if (mhands[i][j][k] == 1 && score == 0) {
 					score = j+1;
+				}
 			}
 		}
 		scoring[i][0] = score;
