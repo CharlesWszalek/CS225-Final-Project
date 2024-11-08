@@ -43,23 +43,7 @@ void game() {
 }
 
 
-int main()
-{
-	string input;
-	cout << "Shall we play a game? " << endl;
-	cin >> input;
-	while (//
-// CSS 225 FINAL PROJECT
-// Name: table.h
-// Version 1.0 name: Bradon P 10/21/24 created
-// Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
-//
 
-#include <iostream>
-#include <climits>
-#include "table.hpp"
-
-using namespace std;
 
 
 void game() {
