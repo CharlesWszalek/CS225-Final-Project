@@ -157,7 +157,6 @@ void TABLE::flush(int mhands[][5][14], int scoring[][10]) {
 	}
 }
 
-
 void TABLE::straight(int mhands[][5][14], int scoring[][10]) {
 	int sum = 0;
 	int check = 0;
@@ -167,8 +166,12 @@ void TABLE::straight(int mhands[][5][14], int scoring[][10]) {
 		for (int j = 0; j < 10; j++){
 			if (mhands[i][4][j] == 1) {
 				for (int k = j; k <= j+4; k++) {
-					check+=mhands[i][4][k];
-					sum+=k;
+					if(mhands[i][4][k] == 1) {
+						check++;
+						sum+=k;
+					}
+					else
+						break;
 				}
 			}
 			if (check == 5)
