@@ -9,13 +9,13 @@
 #define DECK_CLASS
 
 #include "cards.hpp"
-#include <array>
+#include <vector>
 using namespace std;
 
 
 class DECK{
 protected:
-	array<CARD> cards;
+	vector<CARD> cards;
 public:
 	DECK();
 	CARD draw();
