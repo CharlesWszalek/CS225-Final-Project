@@ -8,7 +8,6 @@
 #include <iostream>
 #include <climits>
 #include "table.hpp"
-#include "string"
 
 using namespace std;
 
@@ -17,7 +16,7 @@ void game() {
 	int numPlayers;
 	int buyIn;
 
-	cout << "How many players?: " << endl;
+	cout << "How many players? " << endl;
 	cin >> numPlayers;
 	cin.ignore(INT_MAX, '\n');
 
