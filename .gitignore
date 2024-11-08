@@ -34,5 +34,6 @@
 *.xml
 .idea
 TXhold
+CMakeLists.txt
 
 cmake-build-debug
