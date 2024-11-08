@@ -19,7 +19,6 @@ HUMAN::HUMAN(int num, int buyIn):PLAYER(num, buyIn){cout << "What do you want to
 
 
 int HUMAN::bets(){
-	cout << money << endl;
 	if(hasRaised != -1){
 		string temp = "0";
 		hand.display_hand();
