@@ -30,6 +30,7 @@ protected:
 public:
 	PLAYER(int, int);
 	void display();
+	string check_or_call();
 	HAND& get_hand();
 	int get_money() const;
 	int get_playerId() const;
@@ -48,7 +49,6 @@ private:
 protected:
 public:
 	HUMAN(int, int=100);
-	string check_or_call();
 	int bets();
 };
 

@@ -30,10 +30,19 @@ void PLAYER::display(){
 
 int PLAYER::check(){
 	int moneyForPot = + minBet - betMoney;
+	cout << check_or_call() << "ed at " << minBet << endl;
 	money -= moneyForPot;
 	betMoney = minBet;
-	cout << "checked at " << betMoney << endl;
 	return moneyForPot;
+}
+
+
+string PLAYER::check_or_call(){
+	if (minBet == betMoney){
+		return "check";
+	} else {
+		return "call";
+	}
 }
 
 

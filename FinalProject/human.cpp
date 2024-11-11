@@ -26,7 +26,7 @@ int HUMAN::bets(){
 			if (hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money) {
 				cout << "Would you like to raise, " << check_or_call() << ", or fold: "; //cannot raise if raised already
 			} else {
-				cout << "Would you like to call or fold: "; //cannot raise if raised already
+				cout << "Would you like to "<< check_or_call() <<" or fold: "; //cannot raise if raised already
 			}
 			getline(cin, temp);//cin >> temp;
 			if (!cin) { //that was not an int, cin is in error
@@ -61,15 +61,6 @@ int HUMAN::bets(){
 }
 
 
-string HUMAN::check_or_call(){
-	if (minBet == 0){
-		return "check";
-	} else {
-		return "call";
-	}
-}
-
-
 int HUMAN::raise(){
 	int betChange = 0;
 	do {
@@ -83,8 +74,8 @@ int HUMAN::raise(){
 			cout << "Invalid input" << endl;;
 			cin.clear(); //clear error flag
 			cin.ignore(INT_MAX, '\n');
-		} else if (money <= betChange + minBet - betMoney){
-			cout << "total bet must be less than or equal to your total money: $" << minBet << " + $" << betChange << " - $" << betMoney << " > $" << money << endl;
+		} else if (money < betChange + minBet - betMoney){
+			cout << "total bet must be less than or equal to your total money: $" << minBet << " + $" << betChange << " - $" << betMoney << " => $" << money << endl;
 			betChange = 0;
 		}
 	} while (betChange < TABLE::bigBlind);
