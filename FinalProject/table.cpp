@@ -125,6 +125,32 @@ void TABLE::blankofakind(int mhands[][5][14], int scoring[][10], int player, int
 	}
 }
 
+void TABLE::two_pair(int mhands[][5][14], int scoring[][10], int player){
+	int count = 0;
+	int num = 2;
+	int mhands2[numPlayers][5][14];
+	for (int i = 0; i < numPlayers; i++) {       // copying mhands
+		for (int j = 0; j < 5; j++) {
+			for (int k = 0; k < 14; k++) {
+				mhands2[i][j][k] = mhands[i][j][k];
+			}
+		}
+	}
+	for (int j = 12; j >=0 ; j--) {
+		if (count = 1) {
+			if (mhands[player][4][j] == num) {
+				count++;
+				for (int k = 0; k < 5; k++) {
+					mhands2[player][k][j] = 0;
+				}
+				scoring[player][2] = j+1;
+			}
+		}if (count = 0) {
+
+		}else
+	}
+}
+
 
 void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]) {
 	for (int i = 0; i < numPlayers; i++){
@@ -135,7 +161,6 @@ void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]) {
 					scoring[i][9] = 1;
 			}
 		}
-
 	}
 }
 
@@ -200,6 +225,15 @@ void TABLE::highcard(int mhands[][5][14], int scoring[][10]) {
 	}
 }
 
+void TABLE::straight_flush() {
+
+}
+
+void TABLE::full_house() {
+
+}
+
+
 
 void TABLE::showdown(){
 	const int num_suits = 4;
@@ -262,11 +296,20 @@ void TABLE::showdown(){
 	}
 	cout << endl;
 	royal_flush(mhands, scoring);
-	straight(mhands, scoring);
-	flush(mhands, scoring);
+	straight_flush();		// STRAIGHT FLUSH	needs work
 	for (int i = 0; i < numPlayers; i++) {
 		blankofakind(mhands, scoring, i, 4);
+	}
+	full_house();			// FULL HOUSE		needs work
+	flush(mhands, scoring);
+	straight(mhands, scoring);
+	for (int i = 0; i < numPlayers; i++) {
 		blankofakind(mhands, scoring, i, 3);
+	}
+	for (int i = 0; i < numPlayers; i++) {
+		two_pair(mhands, scoring, i);
+	}
+	for (int i = 0; i < numPlayers; i++) {
 		blankofakind(mhands, scoring, i, 2);
 	}
 	highcard(mhands, scoring);
