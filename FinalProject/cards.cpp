@@ -8,10 +8,9 @@
 using namespace std;
 
 // Default constructor
-
-// Constructor with parameters
 CARD::CARD(){}
 
+// Constructor with parameters
 CARD::CARD(string Suit, string Name) : suit(Suit), name(Name){
   if(name == " Ace "){
     value = 0;
@@ -42,10 +41,10 @@ CARD::CARD(string Suit, string Name) : suit(Suit), name(Name){
   }
 }
 
-
+// Return the suit of the card
 string CARD::get_suit(){return suit;}
 
-
+// Return the suit of the card as a number for "mhands"
 int CARD::get_suit_2(){
   if(suit == " Clubs  "){
     return 0;
@@ -59,22 +58,14 @@ int CARD::get_suit_2(){
   return 0;
 }
 
-
+// Return the name of the card
 string CARD::get_name(){return name;}
 
-
+// Return the value of the card
 int CARD::get_value(){return value;};
-
-
 
 // Display method
 void CARD::display() const {
     cout << "| " << name << " of " << suit << " |";
 }
-
-/*int main(){
-  CARD card("Hearts", "Ace");
-  card.display();
-  return 0;
-}*/
 
