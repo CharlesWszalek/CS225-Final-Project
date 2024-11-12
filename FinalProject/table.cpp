@@ -267,8 +267,28 @@ void TABLE::straight_flush(int mhands[][5][14], int scoring[][10]) {
     }
 }
 
-void TABLE::full_house() {
-
+void TABLE::full_house(int mhands[][5][14], int scoring[][10]) {
+    int step = 0;
+    int max = 0;
+    for (int i = 0; i < numPlayers; i++) {
+        step = 0;
+        max = 0;
+        for (int j = 0; j < 13; j++) {
+            if (mhands[i][4][j] >= 3) {
+                step = 1;
+                max = j+1;
+                break;
+            }
+        }
+        if (step == 1) {
+            for (int k = 0; k < 13; k++) {
+                if (mhands[i][4][k] == 2) {
+                    scoring[i][6] = max;
+                    break;
+                }
+            }
+        }
+    }
 }
 
 
