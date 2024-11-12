@@ -128,26 +128,37 @@ void TABLE::blankofakind(int mhands[][5][14], int scoring[][10], int player, int
 void TABLE::two_pair(int mhands[][5][14], int scoring[][10], int player){
 	int count = 0;
 	int num = 2;
+	int cardValue = 0;
+	int column = 0;
 	int mhands2[numPlayers][5][14];
-	for (int i = 0; i < numPlayers; i++) {       // copying mhands
-		for (int j = 0; j < 5; j++) {
-			for (int k = 0; k < 14; k++) {
-				mhands2[i][j][k] = mhands[i][j][k];
+	for (int i = 0; i < numPlayers; i++) {				//
+		for (int j = 0; j < 5; j++) {				// copying mhands
+			for (int k = 0; k < 14; k++) {			//
+				mhands2[i][j][k] = mhands[i][j][k];	//
 			}
 		}
 	}
 	for (int j = 12; j >=0 ; j--) {
-		if (count = 1) {
-			if (mhands[player][4][j] == num) {
+		if (count == 0) {
+			if (mhands2[player][4][j] == num) {
 				count++;
 				for (int k = 0; k < 5; k++) {
-					mhands2[player][k][j] = 0;
+					mhands2[player][k][j] = 0;	// deleting first pair from copy
 				}
-				scoring[player][2] = j+1;
+				cardValue = j+1;
+				column = j;
 			}
-		}if (count = 0) {
-
-		}else
+		}
+		if (count == 1) {
+			if (mhands2[player][4][j] == num) {
+				count++;
+				for (int k = 0; k < 5; k++) {
+					mhands[player][k][j] = 0;	// deleting second pair
+					mhands[player][k][column] = 0;	// deleting first pair
+				}
+				scoring[player][2] = cardValue;
+			}
+		}
 	}
 }
 
