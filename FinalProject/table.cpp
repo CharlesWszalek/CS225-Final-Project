@@ -21,6 +21,7 @@ int TABLE::playerTurn = 0;
 
 
 TABLE::TABLE(int numOfPlayers, int buyIn):numPlayers(numOfPlayers), pot(0){
+	playerTurn = 0;
 	deck.shuffle();
 	buy_in(buyIn);
 	for (int i = 0; i < numOfPlayers; i++){
@@ -58,10 +59,16 @@ void TABLE::buy_in(int buyIn = 0){
 void TABLE::flop(){
 	deck.discard(); // try using the d-- operator overload
 	cout << endl;
+	int foldedPlayers = 0;
+	for (int i = 0; i < numPlayers; i++){
+		foldedPlayers += players[i]->get_hasRaised();
+	}
 	for (int i = 0; i < 3; i++){
 		cards[i] = deck.draw();
-		cards[i].display();
-		cout << " ";
+		if (foldedPlayers != -numPlayers+1){
+			cards[i].display();
+			cout << " ";
+		}
 	}
 	cout << endl;
 }
@@ -93,7 +100,7 @@ void TABLE::betting(){
 			continue;
 		} else if (temp != -1 && players[playerTurn]->get_hasRaised() == -1){
 			playersFolded++;
-			cout << "check: folded" << endl;
+			//cout << "check: folded" << endl;
 		}
 		countdown--;
 		next_player();//playerTurn = (playerTurn + 1) % numPlayers;
@@ -110,9 +117,15 @@ void TABLE::turn(){
 	deck.discard();
 	cards[3] = deck.draw();
 	cout << endl;
-	for (int i = 0; i < 4; i++){
-		cards[i].display();
-		cout << " ";
+	int foldedPlayers = 0;
+	for (int i = 0; i < numPlayers; i++){
+		foldedPlayers += players[i]->get_hasRaised();
+	}
+	if (foldedPlayers != -numPlayers+1){
+		for (int i = 0; i < 4; i++){
+			cards[i].display();
+			cout << " ";
+		}
 	}
 	cout << endl;
 }
@@ -122,9 +135,15 @@ void TABLE::river(){
 	deck.discard();
 	cards[4] = deck.draw();
 	cout << endl;
-	for (int i = 0; i < 5; i++){
-		cards[i].display();
-		cout << " ";
+	int foldedPlayers = 0;
+	for (int i = 0; i < numPlayers; i++){
+		foldedPlayers += players[i]->get_hasRaised();
+	}
+	if (foldedPlayers != -numPlayers+1){
+		for (int i = 0; i < 5; i++){
+			cards[i].display();
+			cout << " ";
+		}
 	}
 	cout << endl;
 }
