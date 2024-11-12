@@ -25,6 +25,7 @@ private:
 	static int playerTurn;
 public:
 	TABLE(int Input, int buyIn);
+	~TABLE();
 	DECK deck;
 	CARD cards[5];
 	void buy_in(int buyIn);

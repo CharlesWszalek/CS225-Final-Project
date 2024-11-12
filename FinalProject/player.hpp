@@ -28,6 +28,7 @@ protected:
 	string name;
 public:
 	PLAYER(int, int, DECK);
+	virtual ~PLAYER();
 	void display();
 	string check_or_call();
 	HAND& get_hand();

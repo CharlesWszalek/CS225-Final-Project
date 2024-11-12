@@ -10,6 +10,7 @@
 #include "table.hpp"
 #include "cards.hpp"
 #include "hand.hpp"
+#include <stdexcept>
 using namespace std;
 
 
@@ -32,7 +33,20 @@ TABLE::TABLE(int numOfPlayers, int buyIn):numPlayers(numOfPlayers), pot(0){
 }
 
 
-//DECK TABLE:: deck;
+TABLE::~TABLE(){
+	for (int i = 0; i < numPlayers; i++){
+		delete players[i];
+	}
+	for (int i = 0; i < 52 ; i++){
+		try{
+			deck.discard();
+		}
+		catch (const runtime_error& error){
+			//cout << "deck is empty" << endl;
+			break;
+		}
+	}
+}
 
 
 void TABLE::buy_in(int buyIn = 0){
@@ -430,7 +444,7 @@ void TABLE::showdown(){
 		for (int i = 0; i < numPlayers; ++i) {
 			if (scoring[i][j] > 0) {
 				for(int k = i; k < numPlayers; k++) {
-					if (scoring[k][j] > win) {
+					if (scoring[k][j] > win && players[k]->get_hasRaised() != -1) {
 						win = scoring[k][j];
 						player_winner = k;
 					}
