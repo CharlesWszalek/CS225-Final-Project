@@ -43,7 +43,6 @@ public:
 	void highcard(int mhands[][5][14], int scoring[][10]);
 	void blankofakind(int mhands[][5][14], int scoring[][10], int player, int num);
 	void two_pair(int mhands[][5][14], int scoring[][10], int player);
-	void straight_flush();
-	void full_house();
+	void full_house(int mhands[][5][14], int scoring[][10]);
 };
 #endif
