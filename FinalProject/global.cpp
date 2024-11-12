@@ -8,16 +8,16 @@
 
 #include "global.hpp"
 
-
+// Converts a string to an int
 int conv_string_int(string input){
 	int num = 0;
-	for (char c : input){
-		if (c >= '0' && c <= '9' && c != '\n') {
+	for (char c : input){  // in put
+		if (c >= '0' && c <= '9' && c != '\n') {  // checks input
 			num = num * 10 + (c - '0');
 		} else {
 			cout << "Input must be an integer" << endl;
 			return 0;
 		}
 	}
-	return num;
+	return num; // returns conversion
 }

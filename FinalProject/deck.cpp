@@ -30,7 +30,7 @@ DECK::DECK() {
 	}
 }
 
-
+// reating a deck made of cards
 vector<CARD> DECK::cards;
 
 
@@ -47,10 +47,11 @@ CARD DECK::draw() {
 
 // Shuffles the deck of cards
 void DECK::shuffle(){
-	random_device rd;
-	mt19937 g(rd());
+	random_device rd; // C++ random number generator
+	mt19937 g(rd());  // C++ random number generator
 	std::shuffle(cards.begin(), cards.end(), g);
 }
+
 // Seeded Shuffle function for debugging
 void DECK::shuffle(int seed){
 	random_device rd;
