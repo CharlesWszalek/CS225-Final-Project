@@ -37,7 +37,7 @@ public:
 	static int bigBlind;
 	void next_player();
 	void royal_flush(int mhands[][5][14], int scoring[][10]);
-	void straight_flush(int mhands[][5][14], int scoring[0][10]);
+	void straight_flush(int mhands[][5][14], int scoring[][10]);
 	void flush(int mhands[][5][14], int scoring[][10]);
 	void straight(int mhands[][5][14], int scoring[][10]);
 	void highcard(int mhands[][5][14], int scoring[][10]);
