@@ -11,6 +11,7 @@
 #include "cards.hpp"
 #include "hand.hpp"
 #include <stdexcept>
+#include <fstream>
 using namespace std;
 
 
@@ -479,8 +480,8 @@ void TABLE::showdown(){
 	}
 	cout << "The winner is: " << players[player_winner]->get_name() << endl;
 	//File IO stuff
-	ofstream myfile;
-	myfile.open("GameHistory.txt");
+	ofstream myfile("GameHistory.txt");
+	//myfile.open("GameHistory.txt");
 	myfile << "The winner of the game is: " << players[player_winner]->get_name() << endl;
 	myfile << "They won " << pot << " dollars!" << endl;
 	myfile.close();
