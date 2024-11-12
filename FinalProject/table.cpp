@@ -68,13 +68,16 @@ void TABLE::flop(){
 
 
 void TABLE::betting(){
+	int playersFolded = 0;
 	for (int i = 0; i < numPlayers; i++){
 		if (players[i]->get_hasRaised() == 1){
 			players[i]->reset_raised();
+		} else if (players[i]->get_hasRaised() == -1){
+			playersFolded++;
 		}
 	}
 	int countdown = numPlayers;
-	while (countdown){
+	while (countdown && playersFolded < numPlayers-1){
 		cout << endl << players[playerTurn]->get_name() << endl;
 		int temp = players[playerTurn]->get_hasRaised();
 		if (temp == -1){//skip if they have folded
@@ -88,6 +91,9 @@ void TABLE::betting(){
 			countdown = numPlayers-1;
 			next_player();
 			continue;
+		} else if (temp != -1 && players[playerTurn]->get_hasRaised() == -1){
+			playersFolded++;
+			cout << "check: folded" << endl;
 		}
 		countdown--;
 		next_player();//playerTurn = (playerTurn + 1) % numPlayers;
