@@ -20,15 +20,19 @@ int TABLE::playerTurn = 0;
 
 
 TABLE::TABLE(int numOfPlayers, int buyIn):numPlayers(numOfPlayers), pot(0){
+	deck.shuffle();
 	buy_in(buyIn);
 	for (int i = 0; i < numOfPlayers; i++){
 		if (i == 0){
-			players[i] = new HUMAN(i, buyIn);
+			players[i] = new HUMAN(i, buyIn, deck);
 		} else {
-			players[i] = new AI(i, buyIn);
+			players[i] = new AI(i, buyIn, deck);
 		}
 	}
 }
+
+
+//DECK TABLE:: deck;
 
 
 void TABLE::buy_in(int buyIn = 0){

@@ -27,7 +27,7 @@ protected:
 	virtual void fold();
 	string name;
 public:
-	PLAYER(int, int);
+	PLAYER(int, int, DECK);
 	void display();
 	string check_or_call();
 	HAND& get_hand();
@@ -47,7 +47,7 @@ private:
 	int raise();
 protected:
 public:
-	HUMAN(int, int=100);
+	HUMAN(int, int, DECK);
 	int bets();
 };
 
@@ -57,7 +57,7 @@ private:
 	int raise();
 protected:
 public:
-	AI(int, int=100);
+	AI(int, int, DECK);
 	int bets();
 };
 #endif

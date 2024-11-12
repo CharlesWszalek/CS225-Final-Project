@@ -20,7 +20,7 @@ class HAND {
         CARD cards[7];
         HAND operator+ (const CARD (&)[5]);
         HAND();
-        HAND(int);
+        HAND(DECK);
 	HAND(const HAND& h);
         void display_hand() const;
 };

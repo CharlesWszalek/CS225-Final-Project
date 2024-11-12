@@ -12,7 +12,7 @@
 using namespace std;
 
 
-AI::AI(int num, int buyIn): PLAYER(num, buyIn){srand(time(NULL));name = "Ai " + to_string(num);}
+AI::AI(int num, int buyIn, DECK d): PLAYER(num, buyIn, d){srand(time(NULL));name = "Ai " + to_string(num);}
 
 
 int AI::bets(){

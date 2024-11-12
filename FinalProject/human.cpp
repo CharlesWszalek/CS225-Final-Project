@@ -15,7 +15,7 @@
 using namespace std;
 
 
-HUMAN::HUMAN(int num, int buyIn):PLAYER(num, buyIn){cout << "What do you want to be called? " << endl; getline(cin, name);}
+HUMAN::HUMAN(int num, int buyIn, DECK d):PLAYER(num, buyIn, d){cout << "What do you want to be called? " << endl; getline(cin, name);}
 
 
 int HUMAN::bets(){

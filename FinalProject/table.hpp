@@ -5,25 +5,27 @@
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
-#include "cards.hpp"
-#include "player.hpp"
-#include "deck.hpp"
-#include "cards.hpp"
-using namespace std;
 
 #ifndef TABLE_CLASS
 #define TABLE_CLASS
 
+#include "cards.hpp"
+#include "player.hpp"
+#include "deck.hpp"
+#include "cards.hpp"
+#include "hand.hpp"
+using namespace std;
+
 class TABLE{
 private:
 	int numPlayers;
-	//CARD cards[5];
 	PLAYER* players[22];
 	int pot;
 	int buyIn;
 	static int playerTurn;
 public:
 	TABLE(int Input, int buyIn);
+	DECK deck;
 	CARD cards[5];
 	void buy_in(int buyIn);
 	void flop();

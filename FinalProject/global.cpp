@@ -9,9 +9,6 @@
 #include "global.hpp"
 
 
-DECK deck;
-
-
 int conv_string_int(string input){
 	int num = 0;
 	for (char c : input){

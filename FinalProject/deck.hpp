@@ -15,7 +15,7 @@ using namespace std;
 
 class DECK{
 protected:
-	vector<CARD> cards;
+	static vector<CARD> cards;
 public:
 	DECK();
 	CARD draw();

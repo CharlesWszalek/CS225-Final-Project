@@ -13,7 +13,7 @@ using namespace std;
 int PLAYER::minBet = 0;
 
 
-PLAYER::PLAYER(int num, int buyIn):playerId(num), hand(0), money(buyIn), betMoney(0), hasRaised(0){}
+PLAYER::PLAYER(int num, int buyIn, DECK d):playerId(num), hand(d), money(buyIn), betMoney(0), hasRaised(0){}
 
 
 void PLAYER::set_min(){

@@ -24,7 +24,7 @@ void game() {
 	cin >> buyIn;
 	cin.ignore(INT_MAX, '\n');
 
-	deck.shuffle();
+	//deck.shuffle();
 
 	TABLE table(numPlayers, buyIn);
 

@@ -2,14 +2,13 @@
 #include "table.hpp"
 #include "hand.hpp"
 #include "cards.hpp"
-//#include "cards.cpp"
 #include "player.hpp"
-using namespace std;
 #include "global.hpp"
+using namespace std;
 
-HAND::HAND(int enpty){
+HAND::HAND(DECK d){
   for(int i=0;i<2;i++){
-    cards[i] = deck.draw();
+    cards[i] = d.draw();
   }
 }
 

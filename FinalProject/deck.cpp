@@ -30,6 +30,10 @@ DECK::DECK() {
 	}
 }
 
+
+vector<CARD> DECK::cards;
+
+
 // Draws a card from the top of the deck and removes it
 CARD DECK::draw() {
 	if (cards.empty()) {
