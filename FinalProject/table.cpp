@@ -359,7 +359,7 @@ void TABLE::showdown(){
 	for (int i = 0; i < numPlayers; i++) {
 		blankofakind(mhands, scoring, i, 4);
 	}
-	full_house();			// FULL HOUSE		needs work
+	full_house(mhands, scoring);			// FULL HOUSE		needs work
 	flush(mhands, scoring);
 	straight(mhands, scoring);
 	for (int i = 0; i < numPlayers; i++) {
