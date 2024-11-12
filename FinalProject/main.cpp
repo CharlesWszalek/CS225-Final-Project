@@ -41,9 +41,15 @@ void game() {
 
 // main loop to create games
 int main(){
-	string input; // take input yes or no
+	string input;
 	cout << "Shall we play a game? " << endl;
 	cin >> input;
+	if (input == "No" || input == "no")
+	    return 0;
+	while (input != "Yes" && input != "yes") {
+	    cout << "Invalid Input, try again: ";
+	    cin >> input;
+	}
 	while (input == "Yes" || input == "yes")
 	{
 		game();
