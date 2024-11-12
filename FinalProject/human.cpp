@@ -14,22 +14,22 @@
 #include <climits>
 using namespace std;
 
-
+// Constructor
 HUMAN::HUMAN(int num, int buyIn, DECK d):PLAYER(num, buyIn, d){cout << "What do you want to be called? " << endl; getline(cin, name);}
 
-
+// controls how the player is allowed to bet and how much they are allowed to bet
 int HUMAN::bets(){
 	if(hasRaised != -1){
 		string temp = "0";
-		hand.display_hand();
+		hand.display_hand(); // show the player their hand
 		while (!((hasRaised == 0 && temp == "raise") || temp == check_or_call() || temp == "fold")) {
 			if (hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money) {
 				cout << "Would you like to raise, " << check_or_call() << ", or fold: "; //cannot raise if raised already
 			} else {
 				cout << "Would you like to "<< check_or_call() <<" or fold: "; //cannot raise if raised already
 			}
-			getline(cin, temp);//cin >> temp;
-			if (!cin) { //that was not an int, cin is in error
+			getline(cin, temp); // prompt the user for the behavior
+			if (!cin) { // error handling for ints inputed
 				cout << "Invalid input" << endl;;
 				cin.clear(); //clear error flag
 				cin.ignore(INT_MAX, '\n');
@@ -41,7 +41,7 @@ int HUMAN::bets(){
 			}
 		}
 
-		int forPot;
+		int forPot; // the amount of money that will be added to the pot from they player's hand
 		if (temp == "raise" && hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money){
 			forPot = raise();
 		} else if (temp == check_or_call()){
@@ -54,23 +54,23 @@ int HUMAN::bets(){
                 }
 		set_min();
 		return forPot;
-	} else {
+	} else { // makes sure they player can't play if they folded
 		cout << "player has previously folded" << endl;
 		return -1; //comunicate player has folded
 	}
 }
 
-
+// allows the player to raise and controls the amount by which they are allowed to do so
 int HUMAN::raise(){
 	int betChange = 0;
 	do {
 		cout << name << ", how much would you like to bet over the current bet of $" << minBet << ": ";
 		string input;
-		getline(cin, input);//cin >> betChange;
-		if ((betChange = conv_string_int(input)) < TABLE::bigBlind){
+		getline(cin, input); // ask the user for raise value
+		if ((betChange = conv_string_int(input)) < TABLE::bigBlind){ // error handling
 			cout << "Bet must be larger than Big Blind: $" << TABLE::bigBlind << endl;
 			continue;
-		} else if (!cin) { //that was not an int, cin is in error
+		} else if (!cin) { // int error handling
 			cout << "Invalid input" << endl;;
 			cin.clear(); //clear error flag
 			cin.ignore(INT_MAX, '\n');
