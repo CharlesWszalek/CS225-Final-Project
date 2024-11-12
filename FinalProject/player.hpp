@@ -17,7 +17,6 @@ class PLAYER{
 private:
 	virtual int raise() = 0;
 protected:
-	friend class TABLE;
 	int playerId;
 	HAND hand;//change to hand when we have one
 	int money;

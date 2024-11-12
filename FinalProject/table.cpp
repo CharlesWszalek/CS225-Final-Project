@@ -296,6 +296,7 @@ void TABLE::showdown(){
 	}
 	for (int i = 0; i < numPlayers; i++) {
 		cout << endl;
+		cout << players[i]->get_name() << endl;
 		//hands[i].display_hand();
 		//cout << endl;
 		for (int j = 0; j < num_suits+1; j++){
