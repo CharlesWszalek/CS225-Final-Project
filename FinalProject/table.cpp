@@ -240,8 +240,31 @@ void TABLE::highcard(int mhands[][5][14], int scoring[][10]) {
 	}
 }
 
-void TABLE::straight_flush() {
-
+void TABLE::straight_flush(int mhands[][5][14], int scoring[][10]) {
+    int check = 0;
+    int max = 0;
+    for (int i = 0; i < numPlayers; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (mhands[i][j][13] >= 5) {
+                for (int k = 0; k <= 9; k++) { // Loop up to 9 to prevent out-of-bounds
+                    max = 0;
+                    check = 0;
+                    for (int z = k; z < k + 5; z++) {
+                        if (mhands[i][j][z] == 1) {
+                            max = z+1;
+                            check++;
+                        } else {
+                            break;
+                        }
+                    }
+                    if (check == 5) {
+                        break; // Exit loop if a straight flush is found
+                    }
+                }
+            }
+        }
+        scoring[i][8] = max; // Assign the highest value if found
+    }
 }
 
 void TABLE::full_house() {
@@ -312,7 +335,7 @@ void TABLE::showdown(){
 	}
 	cout << endl;
 	royal_flush(mhands, scoring);
-	straight_flush();		// STRAIGHT FLUSH	needs work
+	straight_flush(mhands, scoring);		// STRAIGHT FLUSH	needs work
 	for (int i = 0; i < numPlayers; i++) {
 		blankofakind(mhands, scoring, i, 4);
 	}
