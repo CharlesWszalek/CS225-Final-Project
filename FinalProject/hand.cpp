@@ -6,23 +6,24 @@
 #include "global.hpp"
 using namespace std;
 
+// Default constructor
+HAND::HAND(){}
+
+// Constructor
 HAND::HAND(DECK d){
   for(int i=0;i<2;i++){
     cards[i] = d.draw();
   }
 }
 
-
-HAND::HAND(){}
-
-
+// Constructor
 HAND::HAND(const HAND& h){
-	for (int i = 0; i < 5; i++){
-		this->cards[i] = h.cards[i];
-	}
+  for (int i = 0; i < 5; i++){
+    this->cards[i] = h.cards[i];
+  }
 }
 
-
+// display hand information for current player
 void HAND::display_hand() const {
   for (int i = 0; i < 2; i++) {
     cards[i].display();
