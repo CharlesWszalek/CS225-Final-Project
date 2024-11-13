@@ -48,7 +48,7 @@ public:
 	void flush(int mhands[][5][14], int scoring[][10]);
 	void straight(int mhands[][5][14], int scoring[][10]);
 	void highcard(int mhands[][5][14], int scoring[][10]);
-	void blankofakind(int mhands[][5][14], int scoring[][10], int player, int num);
+	void blank_of_a_kind(int mhands[][5][14], int scoring[][10], int player, int num);
 	void two_pair(int mhands[][5][14], int scoring[][10], int player);
 	void full_house(int mhands[][5][14], int scoring[][10]);
 };
