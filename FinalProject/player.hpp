@@ -1,8 +1,10 @@
 //
 // CSS 225 FINAL PROJECT 
-// Name: player.h
+// Name: player.hpp
 // Version 1.0 name: Brandon P 10/21/24 created
-// 	   1.1 name: Brandon P 10/26/24 added parent class HUMAN
+// 	   1.1 name: Brandon P 10/26/24 added parent class HUMAN and made the getter functions 
+//	   1.2 name: Brandon P 10/30/24 made folding be "-1"
+//	   1.3 name: Brandon P 11/10/24 fixed final betting bugs
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand 
 //
 
