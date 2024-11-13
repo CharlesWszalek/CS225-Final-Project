@@ -16,22 +16,26 @@ void game() {
 	int numPlayers;
 	int buyIn;
 
-	cout << "How many players? " << endl;
+	cout << "How many players (Max of 5)? " << endl;
 	cin >> numPlayers;
-	while (cin.fail () ) {
+	cin.ignore(INT_MAX, '\n');
+	while (cin.fail () || numPlayers > 5){
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n');
 	    cout << "Error, non integer value entered, try again: " << endl;
 	    cin >> numPlayers;
+	    cin.ignore(INT_MAX, '\n');
 	}
 
 	cout << "What is the buy in? " << endl;
 	cin >> buyIn;
-	while (cin.fail () ) {
+	cin.ignore(INT_MAX, '\n');
+	while (cin.fail () ){
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n');
 	    cout << "Error, non integer value entered, try again: " << endl;
 	    cin >> buyIn;
+	    cin.ignore(INT_MAX, '\n');
 	}
 	//deck.shuffle();
 
