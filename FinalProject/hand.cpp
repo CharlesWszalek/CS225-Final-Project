@@ -1,3 +1,12 @@
+//
+// CSS 225 FINAL PROJECT 
+// Name: global.hpp
+// Version 1.0 name: Thomas Z  10/20/24 created
+// 	   1.1 name: Brandon P 10/25/24 functionality added
+//	   1.2 name: Charles W 10/30/24 overloaded + operaator 
+// Reference: 
+//
+
 #include "deck.hpp"
 #include "table.hpp"
 #include "hand.hpp"
