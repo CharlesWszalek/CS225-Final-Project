@@ -1,7 +1,10 @@
 //
 // CSS 225 FINAL PROJECT 
 // Name: table.h
-// Version 1.0 name: Bradon P 10/21/24 created
+// Version 1.0 name: Brandon P 10/21/24 created
+// 	   1.1 name: Brandon P 10/23/24 game function added
+// 	   1.2 name: Brandon P 11/5/24  loop added in main
+// 	   1.3 name: Thomas Z  11/10/24 user input fixed in main
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
