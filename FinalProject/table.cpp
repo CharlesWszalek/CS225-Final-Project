@@ -158,7 +158,7 @@ void TABLE::river(){
 }
 
 // checks whether the player has any number of a particular suit up to 4
-void TABLE::blankofakind(int mhands[][5][14], int scoring[][10], int player, int num = 2){
+void TABLE::blank_of_a_kind(int mhands[][5][14], int scoring[][10], int player, int num = 2){
 	int count = 0;
 	for (int j = 12; j >=0 ; j--){
 		if (count == 0){
@@ -395,19 +395,19 @@ void TABLE::showdown(){
 	royal_flush(mhands, scoring);
 	straight_flush(mhands, scoring);
 	for (int i = 0; i < numPlayers; i++){
-		blankofakind(mhands, scoring, i, 4);
+		blank_of_a_kind(mhands, scoring, i, 4);
 	}
 	full_house(mhands, scoring);
 	flush(mhands, scoring);
 	straight(mhands, scoring);
 	for (int i = 0; i < numPlayers; i++){
-		blankofakind(mhands, scoring, i, 3);
+		blank_of_a_kind(mhands, scoring, i, 3);
 	}
 	for (int i = 0; i < numPlayers; i++){
 		two_pair(mhands, scoring, i);
 	}
 	for (int i = 0; i < numPlayers; i++){
-		blankofakind(mhands, scoring, i, 2);
+		blank_of_a_kind(mhands, scoring, i, 2);
 	}
 	highcard(mhands, scoring);
 	//Doing Print statements for all of the hands:
