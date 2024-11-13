@@ -17,7 +17,7 @@ AI::AI(int num, int buyIn, DECK d): PLAYER(num, buyIn, d){srand(time(NULL));name
 // Checks to see if the ai players can bet and then control how much they are allowed to bet
 int AI::bets(){
 	if(hasRaised != -1){
-		int forPot;
+		int forPot; // amount of money addded to the pot 
 		int chance = rand() % 10;  // randomly determine the behavior the the ai
 		if (chance < 4 && hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money){
 			forPot = raise();
@@ -25,13 +25,13 @@ int AI::bets(){
 			forPot = check();
 		} else {
 			fold();
-			return 0; //comunicate player has folded
+			return 0;
 		}
 		set_min();
 		return forPot;
 	} else {
 		cout << "player has previously folded" << endl;
-		return 0; //comunicate player has folded
+		return 0; 
 	}
 }
 
