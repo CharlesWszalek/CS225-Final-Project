@@ -1,9 +1,9 @@
 //
 // CSS 225 FINAL PROJECT 
 // Name: cards.h
-// Version 1.0 name: Bradon P  10/18/24 Changes created header file
-// 	   1.1 name: Bradon P  10/21/24 Changes changed table from being child to containing deck
-// 	   1.2 name: Bradon P  10/21/24 Changes moved table to new file
+// Version 1.0 name: Brandon P 10/18/24 Changes created header file
+// 	   1.1 name: Brandon P 10/21/24 Changes changed table from being child to containing deck
+// 	   1.2 name: Brandon P 10/21/24 Changes moved table to new file
 // 	   1.3 name: Thomas Z  10/22/24 Starting work on file
 // 	   1.4 name: Charles W 10/30/24 updated to match cpp
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
