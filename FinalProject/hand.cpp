@@ -32,6 +32,7 @@ void HAND::display_hand() const {
   cout << endl;
 }
 
+// Overloading the + operator to add an array of 5 cards to each player's array of 7 cards
 HAND HAND::operator+ (const CARD (&card)[5]){
   HAND temp;
   temp.cards[0] = cards[0];
