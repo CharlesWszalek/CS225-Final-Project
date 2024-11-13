@@ -48,7 +48,7 @@ int HUMAN::bets(){
 			forPot = check();
 		} else if (temp == "fold"){
 			fold();
-			return -1;
+			return 0;
 		} else {
                   forPot = 0;
                 }
@@ -56,7 +56,7 @@ int HUMAN::bets(){
 		return forPot;
 	} else { // makes sure they player can't play if they folded
 		cout << "player has previously folded" << endl;
-		return -1; //comunicate player has folded
+		return 0; //comunicate player has folded
 	}
 }
 

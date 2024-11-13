@@ -25,13 +25,13 @@ int AI::bets(){
 			forPot = check();
 		} else {
 			fold();
-			return -1; //comunicate player has folded
+			return 0; //comunicate player has folded
 		}
 		set_min();
 		return forPot;
 	} else {
 		cout << "player has previously folded" << endl;
-		return -1; //comunicate player has folded
+		return 0; //comunicate player has folded
 	}
 }
 

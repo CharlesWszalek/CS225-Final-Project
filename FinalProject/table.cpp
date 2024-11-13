@@ -94,7 +94,9 @@ void TABLE::betting(){
 			next_player();
 			continue;
 		}
+		cout << pot << endl;
 		pot += players[playerTurn]->bets();
+		cout << "pot " << pot << endl;
 		if (temp - players[playerTurn]->get_hasRaised() == -1){//reset countdown when player has raised
 			countdown = numPlayers-1;
 			next_player();
