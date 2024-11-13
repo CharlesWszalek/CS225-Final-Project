@@ -34,7 +34,6 @@ public:
 	HAND& get_hand();
 	int get_money() const;
 	int get_playerId() const;
-	//void set_playerId();
 	void set_min();
 	virtual void reset_raised();
 	virtual int bets() = 0;
@@ -61,4 +60,5 @@ public:
 	AI(int, int, DECK);
 	int bets();
 };
+
 #endif

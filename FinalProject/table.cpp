@@ -21,7 +21,7 @@ int TABLE::bigBlind = 0;
 int TABLE::playerTurn = 0;
 
 // table constructor
-TABLE::TABLE(int numOfPlayers, int buyIn):numPlayers(numOfPlayers), pot(0){
+TABLE::TABLE(int numOfPlayers, int buyIn): numPlayers(numOfPlayers), pot(0){
 	playerTurn = 0;
 	deck.shuffle();
 	buy_in(buyIn);
@@ -44,7 +44,6 @@ TABLE::~TABLE(){
 			deck.discard();
 		}
 		catch (const runtime_error& error){
-			//cout << "deck is empty" << endl;
 			break;
 		}
 	}
@@ -152,17 +151,23 @@ void TABLE::river(){
 // checks whether the player has any number of a particular suit up to 4
 void TABLE::blankofakind(int mhands[][5][14], int scoring[][10], int player, int num = 2){
 	int count = 0;
-	for (int j = 12; j >=0 ; j--) {
-		if (count == 0) {
-			if (mhands[player][4][j] == num) {
+	for (int j = 12; j >=0 ; j--){
+		if (count == 0){
+			if (mhands[player][4][j] == num){
 				count++;
-				for (int k = 0; k < 5; k++) {
+				for (int k = 0; k < 5; k++){
 					mhands[player][k][j] = 0;
 				}
-				switch (num) {
-					case 2: scoring[player][1] = j+1; break;
-					case 3: scoring[player][3] = j+1; break;
-					case 4: scoring[player][7] = j+1; break;
+				switch (num){
+					case 2: 
+						scoring[player][1] = j+1; 
+						break;
+					case 3: 
+						scoring[player][3] = j+1; 
+						break;
+					case 4: 
+						scoring[player][7] = j+1; 
+						break;
 				}
 			}
 		}
@@ -176,28 +181,28 @@ void TABLE::two_pair(int mhands[][5][14], int scoring[][10], int player){
 	int cardValue = 0;
 	int column = 0;
 	int mhands2[numPlayers][5][14];
-	for (int i = 0; i < numPlayers; i++) {				//
-		for (int j = 0; j < 5; j++) {				// copying mhands
-			for (int k = 0; k < 14; k++) {			//
+	for (int i = 0; i < numPlayers; i++){				//
+		for (int j = 0; j < 5; j++){				// copying mhands
+			for (int k = 0; k < 14; k++){			//
 				mhands2[i][j][k] = mhands[i][j][k];	//
 			}
 		}
 	}
-	for (int j = 12; j >=0 ; j--) {
-		if (count == 0) {
-			if (mhands2[player][4][j] == num) {
+	for (int j = 12; j >=0 ; j--){
+		if (count == 0){
+			if (mhands2[player][4][j] == num){
 				count++;
-				for (int k = 0; k < 5; k++) {
+				for (int k = 0; k < 5; k++){
 					mhands2[player][k][j] = 0;	// deleting first pair from copy
 				}
 				cardValue = j+1;
 				column = j;
 			}
 		}
-		if (count == 1) {
-			if (mhands2[player][4][j] == num) {
+		if (count == 1){
+			if (mhands2[player][4][j] == num){
 				count++;
-				for (int k = 0; k < 5; k++) {
+				for (int k = 0; k < 5; k++){
 					mhands[player][k][j] = 0;	// deleting second pair
 					mhands[player][k][column] = 0;	// deleting first pair
 				}
@@ -208,11 +213,11 @@ void TABLE::two_pair(int mhands[][5][14], int scoring[][10], int player){
 }
 
 // checks to see if a player has a roay flush 
-void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]) {
+void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]){
 	for (int i = 0; i < numPlayers; i++){
 		if(mhands[i][4][9]==1 && mhands[i][4][10]==1 && mhands[i][4][11]==1
-		&& mhands[i][4][12]==1 && mhands[i][4][0]==1) {
-			for(int j = 0; j < 5; j++) {
+		&& mhands[i][4][12]==1 && mhands[i][4][0]==1){
+			for(int j = 0; j < 5; j++){
 				if(mhands[i][j][13] == 5)
 					scoring[i][9] = 1;
 			}
@@ -221,20 +226,20 @@ void TABLE::royal_flush(int mhands[][5][14], int scoring[][10]) {
 }
 
 // checks to see if a player has a flush that is not royal 
-void TABLE::flush(int mhands[][5][14], int scoring[][10]) {
+void TABLE::flush(int mhands[][5][14], int scoring[][10]){
 	int check = 0;
 	int sum = 0;
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		check = 0;
 		sum = 0;
-		for (int j = 0; j < 4; j++) {
-			if(mhands[i][j][13] >= 5) {
-				for (int k = 12; k >=0 ; k--) {
-					if(mhands[i][j][k] == 1 && check <= 4) {
+		for (int j = 0; j < 4; j++){
+			if(mhands[i][j][13] >= 5){
+				for (int k = 12; k >=0 ; k--){
+					if(mhands[i][j][k] == 1 && check <= 4){
 						check++;
 						sum+=(k+1);
 					}
-					}
+				}
 				scoring[i][5] = sum;
 			}
 		}
@@ -242,37 +247,38 @@ void TABLE::flush(int mhands[][5][14], int scoring[][10]) {
 }
 
 // checks to see if a player has a straight 
-void TABLE::straight(int mhands[][5][14], int scoring[][10]) {
+void TABLE::straight(int mhands[][5][14], int scoring[][10]){
 	int sum = 0;
 	int check = 0;
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		for (int j = 0; j < 10; j++){
 			check = 0;
 			sum = 0;
-			if (mhands[i][4][j] >= 1) {
-				for (int k = j; k <= j+4; k++) {
-					if(mhands[i][4][k % 13] >= 1) {
+			if (mhands[i][4][j] >= 1){
+				for (int k = j; k <= j+4; k++){
+					if(mhands[i][4][k % 13] >= 1){
 						check++;
 						sum+=k;
-					}
-					else
+					} else {
 						break;
+					}
 				}
 			}
-			if (check == 5)
+			if (check == 5){
 				scoring[i][4] = sum;
+			}
 		}
 	}
 }
 
 // checks for the highest card left in the hand 
-void TABLE::highcard(int mhands[][5][14], int scoring[][10]) {
+void TABLE::highcard(int mhands[][5][14], int scoring[][10]){
 	int score = 0;
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		score = 0;
-		for (int j = 12; j >=0; j--) {
-			for (int k = 3; k>=0; k--) {
-				if (mhands[i][j][k] == 1 && score == 0) {
+		for (int j = 12; j >=0; j--){
+			for (int k = 3; k>=0; k--){
+				if (mhands[i][j][k] == 1 && score == 0){
 					score = j+1;
 				}
 			}
@@ -282,24 +288,24 @@ void TABLE::highcard(int mhands[][5][14], int scoring[][10]) {
 }
 
 // checks a players hand for a straight flush that is not royal 
-void TABLE::straight_flush(int mhands[][5][14], int scoring[][10]) {
+void TABLE::straight_flush(int mhands[][5][14], int scoring[][10]){
     int check = 0;
     int max = 0;
-    for (int i = 0; i < numPlayers; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (mhands[i][j][13] >= 5) {
-                for (int k = 0; k <= 9; k++) { // Loop up to 9 to prevent out-of-bounds
+    for (int i = 0; i < numPlayers; i++){
+        for (int j = 0; j < 4; j++){
+            if (mhands[i][j][13] >= 5){
+                for (int k = 0; k <= 9; k++){ // Loop up to 9 to prevent out-of-bounds
                     max = 0;
                     check = 0;
-                    for (int z = k; z < k + 5; z++) {
-                        if (mhands[i][j][z] == 1) {
+                    for (int z = k; z < k + 5; z++){
+                        if (mhands[i][j][z] == 1){
                             max = z+1;
                             check++;
                         } else {
                             break;
                         }
                     }
-                    if (check == 5) {
+                    if (check == 5){
                         break; // Exit loop if a straight flush is found
                     }
                 }
@@ -310,28 +316,28 @@ void TABLE::straight_flush(int mhands[][5][14], int scoring[][10]) {
 }
 
 // checks to see if a player has a full house 
-void TABLE::full_house(int mhands[][5][14], int scoring[][10]) {
-    int step = 0;
-    int max = 0;
-    for (int i = 0; i < numPlayers; i++) {
-        step = 0;
-        max = 0;
-        for (int j = 0; j < 13; j++) {
-            if (mhands[i][4][j] >= 3) {
-                step = 1;
-                max = j+1;
-                break;
-            }
-        }
-        if (step == 1) {
-            for (int k = 0; k < 13; k++) {
-                if (mhands[i][4][k] == 2) {
-                    scoring[i][6] = max;
-                    break;
-                }
-            }
-        }
-    }
+void TABLE::full_house(int mhands[][5][14], int scoring[][10]){
+	int step = 0;
+	int max = 0;
+	for (int i = 0; i < numPlayers; i++){
+		step = 0;
+		max = 0;
+		for (int j = 0; j < 13; j++){
+			if (mhands[i][4][j] >= 3){
+				step = 1;
+				max = j+1;
+				break;
+			}
+		}
+		if (step == 1){
+			for (int k = 0; k < 13; k++){
+				if (mhands[i][4][k] == 2){
+					scoring[i][6] = max;
+					break;
+				}
+			}
+		}
+	}
 }
 
 // calls all of the checking
@@ -354,15 +360,15 @@ void TABLE::showdown(){
 	}
 	// ASSIGNING CARDS
 	HAND hands[numPlayers];
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		hands[i] = players[i]->get_hand();
 		hands[i] = hands[i] + cards;
-		for (int j = 0; j < 7; j++) {
+		for (int j = 0; j < 7; j++){
 			mhands[i][hands[i].cards[j].get_suit_2()][hands[i].cards[j].get_value()] += 1;
 		}
 	}
 	// SUMMING
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		for (int j = 0; j < num_suits; j++){
 			for (int k = 0; k < num_names; k++){
 				mhands[i][j][num_names] += mhands[i][j][k];
@@ -376,7 +382,7 @@ void TABLE::showdown(){
 			}
 		}
 	}
-	for (int i = 0; i < numPlayers; i++) {
+/*	for (int i = 0; i < numPlayers; i++){
 		cout << endl;
 		cout << players[i]->get_name() << endl;
 		//hands[i].display_hand();
@@ -389,27 +395,27 @@ void TABLE::showdown(){
 		}
 	}
 	cout << endl;
-
+*/
 	// checking each hand
 	royal_flush(mhands, scoring);
 	straight_flush(mhands, scoring);
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		blankofakind(mhands, scoring, i, 4);
 	}
 	full_house(mhands, scoring);
 	flush(mhands, scoring);
 	straight(mhands, scoring);
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		blankofakind(mhands, scoring, i, 3);
 	}
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		two_pair(mhands, scoring, i);
 	}
-	for (int i = 0; i < numPlayers; i++) {
+	for (int i = 0; i < numPlayers; i++){
 		blankofakind(mhands, scoring, i, 2);
 	}
 	highcard(mhands, scoring);
-	for (int i = 0; i < numPlayers; i++) {
+/*	for (int i = 0; i < numPlayers; i++){
 		cout << endl;
 		//hands[i].display_hand();
 		//cout << endl;
@@ -417,14 +423,14 @@ void TABLE::showdown(){
 			cout << scoring[i][j] << " ";
 		}
 	}
-
+*/
 	//Doing Print statements for all of the hands:
-	for (int i = 0; i< numPlayers; i++) {
+	for (int i = 0; i< numPlayers; i++){
 		int scored = 0;
-		for (int j = 9; j >=0; j--) {
-			if (scoring[i][j] > 0 && scored == 0) {
+		for (int j = 9; j >=0; j--){
+			if (scoring[i][j] > 0 && scored == 0){
 				scored = 1;
-				switch (j) {
+				switch (j){
 					case 9:
 						cout << players[i]->get_name() << "'s hand is a royal flush, they win the game!" << endl;
 						break;
@@ -463,11 +469,11 @@ void TABLE::showdown(){
 	int player_winner;
 	int win = 0;
 	
-	for (int j = 9; j >=0 ; j--) {
-		for (int i = 0; i < numPlayers; ++i) {
-			if (scoring[i][j] > 0) {
-				for(int k = i; k < numPlayers; k++) {
-					if (scoring[k][j] > win && players[k]->get_hasRaised() != -1) {
+	for (int j = 9; j >=0 ; j--){
+		for (int i = 0; i < numPlayers; ++i){
+			if (scoring[i][j] > 0){
+				for(int k = i; k < numPlayers; k++){
+					if (scoring[k][j] > win && players[k]->get_hasRaised() != -1){
 						win = scoring[k][j];
 						player_winner = k;
 					}
@@ -475,7 +481,7 @@ void TABLE::showdown(){
 			}
 		}
 	}
-	cout << "The winner is: " << players[player_winner]->get_name() << endl;
+	cout << endl << "The winner is: " << players[player_winner]->get_name() << endl;
 	//File IO stuff
     	ofstream myfile;
     	myfile.open("GameHistory.txt", ios::app);  // Open in append mode
@@ -486,14 +492,15 @@ void TABLE::showdown(){
 
 
 void TABLE::display() const {
+	cout << endl;
 	for (int i = 0; i < numPlayers; i++){
 		cout << players[i]->get_name() << "'s " << "hand is: ";
 		players[i]->get_hand().display_hand();
 	}
-	cout << "The table cards are: " << endl;
+	cout << endl << "The table cards are: " << endl;
 	for (int i = 0; i < 5; i++){
 		cards[i].display();
 		cout << " ";
 	}
-	cout << endl;
+	cout << endl << endl;
 }

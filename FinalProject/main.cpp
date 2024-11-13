@@ -12,7 +12,7 @@
 using namespace std;
 
 // creates a game for the player
-void game() {
+void game(){
 	int numPlayers; // number of players
 	int buyIn; // buy in amount
 
@@ -59,15 +59,14 @@ int main(){
 	cin.ignore(INT_MAX, '\n');
 	if (input == "No" || input == "no") // error checking
 		return 0;
-	while (input != "Yes" && input != "yes") {
+	while (input != "Yes" && input != "yes"){
 		cout << "Invalid Input, try again: ";
 		cin >> input;
 		cin.ignore(INT_MAX, '\n');
 		if (input == "No" || input == "no")
 			return 0;
 	}
-	while (input == "Yes" || input == "yes")
-	{
+	while (input == "Yes" || input == "yes"){
 		game(); // play the game if input is "yes"
 		cout << "Shall we play again? " << endl;
 		cin >> input;

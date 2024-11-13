@@ -24,9 +24,4 @@ public:
 	void discard();
 	void display() const;
 };
-
-
-
-
 #endif
-/**/

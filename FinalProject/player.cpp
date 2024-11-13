@@ -14,7 +14,7 @@ using namespace std;
 int PLAYER::minBet = 0;
 
 // player constructor
-PLAYER::PLAYER(int num, int buyIn, DECK d):playerId(num), hand(d), money(buyIn), betMoney(0), hasRaised(0){minBet = 0;}
+PLAYER::PLAYER(int num, int buyIn, DECK d): playerId(num), hand(d), money(buyIn), betMoney(0), hasRaised(0){minBet = 0;}
 
 // player deconstructor 
 PLAYER::~PLAYER(){}
@@ -56,7 +56,7 @@ void PLAYER::fold(){
 }
 
 // return the players hand
-HAND& PLAYER::get_hand() {return hand;}
+HAND& PLAYER::get_hand(){return hand;}
 
 // return the player's money
 int PLAYER::get_money() const {return money;};

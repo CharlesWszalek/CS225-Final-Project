@@ -11,10 +11,6 @@
 
 #include "deck.hpp"
 
-extern DECK deck;
-
-
 int conv_string_int(string); // converts a string to an int or returns 0
-				// could use throw to throw an error on non int
 
 #endif //GLOBAL_HPP

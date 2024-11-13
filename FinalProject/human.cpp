@@ -22,14 +22,14 @@ int HUMAN::bets(){
 	if(hasRaised != -1){
 		string temp = "0";
 		hand.display_hand(); // show the player their hand
-		while (!((hasRaised == 0 && temp == "raise") || temp == check_or_call() || temp == "fold")) {
-			if (hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money) {
+		while (!((hasRaised == 0 && temp == "raise") || temp == check_or_call() || temp == "fold")){
+			if (hasRaised == 0 && minBet - betMoney + TABLE::bigBlind <= money){
 				cout << "Would you like to raise, " << check_or_call() << ", or fold: "; //cannot raise if raised already
 			} else {
 				cout << "Would you like to "<< check_or_call() <<" or fold: "; //cannot raise if raised already
 			}
 			getline(cin, temp); // prompt the user for the behavior
-			if (!cin) { // error handling for ints inputed
+			if (!cin){ // error handling for ints inputed
 				cout << "Invalid input" << endl;;
 				cin.clear(); //clear error flag
 				cin.ignore(INT_MAX, '\n');

@@ -17,26 +17,26 @@
 using namespace std;
 
 // Constructor: Initializes a standard deck of 52 cards
-DECK::DECK() {
+DECK::DECK(){
 	// Define suits and names
 	const array<string, 4> suits = {" Hearts ", "Diamonds", " Clubs  ", " Spades "};
 	const array<string, 13> names = {"  2  ", "  3  ", "  4  ", "  5  ", "  6  ", "  7  ", "  8  ", "  9  ", " 10  ", "Jack ", "Queen", "King ", " Ace "};
 
 	// Create a card for each combination of suit and name
-	for (size_t i = 0; i < suits.size(); ++i) {
-		for (size_t j = 0; j < names.size(); ++j) {
+	for (size_t i = 0; i < suits.size(); ++i){
+		for (size_t j = 0; j < names.size(); ++j){
 			cards.emplace_back(suits[i], names[j]);  // Using CARD's parameterized constructor
 		}
 	}
 }
 
-// reating a deck made of cards
+// creating a deck made of cards
 vector<CARD> DECK::cards;
 
 
 // Draws a card from the top of the deck and removes it
-CARD DECK::draw() {
-	if (cards.empty()) {
+CARD DECK::draw(){
+	if (cards.empty()){
 		throw runtime_error("No more cards in the deck to draw.");
 	}
 
@@ -60,7 +60,7 @@ void DECK::shuffle(int seed){
 }
 
 // Discards the top card (removes it without returning it)
-void DECK::discard() {
+void DECK::discard(){
 	if (cards.empty()) {
 		throw runtime_error("No more cards in the deck to discard.");
 	}
