@@ -1,7 +1,9 @@
 //
 // CSS 225 FINAL PROJECT
 // Name: cards.cpp
-// Version 1.0 name: Thomas Z 10/22/2024created
+// Version 1.0 name: Thomas Z  10/22/2024 created
+//	   1.1 name: Thomas Z  10/25/2024 created getter functions
+//  	   2.0 name: Charles W 10/30/2024 updated getter functions for "mhands" in table
 //
 
 #include "cards.hpp"
