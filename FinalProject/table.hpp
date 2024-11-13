@@ -1,7 +1,7 @@
 //
 // CSS 225 FINAL PROJECT 
 // Name: table.hpp
-// Version 1.0 name: Bradon P 10/21/24 Changes moved table to seperate header file
+// Version 1.0 name: Brandon P 10/21/24 Changes moved table to seperate header file
 //	   1.1 name: Thomas Z  10/23/24 created new fucntions 
 //	   1.2 name: Charles W 10/27/24 created showdown function
 //	   1.3 name: Charles W 10/30/24 added hand checkers for showdown
