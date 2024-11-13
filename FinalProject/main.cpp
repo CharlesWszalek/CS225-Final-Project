@@ -18,25 +18,23 @@ void game() {
 
 	cout << "How many players (Max of 5)? " << endl;
 	cin >> numPlayers;
-	cin.ignore(INT_MAX, '\n');
-	while (cin.fail () || numPlayers > 5){
-	    cin.clear();
-	    cin.ignore(INT_MAX, '\n');
-	    cout << "Error, non integer value entered, try again: " << endl;
-	    cin >> numPlayers;
-	    cin.ignore(INT_MAX, '\n');
+	while (!cin || numPlayers > 5){
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
+		cout << "Error, non integer value entered, try again: " << endl;
+		cin >> numPlayers;
 	}
+	cin.ignore(INT_MAX, '\n');
 
 	cout << "What is the buy in? " << endl;
 	cin >> buyIn;
-	cin.ignore(INT_MAX, '\n');
 	while (cin.fail () ){
-	    cin.clear();
-	    cin.ignore(INT_MAX, '\n');
-	    cout << "Error, non integer value entered, try again: " << endl;
-	    cin >> buyIn;
-	    cin.ignore(INT_MAX, '\n');
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
+		cout << "Error, non integer value entered, try again: " << endl;
+		cin >> buyIn;
 	}
+	cin.ignore(INT_MAX, '\n');
 	//deck.shuffle();
 
 	TABLE table(numPlayers, buyIn);
@@ -59,17 +57,22 @@ int main(){
 	string input;
 	cout << "Shall we play a game? " << endl;
 	cin >> input;
+	cin.ignore(INT_MAX, '\n');
 	if (input == "No" || input == "no")
-	    return 0;
+		return 0;
 	while (input != "Yes" && input != "yes") {
-	    cout << "Invalid Input, try again: ";
-	    cin >> input;
+		cout << "Invalid Input, try again: ";
+		cin >> input;
+		cin.ignore(INT_MAX, '\n');
+		if (input == "No" || input == "no")
+			return 0;
 	}
 	while (input == "Yes" || input == "yes")
 	{
 		game();
 		cout << "Shall we play again? " << endl;
 		cin >> input;
+		cin.ignore(INT_MAX, '\n');
 	}
 	return 0;
 }
