@@ -70,7 +70,7 @@ int HUMAN::raise(){
 		if ((betChange = conv_string_int(input)) < TABLE::bigBlind){ // error handling
 			cout << "Bet must be larger than Big Blind: $" << TABLE::bigBlind << endl;
 			continue;
-		} else if (!cin) { // int error handling
+		} else if (!cin){ // int error handling
 			cout << "Invalid input" << endl;;
 			cin.clear(); //clear error flag
 			cin.ignore(INT_MAX, '\n');

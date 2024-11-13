@@ -4,7 +4,7 @@
 // Version 1.0 name: Charles W 11/03/24 created
 // 	       1.1 name: Thomas Z  11/02/24 added the deck to global so all could access it
 // 	       1.2 name: Brandon P 11/05/24 added conv_string_int
-// 	       1.2 name: Brandon P 11/8/24  removed the deck to global for better solution
+// 	       1.2 name: Brandon P 11/08/24 removed the deck to global for better solution
 // Reference: 
 //
 

@@ -5,9 +5,9 @@
 //	   1.1 name: Thomas Z  10/23/24 created new fucntions 
 //	   1.2 name: Charles W 10/27/24 created showdown function
 //	   1.3 name: Charles W 10/30/24 added hand checkers for showdown
-//	   1.4 name: Charles W 11/2/24 added hand checkers for showdown
-//	   1.5 name: Thomas Z  11/3/24 added hand checkers for showdown
-//	   1.6 name: Charles W 11/7/24 added hand checkers for showdown
+//	   1.4 name: Charles W 11/02/24 added hand checkers for showdown
+//	   1.5 name: Thomas Z  11/03/24 added hand checkers for showdown
+//	   1.6 name: Charles W 11/07/24 added hand checkers for showdown
 //	   1.6 name: Thomas Z  11/10/24 fixed hand checkers for showdown
 //	   1.7 name: Thomas Z  11/11/24 fixed hand checkers for showdown
 //	   1.8 name: Charles W 11/12/24 fixed hand checkers for showdown
@@ -391,20 +391,6 @@ void TABLE::showdown(){
 			}
 		}
 	}
-/*	for (int i = 0; i < numPlayers; i++){
-		cout << endl;
-		cout << players[i]->get_name() << endl;
-		//hands[i].display_hand();
-		//cout << endl;
-		for (int j = 0; j < num_suits+1; j++){
-			cout << endl;
-			for (int k = 0; k < num_names+1; k++){
-				cout << mhands[i][j][k] << " ";
-			}
-		}
-	}
-	cout << endl;
-*/
 	// checking each hand
 	royal_flush(mhands, scoring);
 	straight_flush(mhands, scoring);
@@ -424,15 +410,6 @@ void TABLE::showdown(){
 		blankofakind(mhands, scoring, i, 2);
 	}
 	highcard(mhands, scoring);
-/*	for (int i = 0; i < numPlayers; i++){
-		cout << endl;
-		//hands[i].display_hand();
-		//cout << endl;
-		for (int j = 0; j < 10; j++){
-			cout << scoring[i][j] << " ";
-		}
-	}
-*/
 	//Doing Print statements for all of the hands:
 	for (int i = 0; i< numPlayers; i++){
 		int scored = 0;
