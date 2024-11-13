@@ -1,7 +1,9 @@
 //
 // CSS 225 FINAL PROJECT 
-// Name: hand.h
+// Name: hand.hpp
 // Version 1.0 name: Bradon P 10/21/24 Changes moved table to seperate header file
+// 	   1.1 name: Brandon P 10/25/24 functionality added
+//	   1.2 name: Charles W 10/30/24 overloaded + operaator 
 // Reference: https://en.wikipedia.org/wiki/Texas_hold_%27em#Play_of_the_hand
 //
 
