@@ -13,12 +13,12 @@ using namespace std;
 
 // creates a game for the player
 void game() {
-	int numPlayers;
-	int buyIn;
+	int numPlayers; // number of players
+	int buyIn; // buy in amount
 
 	cout << "How many players (Max of 5)? " << endl;
-	cin >> numPlayers;
-	while (!cin || numPlayers > 5){
+	cin >> numPlayers;  // user input 
+	while (!cin || numPlayers > 5){ // error checking
 		cin.clear();
 		cin.ignore(INT_MAX, '\n');
 		cout << "Error, non integer value entered, try again: " << endl;
@@ -27,38 +27,37 @@ void game() {
 	cin.ignore(INT_MAX, '\n');
 
 	cout << "What is the buy in? " << endl;
-	cin >> buyIn;
-	while (cin.fail () ){
+	cin >> buyIn; // user input 
+	while (cin.fail () ){ // error checking
 		cin.clear();
 		cin.ignore(INT_MAX, '\n');
 		cout << "Error, non integer value entered, try again: " << endl;
 		cin >> buyIn;
 	}
 	cin.ignore(INT_MAX, '\n');
-	//deck.shuffle();
 
-	TABLE table(numPlayers, buyIn);
+	TABLE table(numPlayers, buyIn); // create a table for the game
 
-	//table.buy_in(buyIn);
-
-	table.betting();
-	table.flop();
-	table.betting();
-	table.turn();
-	table.betting();
-	table.river();
-	table.betting();
-	table.display();
-	table.showdown();
+	table.betting(); //
+	table.flop();    //
+	table.betting(); //
+	table.turn();    // cards being distributed to players
+	table.betting(); //
+	table.river();   //
+	table.betting(); //
+	
+	table.display(); // show all players cards and the table cards
+	
+	table.showdown(); // determine the winner
 }
 
 // main loop to create games
 int main(){
 	string input;
 	cout << "Shall we play a game? " << endl;
-	cin >> input;
+	cin >> input; //user input 
 	cin.ignore(INT_MAX, '\n');
-	if (input == "No" || input == "no")
+	if (input == "No" || input == "no") // error checking
 		return 0;
 	while (input != "Yes" && input != "yes") {
 		cout << "Invalid Input, try again: ";
@@ -69,7 +68,7 @@ int main(){
 	}
 	while (input == "Yes" || input == "yes")
 	{
-		game();
+		game(); // play the game if input is "yes"
 		cout << "Shall we play again? " << endl;
 		cin >> input;
 		cin.ignore(INT_MAX, '\n');
