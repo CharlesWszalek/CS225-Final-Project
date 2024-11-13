@@ -25,7 +25,7 @@ using namespace std;
 class TABLE{
 private:
 	int numPlayers;
-	PLAYER* players[22];
+	PLAYER* players[6];
 	int pot;
 	int buyIn;
 	static int playerTurn;
