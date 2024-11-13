@@ -13,30 +13,41 @@ using namespace std;
 
 // creates a game for the player
 void game() {
-	int numPlayers; // number of players playing: 1 + number of ai
-	int buyIn; // the buy in for that game
+	int numPlayers;
+	int buyIn;
 
-	cout << "How many players? " << endl; // read in number of players
+	cout << "How many players? " << endl;
 	cin >> numPlayers;
-	cin.ignore(INT_MAX, '\n');
+	while (cin.fail () ) {
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n');
+	    cout << "Error, non integer value entered, try again: " << endl;
+	    cin >> numPlayers;
+	}
 
-	cout << "What is the buy in? " << endl; // read in the buy in
+	cout << "What is the buy in? " << endl;
 	cin >> buyIn;
-	cin.ignore(INT_MAX, '\n');
+	while (cin.fail () ) {
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n');
+	    cout << "Error, non integer value entered, try again: " << endl;
+	    cin >> buyIn;
+	}
+	//deck.shuffle();
 
-	TABLE table(numPlayers, buyIn); // create a table for the game to be played on
+	TABLE table(numPlayers, buyIn);
 
-	table.betting(); //
-	table.flop();    //
-	table.betting(); //
-	table.turn();    // have the players play their turns and add cards to the table
-	table.betting(); //
-	table.river();   //
-	table.betting(); //
+	//table.buy_in(buyIn);
 
-	table.display(); // show the cards on the table and in everyones hands
-
-	table.showdown(); // compare the cards of each of the players and determine a winner
+	table.betting();
+	table.flop();
+	table.betting();
+	table.turn();
+	table.betting();
+	table.river();
+	table.betting();
+	table.display();
+	table.showdown();
 }
 
 // main loop to create games
