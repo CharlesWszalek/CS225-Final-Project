@@ -19,9 +19,9 @@ void game(){
 	int numPlayers; // number of players
 	int buyIn; // buy in amount
 
-	cout << "How many players (Max of 5)? " << endl;
+	cout << "How many players (Max of 5, Min of 2)? " << endl;
 	cin >> numPlayers;  // user input 
-	while (!cin || numPlayers > 5){ // error checking
+	while (!cin || numPlayers > 5 || numPlayers <2){ // error checking
 		cin.clear();
 		cin.ignore(INT_MAX, '\n');
 		cout << "Error, non integer value entered, try again: " << endl;
